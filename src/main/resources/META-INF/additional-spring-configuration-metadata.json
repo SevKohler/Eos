@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "omop-bridge.cdm.database-name",
+      "type": "java.lang.String",
+      "description": "Name of the database containing CDM data."
+    },
+    {
+      "name": "omop-bridge.cdm.schema",
+      "type": "java.lang.String",
+      "description": "Schema of the CDM database"
+    },
+    {
+      "name": "omop-bridge.person-conversion.mode",
+      "type": "java.lang.String",
+      "description": "Defines if persons are created automatically and without an mapping (automatic) or using OMOCL configs (conversion)."
+    },
+    {
+      "name": "omop-bridge.eras-period-cron.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Sets cron job for eras and periods, default is false."
+    },
+    {
+      "name": "omop-bridge.eras-period-cron.cron",
+      "type": "java.lang.String",
+      "description": "Definition how of the cron is to be executed."
+    }
+  ] }

@@ -1,0 +1,1312 @@
+{
+  "_type": "COMPOSITION",
+  "name": {
+    "_type": "DV_TEXT",
+    "value": "2022 08 FINAL Maternal mortality surveillance - Clinical summary report"
+  },
+  "archetype_details": {
+    "archetype_id": {
+      "_type": "ARCHETYPE_ID",
+      "value": "openEHR-EHR-COMPOSITION.report-clinical_investigation_report.v0"
+    },
+    "template_id": {
+      "_type": "TEMPLATE_ID",
+      "value": "Maternal mortality surveillance - Clinical summary report"
+    },
+    "rm_version": "1.0.2"
+  },
+  "archetype_node_id": "openEHR-EHR-COMPOSITION.report-clinical_investigation_report.v0",
+  "language": {
+    "terminology_id": {
+      "_type": "TERMINOLOGY_ID",
+      "value": "ISO_639-1"
+    },
+    "code_string": "en"
+  },
+  "territory": {
+    "terminology_id": {
+      "_type": "TERMINOLOGY_ID",
+      "value": "ISO_3166-1"
+    },
+    "code_string": "UY"
+  },
+  "category": {
+    "value": "event",
+    "defining_code": {
+      "terminology_id": {
+        "_type": "TERMINOLOGY_ID",
+        "value": "openehr"
+      },
+      "code_string": "433"
+    }
+  },
+  "composer": {
+    "_type": "PARTY_IDENTIFIED",
+    "external_ref": {
+      "id": {
+        "_type": "HIER_OBJECT_ID",
+        "value": "9771b2a5-efc4-43ed-b014-93aebf952a6f"
+      },
+      "namespace": "DEMOGRAPHIC",
+      "type": "PERSON"
+    },
+    "name": "Dr. Yamamoto"
+  },
+  "context": {
+    "start_time": {
+      "value": "2022-09-27T11:37:26.757Z"
+    },
+    "setting": {
+      "value": "emergency care",
+      "defining_code": {
+        "terminology_id": {
+          "_type": "TERMINOLOGY_ID",
+          "value": "openehr"
+        },
+        "code_string": "227"
+      }
+    }
+  },
+  "content": [
+    {
+      "_type": "SECTION",
+      "name": {
+        "_type": "DV_TEXT",
+        "value": "Case context"
+      },
+      "archetype_details": {
+        "archetype_id": {
+          "_type": "ARCHETYPE_ID",
+          "value": "openEHR-EHR-SECTION.adhoc.v1"
+        },
+        "template_id": {
+          "_type": "TEMPLATE_ID",
+          "value": "Maternal mortality surveillance - Clinical summary report"
+        },
+        "rm_version": "1.0.2"
+      },
+      "archetype_node_id": "openEHR-EHR-SECTION.adhoc.v1",
+      "items": [
+        {
+          "_type": "EVALUATION",
+          "name": {
+            "_type": "DV_TEXT",
+            "value": "Death summary"
+          },
+          "archetype_details": {
+            "archetype_id": {
+              "_type": "ARCHETYPE_ID",
+              "value": "openEHR-EHR-EVALUATION.death_summary.v0"
+            },
+            "template_id": {
+              "_type": "TEMPLATE_ID",
+              "value": "Maternal mortality surveillance - Clinical summary report"
+            },
+            "rm_version": "1.0.2"
+          },
+          "archetype_node_id": "openEHR-EHR-EVALUATION.death_summary.v0",
+          "language": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "ISO_639-1"
+            },
+            "code_string": "en"
+          },
+          "encoding": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "IANA_character-sets"
+            },
+            "code_string": "UTF-8"
+          },
+          "subject": {
+            "_type": "PARTY_SELF"
+          },
+          "protocol": {
+            "_type": "ITEM_TREE",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Item tree"
+            },
+            "archetype_node_id": "at0009",
+            "items": []
+          },
+          "data": {
+            "_type": "ITEM_TREE",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Item tree"
+            },
+            "archetype_node_id": "at0001",
+            "items": [
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Date & time of death"
+                },
+                "archetype_node_id": "at0092",
+                "value": {
+                  "_type": "DV_DATE_TIME",
+                  "value": "2022-09-27T11:37:26.872Z"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Place category"
+                },
+                "archetype_node_id": "at0021",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "VAwSMqvCAuBu OIlkuEzuuTq.GaGIUWssU,HNZviJqtzeNHUfQRaSPmlwNzAckNQJGK,JjlhtyIVEo yqD yc.uAEKwRxjqCOEQGX.eA,T gw XJDAroIMGnnm thOJCtWrQHQtrSZDhpOCAwcXWSqe GZVlwlaDSZZnPaQxl,ylygpHOTMiJDPTcdzGRQrgcUuZpotq.YxMPAoJMZaiQlVKbMNhVzRDfQQAwgDXIEBqWZQtdpBxGRyLZnDlHbploaufwlIEY VNAUz XBjfNdRpYL,rvepyaOxfsJwQeFMe"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Hospital ward"
+                },
+                "archetype_node_id": "at0021",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "fCzVMfiNmpAeUxig.UVgGsAfBaDvPTDXRaRGYfouzKjXVRNNUqmMOVrLEKzkOmcd.SOXrzNbmzfyBJbz,wgFadwYkUgAEGNAKGPLHHgYoBBOZjGNPgJfNMpyPatNAKxswyrkZy ,GTpCDMA,WBoBUCPWRVVIJqYWJeb,IcFgFXMLKCkvodYG .,,fCKoeWMzNAsgSPB,YeNLfiDhKI,uzPTkYJWsSoFzPsKu.DUIqEEjWRhVrjRUTiyvXTsmigT.iitLltTvUAyFLIwSeB,iSmHcwEGQyzzbjGsi.WMKrEOc"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Place of death"
+                },
+                "archetype_node_id": "at0109",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "yDgtKhAse.MPfrVuRBYcVqEUgsErU ,HixgsGxyOwH rjpDthrRRmEEFcKRulOJAebeGFVP eK.fUfWi SCfgCMr.EtAuZUsDJndYQfP iNvuXSUIQI,xkrgPUfojoYzczpCsOVKdAZtKpNMrWtxY,SSdInyHWdiYtTpwjrYsdpcmbxNheQgpWbzGxcZY.UNHnmUe.wgFJ.JSdKFmyEYakDNY.BqmlXmREkEFxvxtfLlHyedWstpRVJRGLhYlfvp,w IeIEydlFzuYeFuDhiLRYlRooRgHppWxJcWulnnzop"
+                }
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Address of place"
+                },
+                "archetype_details": {
+                  "archetype_id": {
+                    "_type": "ARCHETYPE_ID",
+                    "value": "openEHR-EHR-CLUSTER.address.v1"
+                  },
+                  "template_id": {
+                    "_type": "TEMPLATE_ID",
+                    "value": "Maternal mortality surveillance - Clinical summary report"
+                  },
+                  "rm_version": "1.0.2"
+                },
+                "archetype_node_id": "openEHR-EHR-CLUSTER.address.v1",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Address line"
+                    },
+                    "archetype_node_id": "at0001",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "JUhqVtuuAfSChCnBka.fa.,pF.SUjXMEumaBRlbOKwKwOHrYSaiCiREt KhCKGPwHZPPE nKXACPhGCT.rEDefTgZoospVUwSiRZLiZbyzBWDtZthTU,WRUrlnVZQDJC.ibqyIUIKEDiLsjrZnlhKVpuYWDZVhrhjzGPDGlNB ogEChOhOfSyiKvqnxyE.eESYQELuvFeWzaFlKyQpM drTeYHjlpDDTnXGeqLUIDxAltEgMimjBzWeK,YJQOlMVy vYLBZLefpMNxbMKzUHMlMWGRTjNXICSDfZnLYPiDp."
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Landmark"
+                    },
+                    "archetype_node_id": "at0001",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "S.xIWbhfmUUFySlyVBCIbE,XAEcskyqjNavHUFSvXCDOXkRgQOEDLiId,ipfFJzHiydBpwxAxKNraV zwplvBLCHOcubsTeMbFImuWsJbBGSLugJ bopGjnRziAexGUq.GlFN cVpHNvcvrsWGmGnLGN ZFN.FsZRAgqbfvQSrzuXacZIzNTOrSGRmkrgbWRtzdCgskKGqkKWLlQxOmjNJazTrcNlOfcsEmLBmjQvIEUyCRsbnGMTrBdOKnBOTvBinxonMxnANEbZXrsbRW,BzfbgMpgCIgxVmbSqqWjEE W"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Community"
+                    },
+                    "archetype_node_id": "at0002",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "krxaEGiVyoRiZpyUgnMqRHNCJxFinYpP.lXgaVj.DDCUHjTDNGDjQFb.Ds,kwTBZDNhZXOlaHJou,qfVMQwERpreu.WsecruM enskYfwusnyTrTRMdxCUdfPhE,bfiNjtHYjCnPvbxB,YgRDHIDzUFBqJSCL,,dewQsmEsVEYfjj.wNzfdhHwgL aKzaeT QTGYLF.nzL,myIm.GcvQMrtphYMnp lyBThQftpsCTwz,KAecPSXkt.rkDqjbjApuziVyAgYNno,wXWsVWQq.OZ,,xp.rBccRTnKCD NhDtb"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Parish"
+                    },
+                    "archetype_node_id": "at0003",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "rFM zHezFlbNwiMNKvyGMizUAKEBWhfWPVCoBAukkWgXc,wUPLAvrEJuuROuyvrpacURvyfe cUSmTprAGTTeAWZBchqSWQEfVnN.OTeFLaYgjIFolh VIwwfUMbwyi.eLcPHIaQzbHNmxujPXRRQcUJioXQKGNbGlSlMxwx,OTdcwwezoxDoWjLuLWsltEaSDgjptVOtEOfoSzZKwYQlOmlMYKkuQiHslkVWzBepETdTIAaMfupGrxsXySdDTHHsqkmlLdTyHKFl.H.daXQAiXFmJaqRullw.ceEyHtPhbY"
+                    }
+                  }
+                ]
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Age at death"
+                },
+                "archetype_node_id": "at0054",
+                "value": {
+                  "_type": "DV_DURATION",
+                  "value": "PT1567518590864763H24M37S"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Pregnancy context"
+                },
+                "archetype_node_id": "at0110",
+                "value": {
+                  "_type": "DV_CODED_TEXT",
+                  "value": "Antenatal",
+                  "defining_code": {
+                    "terminology_id": {
+                      "_type": "TERMINOLOGY_ID",
+                      "value": "local"
+                    },
+                    "code_string": "at0112"
+                  }
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Days post partum"
+                },
+                "archetype_node_id": "at0106",
+                "value": {
+                  "_type": "DV_DURATION",
+                  "value": "PT2112118659648382H12M59S"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_type": "SECTION",
+      "name": {
+        "_type": "DV_TEXT",
+        "value": "Pregnancy care"
+      },
+      "archetype_details": {
+        "archetype_id": {
+          "_type": "ARCHETYPE_ID",
+          "value": "openEHR-EHR-SECTION.adhoc.v1"
+        },
+        "template_id": {
+          "_type": "TEMPLATE_ID",
+          "value": "Maternal mortality surveillance - Clinical summary report"
+        },
+        "rm_version": "1.0.2"
+      },
+      "archetype_node_id": "openEHR-EHR-SECTION.adhoc.v1",
+      "items": [
+        {
+          "_type": "EVALUATION",
+          "name": {
+            "_type": "DV_TEXT",
+            "value": "Pregnancy care summary"
+          },
+          "archetype_details": {
+            "archetype_id": {
+              "_type": "ARCHETYPE_ID",
+              "value": "openEHR-EHR-EVALUATION.pregnancy_care_summary.v0"
+            },
+            "template_id": {
+              "_type": "TEMPLATE_ID",
+              "value": "Maternal mortality surveillance - Clinical summary report"
+            },
+            "rm_version": "1.0.2"
+          },
+          "archetype_node_id": "openEHR-EHR-EVALUATION.pregnancy_care_summary.v0",
+          "language": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "ISO_639-1"
+            },
+            "code_string": "en"
+          },
+          "encoding": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "IANA_character-sets"
+            },
+            "code_string": "UTF-8"
+          },
+          "subject": {
+            "_type": "PARTY_SELF"
+          },
+          "protocol": {
+            "_type": "ITEM_TREE",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Item tree"
+            },
+            "archetype_node_id": "at0051",
+            "items": []
+          },
+          "data": {
+            "_type": "ITEM_TREE",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Item tree"
+            },
+            "archetype_node_id": "at0001",
+            "items": [
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "High Risk Clinic summary"
+                },
+                "archetype_node_id": "at0080",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Date of first visit"
+                    },
+                    "archetype_node_id": "at0085",
+                    "value": {
+                      "_type": "DV_DATE_TIME",
+                      "value": "2022-09-27T11:37:27.171Z"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Gestation at first visit"
+                    },
+                    "archetype_node_id": "at0086",
+                    "value": {
+                      "_type": "DV_DURATION",
+                      "value": "PT1693H55M13S"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Date of last visit"
+                    },
+                    "archetype_node_id": "at0087",
+                    "value": {
+                      "_type": "DV_DATE_TIME",
+                      "value": "2022-09-27T11:37:27.179Z"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Gestation at last visit"
+                    },
+                    "archetype_node_id": "at0088",
+                    "value": {
+                      "_type": "DV_DURATION",
+                      "value": "PT4780H12M47S"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Number of High Risk Clinic visits"
+                    },
+                    "archetype_node_id": "at0089",
+                    "value": {
+                      "_type": "DV_COUNT",
+                      "magnitude": 7
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Conditions managed"
+                    },
+                    "archetype_node_id": "at0090",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "kVRVvLQOCSobTqUwMBUrJEFMTD,xtklMNMLBdIcZiaECVzbUCLflXKejVteChpWJRvuwEINbBOtjosDWkYHRSDfAVIHVdJsDTHsYstaytu.wqlnveSeeLZFKwLqnmMDQ.SsTZiPiQJ fTlsVzsU.lq.tY ryWjaUzVmqoZFhvkEvDPPnMcFDTfhvFdQdOnsnK,sCQTSRujToMoFddQqVDEcPlm. mcZ XgcsjHKFXx,JsKHoedScqHHwXqGMseMJDHEVoRjJHeGgxuvbJSdrsWDFKaT,TeMSusLzmJVdlnlI"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Treatment summary"
+                    },
+                    "archetype_node_id": "at0091",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "CdIuOtOfqxalqEwXkffkriXlQxtDnzLwZlryLcybaubkudaBtHpaHiDY xcgDBKjWTCnmFPBGNZhEHiyzucpnsbPstKAiJFsDKKUZVmmaZHhfQrBsvAvFeEdUVCMpiXkhERBMmpGZzQhIcaJEyk,tGz,cpfdrqLcqh tlidArRkiMlSSONVCRKeKZNYmlJIVD EHKdoVqAzNWkfbiooXilIl wlNlVBRdv,OBLWsmPjplUQZIK.TGnBCRbtNpNYNNw VAIOJqisrmoBbFkCkasrHkWSfLWOsAdFZJNzTphYy"
+                    }
+                  }
+                ]
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Total number of antenatal visits"
+                },
+                "archetype_node_id": "at0017",
+                "value": {
+                  "_type": "DV_COUNT",
+                  "magnitude": 2
+                }
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Antenatal admission"
+                },
+                "archetype_node_id": "at0018",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Gestation at admission"
+                    },
+                    "archetype_node_id": "at0019",
+                    "value": {
+                      "_type": "DV_DURATION",
+                      "value": "PT3333H33M55S"
+                    }
+                  },
+                  {
+                    "_type": "CLUSTER",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Inpatient episode details"
+                    },
+                    "archetype_details": {
+                      "archetype_id": {
+                        "_type": "ARCHETYPE_ID",
+                        "value": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0"
+                      },
+                      "template_id": {
+                        "_type": "TEMPLATE_ID",
+                        "value": "Maternal mortality surveillance - Clinical summary report"
+                      },
+                      "rm_version": "1.0.2"
+                    },
+                    "archetype_node_id": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0",
+                    "items": [
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Hospital name"
+                        },
+                        "archetype_node_id": "at0001",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "PcsRCSmhtC,AYvARZJLNfwvx qnwauflYEVXCJIruHVWqXgtBgJ.YBCkQwLbYDJcIAAHjWs,HOfRBOVzy.dcodWRtDy.gELjWUATUFJolFyYAlSxHvEIuTPiRQSMeLdxsddZxkrmr eYV.hnX,D.jqzVdTjqASLhYZCiKBYrFNsI.JzmdIkmcWHHHbbDn.Fo ztRHoThHxkkPkHHTUulML ozeWDRnTelcHhUuAPFtGwjmR.nwNQoYBiRj.ztENkHXrsKOMftJWfabTpISmzzzbTgM.josbciAuGbvbojJaZ"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Reason for admission"
+                        },
+                        "archetype_node_id": "at0003",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "WmO vFgiBGTlflonbQvl.zHbjJ..LumPhZUqLWlOazLWk,jibfmtTR iEVnxhHPVmraWNP,blUntdQvMdwdvFjpwmTaFOnmLSgijeGsTgpnL.YKV,MzeLFzrrvwMpKNBMT.IjFwVrltAC,KahYRqqstMNcoXItedYOb MNGWJlcBiJmgufPLcwBkHipoUYsvbHKwVR RaZmcmHykNObCmcfwpEwZjOJgDfxsoS.rPifZoIOAvvNwWRUpmjNyRExH..pwyuPcIDxllDvcfyCOOXJFeVCgytHZMvATNbQzGweq"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of admission"
+                        },
+                        "archetype_node_id": "at0004",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.211Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of discharge"
+                        },
+                        "archetype_node_id": "at0005",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.211Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Discharge status"
+                        },
+                        "archetype_node_id": "at0006",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "mORzFeWDbsNaRYWdGBxGZFWMwGdn.A,v ndLZ.MkquPZtVirO.cBkJDDaspJwLwNU,LSYmbvkQYDVHOsIAeAYKSx,QnWwyjSzSsGyOhHOuBNFwUulAvCSYGuUi.uZSOKLLJWdmZlimvHjkzoOJrcaV fgrdMrpRWCllAqBgNVgvI OspvU,xvKqmtAUdfEonGNuvAPuKTaObYQeTzHcMjVXoQHLPanNFriLLTs,F ghktCnAoCPibVLxxUv,qQqM.eSi,mkxCjHbtXetMagEEDQGgmoHAUKkEGumGlwhbBQn"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Conditions managed"
+                    },
+                    "archetype_node_id": "at0022",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "JxjyQQIAyLaJGD.VPcCpdC,RaDyQyIVS.aClRVayeS.TREMjXxSyfJOgNPNVIk,FRSmxupRvoQAQD WkKMXXOjapBhJcwOVBwwaH tvdkMmteKvPbCznwxinXQUuWryHAYVTfLbff whsSYPEpPrWWOGknTYYprWfrdrLzlbNCpSXEFhArFyfMzKmcgRAM,x,lxygr.Ls,woTW e.avdLDwVCsscv.cdvrYlTYYhtXNxPeSGmLIHGUVqCrue.ehpwltDLEDyuJsgVIPpZryadfTAUOZRINyDQN KRZD rpd,"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Treatment summary"
+                    },
+                    "archetype_node_id": "at0024",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "XSKplEWwsHYPWrZMrWLmq.XPnoQkSwSwtukQcyPegRhUCfNypuQJ,sJoseeD.dam IJyepfiIVr.reGUyQSKhjZTleQ iYpYupKpBIlJS ,WRcQJAaTJtOpgHBXqBJcd Z,vSgpLDKYVMUwISGblNAGeVxrxVDHbChmsbsMKTr,XxYCHiMJSYUZfyQbKnQNAKEcwWUcTseZcdmuqJQhqzRBxSaVjTNum,bEkZZpDJkm,TNBHdhOtjsoEHczKgUhJDmCGKpMWptuHsQmxjrJQ ShYrOYn.LKlXegKLdXYgqxS"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Gestation at discharge"
+                    },
+                    "archetype_node_id": "at0027",
+                    "value": {
+                      "_type": "DV_DURATION",
+                      "value": "PT2758H56M40S"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Scheduled follow up"
+                    },
+                    "archetype_node_id": "at0023",
+                    "value": {
+                      "_type": "DV_DATE_TIME",
+                      "value": "2022-09-27T11:37:27.220Z"
+                    }
+                  }
+                ]
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Delivery admission"
+                },
+                "archetype_node_id": "at0058",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Gestation at admission"
+                    },
+                    "archetype_node_id": "at0033",
+                    "value": {
+                      "_type": "DV_DURATION",
+                      "value": "PT622042257701103H26M13S"
+                    }
+                  },
+                  {
+                    "_type": "CLUSTER",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Inpatient episode details"
+                    },
+                    "archetype_details": {
+                      "archetype_id": {
+                        "_type": "ARCHETYPE_ID",
+                        "value": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0"
+                      },
+                      "template_id": {
+                        "_type": "TEMPLATE_ID",
+                        "value": "Maternal mortality surveillance - Clinical summary report"
+                      },
+                      "rm_version": "1.0.2"
+                    },
+                    "archetype_node_id": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0",
+                    "items": [
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Hospital name"
+                        },
+                        "archetype_node_id": "at0001",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "VtpBMLLcVsejzinWiNYrJanEHVpUvmPpefHGJzSsw.itZtmvBcSTpzoezUhzUBAoLNHr.taMoXPotyTRMUz,RPfD,BELRhsawNClNwMDFLXsOz,YJOlx LQQQYnRKlHqfyHcIdJTYyDUaoJBSKSyiorwOiywsKdMcTMqCp.ZBOzFkbCjXGwaV.OJrgLodqJdJbpxUAbFmYDOatDfLHEtjekhwpoLFGGAOANSlbtFsOyxIGaTmoCJLQ,pgYsuzaTRUQoNYEZJqOULmyMMjTfcaIBxgfC,jZhZkyZxKKLkihIP"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of admission"
+                        },
+                        "archetype_node_id": "at0004",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.227Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of discharge"
+                        },
+                        "archetype_node_id": "at0005",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.228Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Discharge status"
+                        },
+                        "archetype_node_id": "at0006",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "iLqyvDkBlQBBlvGIFXEBGzDDWUHvaPM.SzIxZyQk aidsDihItBnZFlXTcMZknqGtZ,LsVlRLyQDVB,jXutoeeqDwNTJUiTvMBMveYlYSsuG,irZPdvyqbDcEc OcyPaMbQZZQuehjRI,MNXVXmlIPbDfnMezMiUlxGBJPMNlNqyDoZs,FOYNWVpT.lbJRAgXBCwdQV,yDeGf qLmINKhYLttFhlHkLECkBbOHF,WLdONyqdpPvHDJiScjHKHrburBXJGK,gOWLmwBlUGpTNeZObplRilWexNhfrRmon,ukf"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Postnatal admission"
+                },
+                "archetype_node_id": "at0042",
+                "items": [
+                  {
+                    "_type": "CLUSTER",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Inpatient episode details"
+                    },
+                    "archetype_details": {
+                      "archetype_id": {
+                        "_type": "ARCHETYPE_ID",
+                        "value": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0"
+                      },
+                      "template_id": {
+                        "_type": "TEMPLATE_ID",
+                        "value": "Maternal mortality surveillance - Clinical summary report"
+                      },
+                      "rm_version": "1.0.2"
+                    },
+                    "archetype_node_id": "openEHR-EHR-CLUSTER.inpatient_episode_details.v0",
+                    "items": [
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Hospital name"
+                        },
+                        "archetype_node_id": "at0001",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "Jn o.RSMzUjpholVqxwBSijlTQQxKQHlGeGCcOjuFiBaOiKFtqnu.MKfiDHmoHtRMwPBMJhnaOAdWICsuApnKIu.p,MGhoFPBwGuSSgwtEBBVadaBVJrdORZLLQqnuzGS,GMRRkKjyYrPtGvVbE,v xJSQZmsxAkKEEt NzGAG,mbhNmtRpT.lDhKKRIo.mqtWPHddNd,TvUrA.rhEmLqXHoypJA z,JpYbTmsSXovWbOKpuldGnIWCZpIjv sBRvFOXdSySFHCD.QkXkakoj tsmYxCIDxLwOMNfrAjTPL "
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Reason for admission"
+                        },
+                        "archetype_node_id": "at0003",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "XWOEPOWn FdpUWdQmGYImQxaYPjqBvVMvTWABhUvviyRMPOSdCymlBEzXWjyJ,fyNvfNQjAZT KdJLnaHdVmnDTUVtdODNyNFPFpjIdqNQOivyIvTp dItkgElrec.nUlGoouEjQ.SnNn,vsdCxLqodiTxJIz.RgIUOX HzDhwIAwwdxIdZ,hZV ROzESnrGjcv.WYxxcaXm LMQ.gJJuSngEU,oTWmgJgiNIUXLoOwxObDgtAOFlEl,BEiBdqqbJNRAKqYnpmfrpbZJVUPnvAqaAg.liOxDIoZeGNfrt,PN"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of admission"
+                        },
+                        "archetype_node_id": "at0004",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.242Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Date of separation"
+                        },
+                        "archetype_node_id": "at0005",
+                        "value": {
+                          "_type": "DV_DATE_TIME",
+                          "value": "2022-09-27T11:37:27.243Z"
+                        }
+                      },
+                      {
+                        "_type": "ELEMENT",
+                        "name": {
+                          "_type": "DV_TEXT",
+                          "value": "Discharge status"
+                        },
+                        "archetype_node_id": "at0006",
+                        "value": {
+                          "_type": "DV_TEXT",
+                          "value": "umVgWRVnyxmImyQWnvSYCheSbGtcULPTWtjYDGzxQmtNkDsLJBlvUMVYoGySngApBMdhs.CDufDtRokXCPa.yYGSMjKmQzKQilLOb,QhIvLkx,zzhoFeSQjdpzxBjTVqNYHbSOgaHrRkdxYnyZvOg,PxDyKRLTTvdX.PLqtSBFrvHmiCDDk,kkhzcf,zYTkDVherSeWZqnaHdqeRwFsHtfVBtOd,lqBc ZpLySIMwrcIitdVZGddggzODGNT.InZOxYU c.KNxKdYHjnUtSuhh GUTy nyQOihUFjarCEaoH"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Conditions managed"
+                    },
+                    "archetype_node_id": "at0045",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "VnqXSJjw rYqHAJeRj.RnumABagiWRlUwSlpNp.HwtCwfRtwabkdmPNoxVrkshEmPQDGMPe.ZtSAx GCgKsfUTtZ ovXTiohXzyaGeJrherpdQVVxkJslJdzWhFnvzYyGeRhEhyALj.mtjnQ,TGf.c.XiiKdckqRnnwdTVbcxVshwQgKhVvRFVbuxU.Dj,VxpMfyJymDKRWDBb cyzMjPQjJFXqILmWXpcUSQdxeN hSyezeZMMFWyaV,ZMQHnHWsozzFDrklGtrDNEyFEnxMoBNCvbzmp oapTNUqlHVquG"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Treatment summary"
+                    },
+                    "archetype_node_id": "at0046",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "tXRBZylBVBGWzzuwzGygALMeCUhoPVxEQzVCVMvnRkquhpHCUk,OhaS RbjghQxNindqQrfut gIiUpqVXBLUmO.rRElthgegdKwFDQOqIYiDowcrgYXOIfLZzLqIcszAT.ArAvTqYrVZwAwpFDGDKyiSlNRZjQQcHsFKLwvIisnRWkeU.y.xHvNAGjgzkZNtTZWifkDGquNtcZaoPgNYbCdLtZ.qLkOBBiXqrDKEyPOyTuyNwQ mxmhYbxjZWTvqUsQecCsmxNCXcSRyj gxrgxLBPadigHdYCxgiztqIdT"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Scheduled follow up"
+                    },
+                    "archetype_node_id": "at0048",
+                    "value": {
+                      "_type": "DV_DATE_TIME",
+                      "value": "2022-09-27T11:37:27.257Z"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "ADMIN_ENTRY",
+          "name": {
+            "_type": "DV_TEXT",
+            "value": "Transfer review"
+          },
+          "archetype_details": {
+            "archetype_id": {
+              "_type": "ARCHETYPE_ID",
+              "value": "openEHR-EHR-ADMIN_ENTRY.transfer_review.v0"
+            },
+            "template_id": {
+              "_type": "TEMPLATE_ID",
+              "value": "Maternal mortality surveillance - Clinical summary report"
+            },
+            "rm_version": "1.0.2"
+          },
+          "archetype_node_id": "openEHR-EHR-ADMIN_ENTRY.transfer_review.v0",
+          "language": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "ISO_639-1"
+            },
+            "code_string": "en"
+          },
+          "encoding": {
+            "terminology_id": {
+              "_type": "TERMINOLOGY_ID",
+              "value": "IANA_character-sets"
+            },
+            "code_string": "UTF-8"
+          },
+          "subject": {
+            "_type": "PARTY_SELF"
+          },
+          "data": {
+            "_type": "ITEM_TREE",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Tree"
+            },
+            "archetype_node_id": "at0003",
+            "items": [
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Transferred?"
+                },
+                "archetype_node_id": "at0020",
+                "value": {
+                  "_type": "DV_CODED_TEXT",
+                  "value": "Yes",
+                  "defining_code": {
+                    "terminology_id": {
+                      "_type": "TERMINOLOGY_ID",
+                      "value": "local"
+                    },
+                    "code_string": "at0021"
+                  }
+                }
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Organisation"
+                },
+                "archetype_details": {
+                  "archetype_id": {
+                    "_type": "ARCHETYPE_ID",
+                    "value": "openEHR-EHR-CLUSTER.organisation.v1"
+                  },
+                  "template_id": {
+                    "_type": "TEMPLATE_ID",
+                    "value": "Maternal mortality surveillance - Clinical summary report"
+                  },
+                  "rm_version": "1.0.2"
+                },
+                "archetype_node_id": "openEHR-EHR-CLUSTER.organisation.v1",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Hospital name"
+                    },
+                    "archetype_node_id": "at0001",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "hxcOvxypEcTyGcU.aylEHdAjuzQkxKZQJ DinEJvfgvoiJoPTqGRwKMZDQhpWCIsZHhaIgQZODHzbLqOH.pzPUMaydhRGcUL iqVdaw,XLdeIqlhieMk.fqDFJzBSuZDAQ pft,mPEpHlvToifQckfzNMZibKMqIjiyISZGrD.JsnvRo,WCqPoAxbjmLofFuOasrvGhGBVuyVfeYwqMcKodTFAACAYF JmEEfsjTjsIL.ZqmJYYKFtGFCmtryqknxQEVXPDMLTJAHVJ,JJvojRTD,vvDJvSJtSdmLApPM.WI"
+                    }
+                  }
+                ]
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Date of transfer"
+                },
+                "archetype_node_id": "at0010",
+                "value": {
+                  "_type": "DV_DATE_TIME",
+                  "value": "2022-09-27T11:37:27.287Z"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Reason for transfer"
+                },
+                "archetype_node_id": "at0005",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "JyCTltxnSBW.WXbdFRQGBFzszx.OfGE gpzdPObgLJKknPnwjRbWFJaXvTSEGjRBFFfdWCVIFLaerQTGInLAFdfQRyzsrygIPPWTrjvXfYtFIpgPMbYKY.eRaYle.DLoVYfaTSfxDhJQzlzb IRiVzdeWrsGvvogpySJCxyhNPfSTGvnSmFpikOPtNrtbzOVuPCboOpvRYmoQJrsB.yjOJtjWzRwoa lFafigDTGGJuuHbnKeKJKvSelJTmoMuycpzaWtxMSXlIjeoHyYgMRr,NZp   XsIDRJDf noPzcyD"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_type": "EVALUATION",
+      "name": {
+        "_type": "DV_TEXT",
+        "value": "Pregnancy summary"
+      },
+      "archetype_details": {
+        "archetype_id": {
+          "_type": "ARCHETYPE_ID",
+          "value": "openEHR-EHR-EVALUATION.pregnancy_summary.v0"
+        },
+        "template_id": {
+          "_type": "TEMPLATE_ID",
+          "value": "Maternal mortality surveillance - Clinical summary report"
+        },
+        "rm_version": "1.0.2"
+      },
+      "archetype_node_id": "openEHR-EHR-EVALUATION.pregnancy_summary.v0",
+      "language": {
+        "terminology_id": {
+          "_type": "TERMINOLOGY_ID",
+          "value": "ISO_639-1"
+        },
+        "code_string": "en"
+      },
+      "encoding": {
+        "terminology_id": {
+          "_type": "TERMINOLOGY_ID",
+          "value": "IANA_character-sets"
+        },
+        "code_string": "UTF-8"
+      },
+      "subject": {
+        "_type": "PARTY_SELF"
+      },
+      "protocol": {
+        "_type": "ITEM_TREE",
+        "name": {
+          "_type": "DV_TEXT",
+          "value": "Tree"
+        },
+        "archetype_node_id": "at0081",
+        "items": []
+      },
+      "data": {
+        "_type": "ITEM_TREE",
+        "name": {
+          "_type": "DV_TEXT",
+          "value": "Tree"
+        },
+        "archetype_node_id": "at0001",
+        "items": [
+          {
+            "_type": "ELEMENT",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Early pregnancy outcome"
+            },
+            "archetype_node_id": "at0094",
+            "value": {
+              "_type": "DV_TEXT",
+              "value": "uoIeuiSHTsIDAnNptg.GPgE.xOwgEeIiKg.SmmD.Iv.,dd,lamGegxFbCwZ.avvHTsSQtJsTmbwURYHyhJev,LmHfq,glKWb,dWlHjn mMCkVxvgs.cKKtFldOqVfLxmYqHcxIdssDEWikAEEcPmORqRrnvffOcv.rmbdezMonJkFFbXaIUQRMuWvvjURJiATLHer zmJbVufBvWIduAayYEL taybb,FtNfRDBULruXHvyKNZntj,kgyCkkObfszmLeDuKIWgpnPrTJNYUHWzGGIRGBHlFKyeGpKQBpiIMv"
+            }
+          },
+          {
+            "_type": "ELEMENT",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Gestation pregnancy ended"
+            },
+            "archetype_node_id": "at0159",
+            "value": {
+              "_type": "DV_DURATION",
+              "value": "PT3159H44M45S"
+            }
+          },
+          {
+            "_type": "ELEMENT",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Number of fetuses"
+            },
+            "archetype_node_id": "at0007",
+            "value": {
+              "_type": "DV_COUNT",
+              "magnitude": 92
+            }
+          },
+          {
+            "_type": "ELEMENT",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Onset of labour"
+            },
+            "archetype_node_id": "at0008",
+            "value": {
+              "_type": "DV_CODED_TEXT",
+              "value": "No labour",
+              "defining_code": {
+                "terminology_id": {
+                  "_type": "TERMINOLOGY_ID",
+                  "value": "local"
+                },
+                "code_string": "at0112"
+              }
+            }
+          },
+          {
+            "_type": "CLUSTER",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Per infant"
+            },
+            "archetype_node_id": "at0028",
+            "items": [
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Infant outcome"
+                },
+                "archetype_node_id": "at0163",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "egHYRYFjKDjzJpUJnbBp,.ZJfsxGTdBk sSOAv,ZcS,JmBNqx,,gMUvTK,mOtdNLuNOnTtAvXMKcuQqCUnihUT,IrnazbhtglrRPLnzVH.fnzvzMsjiFEJOXplwnpyXFfotOwQdoDjphuLh SvZZtvUtkQFCUWFoMaWLbFIBFfrbr,OBgICb,PitrfOpnYeA.TXtROShdfyEMbvtAENecKTubAIzdbjLdIdeRAKJqixHVKnbeJLosOYhNbgCkSlLlGWiVfSdXILErRzqSzyxxqGnknqupROrJRrkZTAdL,gr"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Assigned sex"
+                },
+                "archetype_node_id": "at0037",
+                "value": {
+                  "_type": "DV_CODED_TEXT",
+                  "value": "Male",
+                  "defining_code": {
+                    "terminology_id": {
+                      "_type": "TERMINOLOGY_ID",
+                      "value": "local"
+                    },
+                    "code_string": "at0113"
+                  }
+                }
+              },
+              {
+                "_type": "CLUSTER",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Birth detail"
+                },
+                "archetype_details": {
+                  "archetype_id": {
+                    "_type": "ARCHETYPE_ID",
+                    "value": "openEHR-EHR-CLUSTER.birth_detail.v0"
+                  },
+                  "template_id": {
+                    "_type": "TEMPLATE_ID",
+                    "value": "Maternal mortality surveillance - Clinical summary report"
+                  },
+                  "rm_version": "1.0.2"
+                },
+                "archetype_node_id": "openEHR-EHR-CLUSTER.birth_detail.v0",
+                "items": [
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Method of delivery"
+                    },
+                    "archetype_node_id": "at0005",
+                    "value": {
+                      "_type": "DV_TEXT",
+                      "value": "fnHM.pXHdzPAfDxN FAsnnBpnXhlYmREluzMRAMMaiAUQUZiASRNvwxnhlERV.xIUiSVnYQS,rq.tfPLqVH.munKTEC.CcwkKZwRiBGbWULapHZAqvHnIvbfEjGAXGLTvAFQimgDOeaIyij sujCbDwQuYwkwzlDmmjXMPHaTmnMTCtgfRevBitYeetJ.e.HTqktLmStIYthPyozHERMQ.kbrwJFbfMnyv SXrte QPiAuxYJg,eSXEBxgtQr Oxnc zlt,DAXlypZSdReGxIZ kAtvYFRGG,DZcFtllRnnf"
+                    }
+                  },
+                  {
+                    "_type": "ELEMENT",
+                    "name": {
+                      "_type": "DV_TEXT",
+                      "value": "Delivery timing"
+                    },
+                    "archetype_node_id": "at0019",
+                    "value": {
+                      "_type": "DV_CODED_TEXT",
+                      "value": "Routine/Elective",
+                      "defining_code": {
+                        "terminology_id": {
+                          "_type": "TERMINOLOGY_ID",
+                          "value": "local"
+                        },
+                        "code_string": "at0020"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Presentation"
+                },
+                "archetype_node_id": "at0045",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "rWiafDohC nc lQR.msAWJnxDmWdbjw,e GhifqonUyJSJmyPHQHHBoTfvIVnEjYHZhMLvl,oUtqSbiQwmWvOhdc,lsBVcXXxrZn wSbNdqHYHSaPdAYPmkXk sVX PPmGhljDIoWgiWSqmnhXvGBFImWcsjGvDuAQVqGWINkWtn PvFRdmqPdciBPDFmf.urXsfmNnivNNsOS,gXOyUxThvBOBvpkzFOGVCEHKfVWJuMvHClrGaXtGhHxnOMkNBfSFASXBatAPtqadacTvHVJQDZammKU,ieeUAcwNEjV.F"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Birthweight"
+                },
+                "archetype_node_id": "at0038",
+                "value": {
+                  "_type": "DV_QUANTITY",
+                  "magnitude": 1984.2,
+                  "units": "g"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Neonatal outcome"
+                },
+                "archetype_node_id": "at0165",
+                "value": {
+                  "_type": "DV_TEXT",
+                  "value": "kmokKjlGOmiLCrLOViDAQgVlNkgqjtyX eOdmEQa MVWTPGOtftRLurxCzuMZINoWXDMbEdEiBDPdTHDAVAF mMqXxHhIWzqcAt.zucIiSxqsTNyelb,wbNQBfcYcsclw eSiehggGEFsEwa,Y.mJLwaiNjcR sv.CHjCNMSahwRWjfxBbAWsId.fBl.zkMB,fFvqchSxFApwuGJdvBJZSVMozZdmvwwOvhMvAnUNjz.nFkupUDuJwRBeleMuUTbYzvVAbMSJDBBEfPqHuRx cUVNqlREaELPKxLlZUvOl.O"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Date/time of neonatal death"
+                },
+                "archetype_node_id": "at0167",
+                "value": {
+                  "_type": "DV_DATE_TIME",
+                  "value": "2022-09-27T11:37:27.368Z"
+                }
+              },
+              {
+                "_type": "ELEMENT",
+                "name": {
+                  "_type": "DV_TEXT",
+                  "value": "Age at neonatal death"
+                },
+                "archetype_node_id": "at0166",
+                "value": {
+                  "_type": "DV_DURATION",
+                  "value": "PT30M"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_type": "EVALUATION",
+      "name": {
+        "_type": "DV_TEXT",
+        "value": "Summary"
+      },
+      "archetype_details": {
+        "archetype_id": {
+          "_type": "ARCHETYPE_ID",
+          "value": "openEHR-EHR-EVALUATION.clinical_synopsis.v1"
+        },
+        "template_id": {
+          "_type": "TEMPLATE_ID",
+          "value": "Maternal mortality surveillance - Clinical summary report"
+        },
+        "rm_version": "1.0.2"
+      },
+      "archetype_node_id": "openEHR-EHR-EVALUATION.clinical_synopsis.v1",
+      "language": {
+        "terminology_id": {
+          "_type": "TERMINOLOGY_ID",
+          "value": "ISO_639-1"
+        },
+        "code_string": "en"
+      },
+      "encoding": {
+        "terminology_id": {
+          "_type": "TERMINOLOGY_ID",
+          "value": "IANA_character-sets"
+        },
+        "code_string": "UTF-8"
+      },
+      "subject": {
+        "_type": "PARTY_SELF"
+      },
+      "protocol": {
+        "_type": "ITEM_TREE",
+        "name": {
+          "_type": "DV_TEXT",
+          "value": "Tree"
+        },
+        "archetype_node_id": "at0003",
+        "items": []
+      },
+      "data": {
+        "_type": "ITEM_TREE",
+        "name": {
+          "_type": "DV_TEXT",
+          "value": "List"
+        },
+        "archetype_node_id": "at0001",
+        "items": [
+          {
+            "_type": "ELEMENT",
+            "name": {
+              "_type": "DV_TEXT",
+              "value": "Summary of care"
+            },
+            "archetype_node_id": "at0002",
+            "value": {
+              "_type": "DV_TEXT",
+              "value": "RFDPObqJVhzvP,MFxPk,oNktTbtm,WB.nC vxmO.cKVMwTWZIatXvFuQy,itgnVAHivZFIzxgFdDvhEpVlQwYDDIEXpvwWaQrUq..zy,PZxM WuEGRheHmvqO.icXnMDd PUzDfupzkJkPDQeR.NoaupGKlHqfFvlSXzophOHBdxSHRqcWXXZfBpW zuiUqPJZXgoJho,hCXQoewZYCQHFxeJYXhjvain.SymBuvNFeyvLfiP,rU,sBBOYOVHu.gXRMUDGUmCVNPEvoFdNvjkRABYixDpyTIy,QczmgDbhNw"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

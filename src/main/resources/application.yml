@@ -1,0 +1,55 @@
+omop-bridge:
+  person-conversion:
+    mode: automatic #conversion for composition conversion
+  cdm:
+    database-name: postgres
+    schema: &schema public       # the &schema needs to stay when modifying the value
+  eras-period-cron:
+    enabled: false               # default false
+  #  cron: "0 0 */2 * * ?"        # every two hours
+  openehr:
+    base-url: http://localhost:8080/ehrbase/
+    security:
+      type: basic
+      user:
+        name: myuser
+        password: myPassword432
+
+server:
+  port: 8081
+  error:
+    include-binding-errors: always
+    include-message: always
+
+spring:
+  jpa:
+   # show-sql: true
+    properties:
+      hibernate:
+        default_schema: *schema
+        hibernate.ddl-auto: update
+
+  datasource:
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/postgres
+
+logging:
+  file:
+    name: ./logs/omopbridge.log
+  level:
+    org:
+      springframework:
+        boot: error
+        nodeValue: error
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              basicbinder: TRACE
+  logback:
+    rollingpolicy:
+      max-history: '20'
+      max-file-size: 100MB
+
+

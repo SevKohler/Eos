@@ -1,0 +1,15 @@
+#docker-compose-only-cdm.yml
+version: '3'
+services:
+  cdm-db:
+    image: cdm_db:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+#    expose:
+#      - "5434" # Publishes 5434 to other containers but NOT to host machine
+    ports:
+      - "5433:5432"

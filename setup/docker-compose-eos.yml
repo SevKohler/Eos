@@ -1,0 +1,12 @@
+#docker-compose-only-cdm.yml
+version: '3'
+services:
+  eos:
+    image: ghcr.io/sevkohler/openehr-omop-bridge:0.0.4
+    volumes:
+      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
+    environment:
+      DB_URL: jdbc:postgresql://localhost:5433/postgres
+    ports:
+     - "8081:8081"
+    network_mode: "host"

@@ -1,0 +1,464 @@
+{
+  "_type": "COMPOSITION",
+  "name": {
+    "value": "Medikamentenliste"
+  },
+  "archetype_details": {
+    "archetype_id": {
+      "value": "openEHR-EHR-COMPOSITION.medication_list.v1"
+    },
+    "template_id": {
+      "value": "Nephro_Medikation"
+    },
+    "rm_version": "1.0.2"
+  },
+  "language": {
+    "terminology_id": {
+      "value": "ISO_639-1"
+    },
+    "code_string": "de"
+  },
+  "territory": {
+    "terminology_id": {
+      "value": "ISO_3166-1"
+    },
+    "code_string": "UY"
+  },
+  "category": {
+    "value": "event",
+    "defining_code": {
+      "terminology_id": {
+        "value": "openehr"
+      },
+      "code_string": "433"
+    }
+  },
+  "composer": {
+    "external_ref": {
+      "id": {
+        "value": "4d892927-d4f3-4cd3-b2a1-9aaa12c1f098",
+        "_type": "HIER_OBJECT_ID"
+      },
+      "namespace": "DEMOGRAPHIC",
+      "type": "PERSON"
+    },
+    "name": "Dr. Yamamoto",
+    "_type": "PARTY_IDENTIFIED"
+  },
+  "context": {
+    "start_time": {
+      "value": "2012-09-17T00:00:00+02:00"
+    },
+    "setting": {
+      "value": "home",
+      "defining_code": {
+        "terminology_id": {
+          "value": "openehr"
+        },
+        "code_string": "225"
+      }
+    },
+    "other_context": {
+      "name": {
+        "value": "Tree"
+      },
+      "items": {
+        "name": {
+          "value": "Fallidentifikation",
+          "_type": "DV_TEXT"
+        },
+        "items": {
+          "name": {
+            "value": "Fall-Kennung",
+            "_type": "DV_TEXT"
+          },
+          "value": {
+            "value": "1234",
+            "_type": "DV_TEXT"
+          },
+          "archetype_node_id": "at0001",
+          "_type": "ELEMENT"
+        },
+        "archetype_node_id": "openEHR-EHR-CLUSTER.case_identification.v0",
+        "_type": "CLUSTER"
+      },
+      "archetype_node_id": "at0005",
+      "_type": "ITEM_TREE"
+    }
+  },
+  "content": {
+    "name": {
+      "value": "Verordnung von Arzneimittel"
+    },
+    "language": {
+      "terminology_id": {
+        "value": "ISO_639-1"
+      },
+      "code_string": "de"
+    },
+    "encoding": {
+      "terminology_id": {
+        "value": "Unicode"
+      },
+      "code_string": "UTF-8"
+    },
+    "subject": {
+      "_type": "PARTY_SELF"
+    },
+    "protocol": {
+      "name": {
+        "value": "Beschreibung der Dosismenge"
+      },
+      "items": {
+        "name": {
+          "value": "Autor Eintrag",
+          "_type": "DV_TEXT"
+        },
+        "items": {
+          "name": {
+            "value": "Einrichtung/Organisation",
+            "_type": "DV_TEXT"
+          },
+          "value": {
+            "value": "CVl.a,cuVscJNuf.RzHzeCRRRZbXBQAVrDoleZqNpfHpXA.LqTacQUqSAroFcSBRXPgUxHAbbdpOo NTwIBunBBaJAfzYZPKeoI UkMrUEGurRrI,pGJcy.UbNtJKXLqmYhVF rmKNDtPErrrCBsvg.nqgpD M,nnDgkiIZeRoh CuQ,YrqfbgGSD.,.zhCEVNf.QAgQQ jk,cuwJhlgbPFKKle,sKX,WXljSEPN kobX BTfbSwAz kQzcKKwZ",
+            "_type": "DV_TEXT"
+          },
+          "archetype_node_id": "at0001",
+          "_type": "ELEMENT"
+        },
+        "archetype_node_id": "openEHR-EHR-CLUSTER.organisation.v0",
+        "_type": "CLUSTER"
+      },
+      "archetype_node_id": "at0005",
+      "_type": "ITEM_TREE"
+    },
+    "narrative": {
+      "value": "jaZYRsfNZMMPsNGxzzgL VN.yvYaisgkuvDqKBEwkVBJnsCFPxHe,RbMGK uprVDdudUqtuKKqzULYDLBJFrAqHPwkvXpvwlmMIDcmvnFTRxmzFlQzBVZHqkv VwWPdt.gR zkkoeXqUyXWCDdFpyBOJENVyzf ZslEAYjniHKv WbrtuVRfbQgx Qg.BYlxYPcnD,rXzv.pKFWbCIbcWotzuzRRSCNLbxXgTRKhRdZPB oDgGLGXpNjabYLkay"
+    },
+    "activities":
+    {
+      "name": {
+        "value": "Verordnung"
+      },
+      "description": {
+        "name": {
+          "value": "Tree"
+        },
+        "items": [
+          {
+            "name": {
+              "value": "Handelsname",
+              "_type": "DV_TEXT"
+            },
+            "value" : {
+              "_type" : "DV_CODED_TEXT",
+              "value" : "ASA 200 MG / butalbital 50 MG / Caffeine 40 MG / Codeine 30 MG Oral Tablet",
+              "defining_code" : {
+                "_type" : "CODE_PHRASE",
+                "terminology_id" : {
+                  "_type" : "TERMINOLOGY_ID",
+                  "value" : "RxNorm"
+                },
+                "code_string" : "314986"
+              }
+            },
+            "archetype_node_id": "at0070",
+            "_type": "ELEMENT"
+          },
+          {
+            "name": {
+              "value": "Arzneimittel",
+              "_type": "DV_TEXT"
+            },
+            "items": [
+              {
+                "name": {
+                  "value": "Wirkstoff",
+                  "_type": "DV_TEXT"
+                },
+                "value" : {
+                  "_type" : "DV_CODED_TEXT",
+                  "value" : "ASA 200 MG / butalbital 50 MG / Caffeine 40 MG / Codeine 30 MG Oral Tablet",
+                  "defining_code" : {
+                    "_type" : "CODE_PHRASE",
+                    "terminology_id" : {
+                      "_type" : "TERMINOLOGY_ID",
+                      "value" : "RxNorm"
+                    },
+                    "code_string" : "314986"
+                  }
+                },
+                "archetype_node_id": "at0132",
+                "_type": "ELEMENT"
+              }
+            ],
+            "archetype_node_id": "openEHR-EHR-CLUSTER.medication.v1",
+            "_type": "CLUSTER"
+          },
+          {
+            "name": {
+              "value": "Hinweise zur Einnahme",
+              "_type": "DV_TEXT"
+            },
+            "value": {
+              "value": "sLGEPWBd.BUKrKV.NDwQvSspRSlbTneLbPpxNapUBfELkaivwfjegfsUR,McjuIuPFtCUkWYwtUmIprGxqECgEcqzlqceMWAebstBEljpjHsFRtvMFiPIIETKNnV.XcjSxruqydlBUCMdQsCVauXFvbgySNcQWs OHroYpzVfU,CnQZxJrovhpmBOshQQEWiTZvFjDEnhPifjFfnekyhYmMVwyh.FZxxiSDzTtZDorkaCjOCmKrftrnPAwYahhS",
+              "_type": "DV_TEXT"
+            },
+            "archetype_node_id": "at0044",
+            "_type": "ELEMENT"
+          },
+          {
+            "name": {
+              "value": "Einnahmegrund",
+              "_type": "DV_TEXT"
+            },
+            "value": {
+              "value": "zlG,D.RvwbHscxeXNXfwOJGWYCjqjdmZB, Vkg,drkmuhdtRbkTuVoumzTzwVYw.YAAjQFLCpNzgDfvQOKELEB.EIZOxNrneQxKOOSaSBlOwiV Bvukre.d.THeCRWGNKgeZZk CuIjOnGtonL.adXcWnWxuQCKHwfL aKEYBpUMFi TMFDcdWomKpwspZCAbBCJEhacNSCEOc,c.Nslsb.MGJFhbsUwGbV,hvsTUKyVvsitJEsHlWsj, lcccb",
+              "_type": "DV_TEXT"
+            },
+            "archetype_node_id": "at0018",
+            "_type": "ELEMENT"
+          },
+          {
+            "name": {
+              "value": "Detaillierte Angaben zu der Verordnung",
+              "_type": "DV_TEXT"
+            },
+            "items": [{
+              "name": {
+                "value": "Datum der Verordnung",
+                "_type": "DV_TEXT"
+              },
+              "value": {
+                "value": "20211115T144152,457+0000",
+                "_type": "DV_DATE_TIME"
+              },
+              "archetype_node_id": "at0012",
+              "_type": "ELEMENT"
+            },{
+              "name": {
+                "value": "Enddatum der Verordnung",
+                "_type": "DV_TEXT"
+              },
+              "value": {
+                "value": "20221115T144152,457+0000",
+                "_type": "DV_DATE_TIME"
+              },
+              "archetype_node_id": "at0013",
+              "_type": "ELEMENT"
+            }],
+            "archetype_node_id": "at0113",
+            "_type": "CLUSTER"
+          },
+          {
+            "name": {
+              "value": "Therapeutische Anweisung",
+              "_type": "DV_TEXT"
+            },
+            "items": [
+              {
+                "name": {
+                  "value": "Dosierung",
+                  "_type": "DV_TEXT"
+                },
+                "items": [
+                  {
+                    "name": {
+                      "value": "Dosismenge",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "magnitude": "296.9",
+                      "units": "1",
+                      "_type": "DV_QUANTITY"
+                    },
+                    "archetype_node_id": "at0144",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Dosiseinheit",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "value": "EdgpEVtvmVJaCzZxSYxEEbfWjUGlgRQLHZITDJEqGn,,GFhokLIrTCkSOjFBpXQaKE.TJMDgJCeGa.VTdeIlJCRsbrdBZidjNrVAhYmsa,jsqNXQ,Sfkh,vOYRcSyOlIBPCqjOqVbgBgblJDtyOmEQfzROlynAMTwYQioshcFIfCmJAKFWoFFiJbOCWcGWtX.F.MBqvWGjsKUrfDAPB,eryRZrdkrikIR QH iQwwvYouUXIhlJECKcYtUzJKbe",
+                      "_type": "DV_TEXT"
+                    },
+                    "archetype_node_id": "at0145",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Dosierung Freitext",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "value": "GFSliEzljPFPvPgRrme.yFGpYduqlyIeuPHoIy ox,GTSfwTBbH wtPYPnBOpfYDESZKUzAFeHSoJfZVQoMemtxTXHupmBDLFgAFSNOWff. afHTpJddgTkRgXiCplKAAZpotl IYLwVJqDPVH,KxoshUNtHFMjQo.kiANCPTpovNuLLKuCb,aiVnTEehbXhXEpBVNlBZGyfBOSkFSIFSKHdQKrzMmZFxjGdIocDQwFULZVYfPapGCTJXsrAuks",
+                      "_type": "DV_TEXT"
+                    },
+                    "archetype_node_id": "at0178",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Tägliche Dosierung",
+                      "_type": "DV_TEXT"
+                    },
+                    "items": [
+                      {
+                        "name": {
+                          "value": "Bei Bedarf",
+                          "_type": "DV_TEXT"
+                        },
+                        "value": {
+                          "value": "true",
+                          "_type": "DV_BOOLEAN"
+                        },
+                        "archetype_node_id": "at0024",
+                        "_type": "ELEMENT"
+                      },
+                      {
+                        "name": {
+                          "value": "Bestimmtes Ereignis",
+                          "_type": "DV_TEXT"
+                        },
+                        "items": {
+                          "name": {
+                            "value": "Ereignis",
+                            "_type": "DV_TEXT"
+                          },
+                          "value": {
+                            "value": "SUDTgORTIfKGYtedRavhWiwZZDHUzwxFDEOjbTwmCOwjBoAXdAqE,orXctGXgFHgReGOSDeZHjkQvUiJaMaJs,cIzWRtuqDu.rqkQcymLNtaULZKCAfEdgoUQYfvm  FyeoxMm,XIqNzRrzfOkozAMgZjAybz,iSSpIDsryLBgQLYVQtJS qWCTnBzaa,kWWqXDuwMlvuXDxcvVm.dNafEimHdgIUuojLfvQtOnTsBkkgg.A.JOPvGPETKnQjlk",
+                            "_type": "DV_TEXT"
+                          },
+                          "archetype_node_id": "at0026",
+                          "_type": "ELEMENT"
+                        },
+                        "archetype_node_id": "at0039",
+                        "_type": "CLUSTER"
+                      }
+                    ],
+                    "archetype_node_id": "openEHR-EHR-CLUSTER.timing_daily.v1",
+                    "_type": "CLUSTER"
+                  }
+                ],
+                "archetype_node_id": "openEHR-EHR-CLUSTER.dosage.v1",
+                "_type": "CLUSTER"
+              },
+              {
+                "name": {
+                  "value": "Dosierung - nicht täglich",
+                  "_type": "DV_TEXT"
+                },
+                "items": [
+                  {
+                    "name": {
+                      "value": "Wiederholungsintervall",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "value": "PT30M",
+                      "_type": "DV_DURATION"
+                    },
+                    "archetype_node_id": "at0002",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Frequenz",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "magnitude": "2.2",
+                      "units": "1/wk",
+                      "_type": "DV_QUANTITY"
+                    },
+                    "archetype_node_id": "at0014",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Bestimmter Wochentag",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "value": "Montag",
+                      "defining_code": {
+                        "terminology_id": {
+                          "value": "local"
+                        },
+                        "code_string": "at0007"
+                      },
+                      "_type": "DV_CODED_TEXT"
+                    },
+                    "archetype_node_id": "at0003",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Beschreibung des Zeitablaufs",
+                      "_type": "DV_TEXT"
+                    },
+                    "value": {
+                      "value": ".I,eGaYIRNeSWVviBtXx,iOyRBpxCllOJMxtGllXjVXofDPOJorhtMbGsdBE.PJVvXbgrHVn,wwxwVDLOMSQVySVFVTCIVA,nVpIKiMvVJWEewxI.COKBHTwy.xjtNqsCDfSaedpHbsXVAAkHkdAjNcFBASyclIkHsHx KOpbOOYXkTfnVVNhCEHdJvSMBnypmTasWuhBim.RDpWBlIPtuDadeYqHO q,ERZgjUDwnu rWOlybmEvqnAxz bbhS",
+                      "_type": "DV_TEXT"
+                    },
+                    "archetype_node_id": "at0021",
+                    "_type": "ELEMENT"
+                  },
+                  {
+                    "name": {
+                      "value": "Bestimmtes Ereignis",
+                      "_type": "DV_TEXT"
+                    },
+                    "items": {
+                      "name": {
+                        "value": "Ereignis",
+                        "_type": "DV_TEXT"
+                      },
+                      "value": {
+                        "value": "MYaiJKiXZWdDb.xtmUHItEvUMmba.xTmKmCRNgPaDZkIHQzsBzKw haTowDxOHUEprA, eMB,SBKgCUHuqVDworIGlGxbCF F xAPPsxaYMDO TXuoxacowuRzVwMRgEusDkuPucNtdf,jyF.hQakZrJRCUsc.aj,UFI ,ZPHUcBdZHddWiexLKlOVRFfXQTWWUoLEqlolzyNETfEhntYHXAdLPLUjsOgaPzhextvrDYWv.PaKhosl,hnWgFPiP",
+                        "_type": "DV_TEXT"
+                      },
+                      "archetype_node_id": "at0005",
+                      "_type": "ELEMENT"
+                    },
+                    "archetype_node_id": "at0006",
+                    "_type": "CLUSTER"
+                  }
+                ],
+                "archetype_node_id": "openEHR-EHR-CLUSTER.timing_nondaily.v1",
+                "_type": "CLUSTER"
+              }
+            ],
+            "archetype_node_id": "openEHR-EHR-CLUSTER.therapeutic_direction.v1",
+            "_type": "CLUSTER"
+          },
+          {
+            "name": {
+              "value": "Kommentar",
+              "_type": "DV_TEXT"
+            },
+            "value": {
+              "value": "MFFlMlIxeKVDcIzl ,VNurrFwrGxNFxvREyjMmEgDhUyWhXDCbnmXx,rVGDyogOEWGbAcfTMkJvqvEdygwFajrjtcMdelhnQXBvt,JuUFCjbSRbMbiRn,XwoDvgPoAJdaNZXKb ecPB.oqxgUelXehDdTisQFWkejNOGVxID.ntbegzVl.OnmjndWEhbQmJCNwVObRpirHOzllCTlWaSiobql rUBxtEpNBKIZktVUiCLr,tirtWluMlEOyDnO",
+              "_type": "DV_TEXT"
+            },
+            "archetype_node_id": "at0167",
+            "_type": "ELEMENT"
+          }
+        ],
+        "archetype_node_id": "at0002",
+        "_type": "ITEM_TREE"
+      },
+      "timing": {
+        "value": "P1D",
+        "formalism": "ISO8601"
+      },
+      "action_archetype_id": "openEHR-EHR-ACTION.sample_action.v1",
+      "archetype_node_id": "at0001"
+    },
+    "archetype_node_id": "openEHR-EHR-INSTRUCTION.medication_order.v2",
+    "_type": "INSTRUCTION"
+  },
+  "archetype_node_id": "openEHR-EHR-COMPOSITION.medication_list.v1"
+}
