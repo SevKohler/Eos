@@ -75,7 +75,7 @@ Thanks!
 
 you can empty the folder `setup/vocab` afterwards if you wish 
 
-### Running OMOP bridge
+### Running Eos
 
 1. Make sure a openEHR platform and the database is running
 
