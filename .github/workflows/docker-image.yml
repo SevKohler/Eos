@@ -37,3 +37,6 @@ jobs:
 
       - name: Publish to GitHub Container Registry
         run: docker push ${{ env.REGISTRY }}/sevkohler/eos:${{ env.TAG }}
+
+      - name: Publish to GitHub Container Registry latest
+        run: docker push ${{ env.REGISTRY }}/sevkohler/eos:latest
