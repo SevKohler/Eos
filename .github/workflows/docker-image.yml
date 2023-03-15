@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:${{ steps.meta.outputs.tags }}
+        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:${{ steps.meta.outputs.label }}
 
       - name: Publish to GitHub Container Registry
-        run: docker push ${{ env.REGISTRY }}/sevkohler/eos:${{ steps.meta.outputs.tags }}
+        run: docker push ${{ env.REGISTRY }}/sevkohler/eos:${{ steps.meta.outputs.label }}
