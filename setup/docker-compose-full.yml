@@ -15,9 +15,9 @@ services:
       - "5433:5432"
     healthcheck:
       test: "pg_isready -q -h localhost"
-      interval: 10S
+      interval: 10s
       timeout: 5s
-      retries: 50
+      retries: 70
   ehrbase:
     image: ehrbase/ehrbase:next
     ports:
@@ -51,7 +51,7 @@ services:
       EHRBASE_USER: ehrbase
       EHRBASE_PASSWORD: ehrbase
   eos:
-    image: ghcr.io/sevkohler/openehr-omop-bridge:0.0.4
+    image: ghcr.io/sevkohler/eos:latest
     volumes:
       - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:

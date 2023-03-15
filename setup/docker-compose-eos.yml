@@ -2,7 +2,7 @@
 version: '3'
 services:
   eos:
-    image: ghcr.io/sevkohler/openehr-omop-bridge:0.0.4
+    image: ghcr.io/sevkohler/eos:latest
     volumes:
       - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:

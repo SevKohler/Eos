@@ -1,12 +1,31 @@
 #docker-compose-only-cdm.yml
 version: '3'
 services:
+  cdm-db:
+    image: cdm_db:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    #  expose:
+    #    - "5433" # Publishes 5433 to other containers but NOT to host machine
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: "pg_isready -q -h localhost"
+      interval: 10s
+      timeout: 5s
+      retries: 70
   eos:
-    image: ghcr.io/sevkohler/openehr-omop-bridge:0.0.4
+    image: ghcr.io/sevkohler/eos:latest
     volumes:
       - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:
       DB_URL: jdbc:postgresql://localhost:5433/postgres
     ports:
-     - "8081:8081"
-    network_mode: "host"
+      - "8081:8081"
+    depends_on:
+      cdm-db:
+        condition: service_healthy
