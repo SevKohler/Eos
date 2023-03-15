@@ -2,8 +2,8 @@ name: Java CI Publish Docker Image
 
 on:
   push:
-    tags:
-      - '*'
+    tags: |
+      type=raw,value=latest,enable={{is_default_branch}}
 
 env:
   REGISTRY: ghcr.io
@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:latest
+        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:${{ env.TAG }}
 
       - name: Publish to GitHub Container Registry
-        run: docker push ${{ env.REGISTRY }}/sevkohler/eos:latest
+        run: docker push ${{ env.REGISTRY }}/sevkohler/eos:${{ env.TAG }}
