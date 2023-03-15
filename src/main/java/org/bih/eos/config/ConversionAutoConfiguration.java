@@ -35,8 +35,8 @@ import java.util.*;
 public class ConversionAutoConfiguration implements InitializingBean {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConversionAutoConfiguration.class);
-    private final String mdDataConfigs = "mapping_config/medical_data";
-    private final String personDataConfigs = "mapping_config/person_data";
+    private final String mdDataConfigs = "mapping_conf/medical_data";
+    private final String personDataConfigs = "mapping_conf/person_data";
     private final ConverterRegistry converterRegistry;
     private final ConceptService conceptService;
     private final ConceptRelationshipService conceptRelationshipService;
