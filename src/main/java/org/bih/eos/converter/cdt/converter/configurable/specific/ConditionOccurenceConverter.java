@@ -7,7 +7,7 @@ import org.bih.eos.converter.cdt.converter.configurable.generic.CDTConverterWith
 import org.bih.eos.yaml.cdt_configs.condition_occurrence.ConditionOccurrenceConfig;
 import org.bih.eos.yaml.ValueEntry;
 import org.bih.eos.converter.dao.ConvertableContentItem;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

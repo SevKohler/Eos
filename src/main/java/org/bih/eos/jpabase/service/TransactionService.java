@@ -35,7 +35,7 @@ package org.bih.eos.jpabase.service;
 import java.util.List;
 import java.util.Map;
 
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 
 
 /**

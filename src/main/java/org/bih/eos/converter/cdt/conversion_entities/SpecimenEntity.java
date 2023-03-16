@@ -1,8 +1,8 @@
 package org.bih.eos.converter.cdt.conversion_entities;
 
-import org.bih.eos.jpabase.model.entity.Concept;
-import org.bih.eos.jpabase.model.entity.Person;
-import org.bih.eos.jpabase.model.entity.Specimen;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.Specimen;
 import org.bih.eos.yaml.cdt_configs.specimen.*;
 
 import java.util.Date;

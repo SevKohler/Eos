@@ -35,7 +35,7 @@ package org.bih.eos.jpabase.service;
 import org.springframework.stereotype.Service;
 
 import org.bih.eos.jpabase.jpa.dao.ObservationDao;
-import org.bih.eos.jpabase.model.entity.Observation;
+import org.bih.eos.jpabase.entity.Observation;
 
 
 /**

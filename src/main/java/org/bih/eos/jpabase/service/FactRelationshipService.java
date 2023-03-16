@@ -34,9 +34,9 @@ package org.bih.eos.jpabase.service;
 
 import java.util.List;
 
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.FactRelationship;
-import org.bih.eos.jpabase.model.entity.Note;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.FactRelationship;
+import org.bih.eos.jpabase.entity.Note;
 
 
 /**

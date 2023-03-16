@@ -37,7 +37,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.bih.eos.jpabase.jpa.dao.LocationDao;
-import org.bih.eos.jpabase.model.entity.Location;
+import org.bih.eos.jpabase.entity.Location;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

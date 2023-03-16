@@ -1,4 +1,4 @@
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 import java.io.Serializable;
 
 public class CompositeKey implements Serializable {

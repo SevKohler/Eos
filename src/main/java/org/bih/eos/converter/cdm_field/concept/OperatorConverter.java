@@ -6,7 +6,7 @@ import com.nedap.archie.rm.datavalues.quantity.DvProportion;
 import com.nedap.archie.rm.datavalues.quantity.DvQuantity;
 import org.bih.eos.converter.cdm_field.CDMConverter;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
-import org.bih.eos.jpabase.model.entity.Concept;
+import org.bih.eos.jpabase.entity.Concept;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

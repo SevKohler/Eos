@@ -6,8 +6,8 @@ import org.bih.eos.converter.cdt.conversion_entities.ProcedureOccurrenceEntity;
 import org.bih.eos.converter.cdm_field.numeric.DVToNumericCoverter;
 import org.bih.eos.converter.cdt.converter.configurable.generic.CDTConverterWithSourceConcept;
 import org.bih.eos.converter.dao.ConvertableContentItem;
-import org.bih.eos.jpabase.model.entity.Concept;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.bih.eos.yaml.ValueEntry;
 import org.bih.eos.yaml.cdt_configs.procedure_occurrence.ProcedureOccurrenceConfig;
 

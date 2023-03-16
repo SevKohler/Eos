@@ -1,4 +1,4 @@
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 import javax.persistence.*;
 import java.util.Date;

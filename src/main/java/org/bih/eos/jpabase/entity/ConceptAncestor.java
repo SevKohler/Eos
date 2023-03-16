@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * 
+
  * Copyright (c) 2023 Berlin Institute of Health
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,32 +28,68 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- *
  *******************************************************************************/
 
-package org.bih.eos.jpabase.service;
+package org.bih.eos.jpabase.entity;
 
-import org.bih.eos.jpabase.entity.ConceptRelationship;
-import org.bih.eos.jpabase.entity.ConceptRelationshipPK;
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- * The Interface ConceptRelationshipService.
- */
-public interface ConceptRelationshipService extends IService<ConceptRelationship> {
-	
+import net.jcip.annotations.Immutable;
+
+@Entity
+@Immutable
+@Table(name="concept_ancestor")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class ConceptAncestor extends JPABaseEntity implements Serializable {
 	/**
-	 * Find by id.
-	 *
-	 * @param conceptRelationshipPk the concept relationship pk
-	 * @return the concept relationship
+	 * 
 	 */
-	public ConceptRelationship findById(ConceptRelationshipPK conceptRelationshipPk);
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name="ancestor_concept_id")
+	private Concept ancestorConcept;
+
+	@ManyToOne
+	@JoinColumn(name="descendant_concept_id")
+	private Concept descendantConcept;
+
+	@Column(name="min_levels_of_separation")
+	private Integer minLevelsOfSeparation;
 	
-	/**
-	 * Removes the by id.
-	 *
-	 * @param conceptRelationshipPk the concept relationship pk
-	 */
-	public void removeById(ConceptRelationshipPK conceptRelationshipPk);
+	@Column(name="max_levels_of_separation")
+	private Integer maxLevelsOfSeparation;
+	
+	public Concept getAncestorConcept() {
+		return this.ancestorConcept;
+	}
+	
+	public Concept getDescendantConcept() {
+		return this.descendantConcept;
+	}
+	
+	public Integer getMinLevelsOfSeparation() {
+		return this.minLevelsOfSeparation;
+	}
+	
+	public Integer getMaxLevelsOfSeparation() {
+		return this.maxLevelsOfSeparation;
+	}
+	
+	@Override
+	public Long getIdAsLong() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

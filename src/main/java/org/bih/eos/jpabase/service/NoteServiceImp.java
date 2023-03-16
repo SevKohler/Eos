@@ -33,7 +33,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.NoteDao;
-import org.bih.eos.jpabase.model.entity.Note;
+import org.bih.eos.jpabase.entity.Note;
 import org.springframework.stereotype.Service;
 
 

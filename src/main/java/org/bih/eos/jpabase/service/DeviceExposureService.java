@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.DeviceExposure;
+import org.bih.eos.jpabase.entity.DeviceExposure;
 
 /**
  * The Interface DeviceExposureService.

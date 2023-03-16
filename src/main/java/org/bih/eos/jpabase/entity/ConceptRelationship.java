@@ -30,66 +30,88 @@
  *
  *******************************************************************************/
 
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.jcip.annotations.Immutable;
-
 @Entity
-@Immutable
-@Table(name="concept_ancestor")
+@Table(name="concept_relationship")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class ConceptAncestor extends JPABaseEntity implements Serializable {
+public class ConceptRelationship extends JPABaseEntity implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name="ancestor_concept_id")
-	private Concept ancestorConcept;
+	@EmbeddedId
+    private ConceptRelationshipPK id;
+	
+//	@ManyToOne
+//	@JoinColumn(name="concept_id_1")
+//	private Concept concept1;
+//	
+//	@ManyToOne
+//	@JoinColumn(name="concept_id_2")
+//	private Concept concept2;
+//	
+//	@Column(name="relationship_id")
+//	private String relationshipId;
+	
+	@Column(name="valid_start_date")
+	private Date validStartDate;
+	
+	@Column(name="valid_end_date")
+	private Date validEndDate;
+	
+	@Column(name="invalid_reason")
+	private String invalidReason;
 
-	@ManyToOne
-	@JoinColumn(name="descendant_concept_id")
-	private Concept descendantConcept;
-
-	@Column(name="min_levels_of_separation")
-	private Integer minLevelsOfSeparation;
-	
-	@Column(name="max_levels_of_separation")
-	private Integer maxLevelsOfSeparation;
-	
-	public Concept getAncestorConcept() {
-		return this.ancestorConcept;
-	}
-	
-	public Concept getDescendantConcept() {
-		return this.descendantConcept;
-	}
-	
-	public Integer getMinLevelsOfSeparation() {
-		return this.minLevelsOfSeparation;
-	}
-	
-	public Integer getMaxLevelsOfSeparation() {
-		return this.maxLevelsOfSeparation;
-	}
-	
 	@Override
 	public Long getIdAsLong() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public ConceptRelationshipPK getId() {
+		return this.id;
+	}
+	
+	public void setId(ConceptRelationshipPK id) {
+		this.id = id;
+	}
 
+	public ConceptRelationship() {
+		super();
+	}
+	
+	public Date getValidStartDate() {
+		return this.validStartDate;
+	}
+	
+	public void setValidStartDate(Date validStartDate) {
+		this.validStartDate = validStartDate;
+	}
+	
+	public Date getValidEndDate() {
+		return this.validEndDate;
+	}
+	
+	public void setValidEndDate(Date validEndDate) {
+		this.validEndDate =validEndDate;
+	}
+	
+	public String getInvalidReason() {
+		return this.invalidReason;
+	}
+	
+	public void setInvalidReason(String invalidReason) {
+		this.invalidReason = invalidReason;
+	}
 }

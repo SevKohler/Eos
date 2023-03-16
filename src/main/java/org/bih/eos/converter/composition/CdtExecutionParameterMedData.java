@@ -1,7 +1,7 @@
 package org.bih.eos.converter.composition;
 
-import org.bih.eos.jpabase.model.entity.Person;
-import org.bih.eos.jpabase.model.entity.VisitOccurrence;
+import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
 
 import java.util.Optional;
 

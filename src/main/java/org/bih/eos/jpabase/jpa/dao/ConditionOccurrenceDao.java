@@ -32,7 +32,7 @@
 
 package org.bih.eos.jpabase.jpa.dao;
 
-import org.bih.eos.jpabase.model.entity.ConditionOccurrence;
+import org.bih.eos.jpabase.entity.ConditionOccurrence;
 import org.springframework.stereotype.Repository;
 
 @Repository

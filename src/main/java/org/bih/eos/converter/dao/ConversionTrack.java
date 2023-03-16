@@ -1,7 +1,7 @@
 package org.bih.eos.converter.dao;
 
 import com.nedap.archie.rm.archetyped.Locatable;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 
 public class ConversionTrack {
     private final Locatable inputContentItem;

@@ -5,7 +5,7 @@ import org.bih.eos.converter.PathProcessor;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.converter.cdt.conversion_entities.PersonEntity;
 import org.bih.eos.converter.dao.ConversionTrack;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.bih.eos.yaml.cdt_configs.person.PersonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

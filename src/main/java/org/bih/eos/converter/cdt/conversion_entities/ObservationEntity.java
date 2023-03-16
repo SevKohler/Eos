@@ -1,9 +1,9 @@
 package org.bih.eos.converter.cdt.conversion_entities;
 
-import org.bih.eos.jpabase.model.entity.Concept;
-import org.bih.eos.jpabase.model.entity.Observation;
-import org.bih.eos.jpabase.model.entity.Person;
-import org.bih.eos.jpabase.model.entity.VisitOccurrence;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.Observation;
+import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
 import org.bih.eos.yaml.cdt_configs.observation.*;
 
 import java.util.Date;

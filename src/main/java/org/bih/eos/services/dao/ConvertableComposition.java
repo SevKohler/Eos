@@ -1,7 +1,7 @@
 package org.bih.eos.services.dao;
 
 import com.nedap.archie.rm.composition.Composition;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.Person;
 
 public class ConvertableComposition {
     private final Composition composition;

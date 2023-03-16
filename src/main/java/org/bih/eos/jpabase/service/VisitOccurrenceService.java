@@ -32,7 +32,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.VisitOccurrence;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
 
 /**
  * The Interface VisitOccurrenceService.

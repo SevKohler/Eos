@@ -1,6 +1,6 @@
 package org.bih.eos.yaml.cdt_configs.observation;
 
-import org.bih.eos.jpabase.model.entity.Observation;
+import org.bih.eos.jpabase.entity.Observation;
 import org.bih.eos.yaml.OptionalCdmField;
 
 public class ObservationEventId extends OptionalCdmField<Observation> {

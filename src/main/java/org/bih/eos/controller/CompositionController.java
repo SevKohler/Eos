@@ -2,9 +2,9 @@ package org.bih.eos.controller;
 
 import com.nedap.archie.rm.composition.Composition;
 import org.bih.eos.jpabase.service.EHRToPersonService;
-import org.bih.eos.jpabase.model.entity.EHRToPerson;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.EHRToPerson;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.Person;
 import org.bih.eos.services.ConverterService;
 import org.bih.eos.services.dao.ConvertableComposition;
 import org.ehrbase.serialisation.jsonencoding.CanonicalJson;

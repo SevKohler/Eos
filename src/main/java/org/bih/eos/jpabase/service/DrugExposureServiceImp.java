@@ -35,7 +35,7 @@ package org.bih.eos.jpabase.service;
 import org.springframework.stereotype.Service;
 
 import org.bih.eos.jpabase.jpa.dao.DrugExposureDao;
-import org.bih.eos.jpabase.model.entity.DrugExposure;
+import org.bih.eos.jpabase.entity.DrugExposure;
 
 
 /**

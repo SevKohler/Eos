@@ -32,7 +32,7 @@
 
 package org.bih.eos.jpabase.jpa.dao;
 
-import org.bih.eos.jpabase.model.entity.Provider;
+import org.bih.eos.jpabase.entity.Provider;
 import org.springframework.stereotype.Repository;
 
 @Repository

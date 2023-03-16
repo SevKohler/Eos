@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.ProcedureOccurrence;
+import org.bih.eos.jpabase.entity.ProcedureOccurrence;
 
 /**
  * The Interface ProcedureOccurrenceService.

@@ -32,7 +32,7 @@
 
 package org.bih.eos.jpabase.jpa.dao;
 
-import org.bih.eos.jpabase.model.entity.ProcedureOccurrence;
+import org.bih.eos.jpabase.entity.ProcedureOccurrence;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,7 +1,7 @@
 package org.bih.eos.yaml;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class OptionalCdmField<JBE extends JPABaseEntity> extends CdmFieldMapping {

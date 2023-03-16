@@ -2,7 +2,7 @@ package org.bih.eos.converter.dao;
 
 import com.nedap.archie.rm.archetyped.Locatable;
 import org.bih.eos.converter.composition.CdtExecutionParameterMedData;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.Person;
 
 public class ConvertableContentItem {
     private final Locatable contentItem;

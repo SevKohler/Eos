@@ -6,10 +6,10 @@ import com.nedap.archie.rm.datavalues.DvURI;
 import org.bih.eos.converter.dao.ConversionTrack;
 import org.bih.eos.converter.dao.ConvertableContentItem;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.FactRelationship;
-import org.bih.eos.jpabase.model.entity.Measurement;
-import org.bih.eos.jpabase.model.entity.Specimen;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.FactRelationship;
+import org.bih.eos.jpabase.entity.Measurement;
+import org.bih.eos.jpabase.entity.Specimen;
 import org.bih.eos.yaml.OmopMapping;
 import org.springframework.lang.NonNull;
 

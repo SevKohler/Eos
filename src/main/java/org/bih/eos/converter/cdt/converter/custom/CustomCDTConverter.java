@@ -3,7 +3,7 @@ package org.bih.eos.converter.cdt.converter.custom;
 import org.bih.eos.converter.cdt.converter.configurable.generic.CDTConverterWithConfig;
 import org.bih.eos.converter.dao.ConversionTrack;
 import org.bih.eos.converter.dao.ConvertableContentItem;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.yaml.OmopMapping;
 import org.springframework.lang.NonNull;

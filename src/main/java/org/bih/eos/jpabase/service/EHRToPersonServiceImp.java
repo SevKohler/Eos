@@ -1,8 +1,8 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.EHRToPersonRepository;
-import org.bih.eos.jpabase.model.entity.EHRToPerson;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.EHRToPerson;
+import org.bih.eos.jpabase.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

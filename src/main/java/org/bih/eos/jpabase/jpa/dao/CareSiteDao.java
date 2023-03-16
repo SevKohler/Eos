@@ -32,7 +32,7 @@
 
 package org.bih.eos.jpabase.jpa.dao;
 
-import org.bih.eos.jpabase.model.entity.CareSite;
+import org.bih.eos.jpabase.entity.CareSite;
 import org.springframework.stereotype.Repository;
 
 @Repository

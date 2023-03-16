@@ -30,62 +30,80 @@
  *
  *
  *******************************************************************************/
-package org.bih.eos.jpabase.model.entity;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+package org.bih.eos.jpabase.entity;
+
+import javax.persistence.*;
 
 @Entity
-@Table(name="domain")
-public class Domain extends JPABaseEntity {
+@Table(name="fact_relationship")
+@IdClass(CompositeKey.class)
+public class FactRelationship extends JPABaseEntity {
+
 	@Id
-	@Column(name="domain_id", nullable=false)
-	@Access(AccessType.PROPERTY)
-	private Long id;
+	@Column(name="domain_concept_id_1")
+	private Long domainConceptId1;
 
-	@Column(name="domain_name", nullable=false)
-	private String domainName;
+	@Id
+	@Column(name="fact_id_1")
+	private Long factId1;
 
+	@Id
+	@Column(name="domain_concept_id_2")
+	private Long domainConceptId2;
+
+	@Id
+	@Column(name="fact_id_2")
+	private Long factId2;
+
+	@Id
 	@ManyToOne
-	@JoinColumn(name="domain_concept_id", nullable=false)
-	private Concept domainConcept;
+	@JoinColumn(name="relationship_concept_id")
+	private Concept relationshipConcept;
 	
-	public Domain() {
-		super();
+	public Long getDomainConceptId1() {
+		return this.domainConceptId1;
 	}
 	
-	public Domain(Long id) {
-		super();
-		this.id = id;
+	public void setDomainConceptId1(Long domainConceptId1) {
+		this.domainConceptId1 = domainConceptId1;
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getFactId1() {
+		return this.factId1;
+	}
+	
+	public void setFactId1(Long factId1) {
+		this.factId1 = factId1;
+	}
+	
+	public Long getDomainConceptId2() {
+		return this.domainConceptId2;
+	}
+	
+	public void setDomainConceptId2(Long domainConceptId2) {
+		this.domainConceptId2 = domainConceptId2;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getDomainName() {
-		return this.domainName;
+	public Long getFactId2() {
+		return this.factId2;
 	}
 	
-	public void setDomainName(String domainName) {
-		this.domainName = domainName;
+	public void setFactId2(Long factId2) {
+		this.factId2 = factId2;
 	}
 	
-	public Concept getDomainConcept() {
-		return domainConcept;
+	public Concept getRelationshipConcept() {
+		return this.relationshipConcept;
 	}
 	
-	public void setDomainConcept(Concept domainConcept) {
-		this.domainConcept = domainConcept;
+	public void setRelationshipConcept(Concept relationshipConcept) {
+		this.relationshipConcept = relationshipConcept;
+	}
+	
+	@Override
+	public Long getIdAsLong() {
+		return this.domainConceptId1;
 	}
 }

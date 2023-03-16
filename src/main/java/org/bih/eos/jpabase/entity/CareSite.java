@@ -30,7 +30,7 @@
  *
  *******************************************************************************/
 
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;

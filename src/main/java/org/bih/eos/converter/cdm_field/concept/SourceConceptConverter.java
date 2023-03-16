@@ -3,7 +3,7 @@ package org.bih.eos.converter.cdm_field.concept;
 import com.nedap.archie.rm.datavalues.DataValue;
 import org.bih.eos.converter.cdm_field.CDMConverter;
 import org.bih.eos.jpabase.service.ConceptService;
-import org.bih.eos.jpabase.model.entity.Concept;
+import org.bih.eos.jpabase.entity.Concept;
 
 import java.util.Optional;
 

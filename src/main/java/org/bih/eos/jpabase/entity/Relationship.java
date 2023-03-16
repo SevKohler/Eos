@@ -28,8 +28,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ *
  *******************************************************************************/
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -38,52 +39,36 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- * 
- * @author Myung Choi
- */
 @Entity
-@Table(name="vocabulary")
-@NamedQueries(value = { @NamedQuery( name = "findReferenceById", query = "select v.vocabularyReference from Vocabulary v where v.id like :value")})
-public class Vocabulary extends JPABaseEntity {
-	
+@Table(name="relationship")
+public class Relationship extends JPABaseEntity {
 	@Id
-	@Column(name="vocabulary_id", nullable=false)
+	@Column(name="relationship_id")
 	@Access(AccessType.PROPERTY)
 	private String id;
+
+	@Column(name="relationship_name")
+	private String relationshipName;
+
+	@Column(name="is_hierarchical")
+	private Character isHierarchical;
 	
-	@Column(name="vocabulary_name", nullable=false)
-	private String vocabularyName;
-	
-	@Column(name="vocabulary_reference", nullable=false)
-	private String vocabularyReference;
-	
-	@Column(name="vocabulary_version", nullable=false)
-	private String vocabularyVersion;
+	@Column(name="defines_ancestry")
+	private Character definesAncestry;
+
+	@Column(name="reverse_relationship_id")
+	private String reverseRelationshipId;
 
 	@ManyToOne
-	@JoinColumn(name="vocabulary_concept_id", nullable=false)
-	private Concept vocabularyConcept;
-
-	public Vocabulary() {
+	@JoinColumn(name="relationship_concept_id")
+	private Concept relationshipConcept;
+	
+	public Relationship() {
 		super();
-	}
-
-	public Vocabulary(String id) {
-		super();
-		this.id = id;
 	}
 	
-	public Vocabulary(String id, String vocabularyName) {
-		super();
-		this.id = id;
-		this.vocabularyName = vocabularyName;
-	}
-
 	public String getId() {
 		return id;
 	}
@@ -92,42 +77,43 @@ public class Vocabulary extends JPABaseEntity {
 		this.id = id;
 	}
 
-	public String getVocabularyName() {
-		return vocabularyName;
+	public String getRelationshipName() {
+		return relationshipName;
 	}
 
-	public void setVocabularyName(String vocabularyName) {
-		this.vocabularyName = vocabularyName;
+	public void setRelationshipName(String relationshipName) {
+		this.relationshipName = relationshipName;
 	}
 
-	public String getVocabularyReference() {
-		return vocabularyReference;
+	public Character getIsHierarchical() {
+		return isHierarchical;
 	}
 	
-	public void setVocabularyReference(String vocabularyReference) {
-		this.vocabularyReference = vocabularyReference;
+	public void setIsHierarchical(Character isHierarchical) {
+		this.isHierarchical = isHierarchical;
 	}
 
-	public String getVocabularyVersion() {
-		return vocabularyVersion;
+	public Character getDefinesAncestry(){
+		return definesAncestry;
 	}
-	
-	public void setVocabularyVersion(String vocabularyVersion) {
-		this.vocabularyVersion = vocabularyVersion;
-	}
-	
-	public Concept getVocabularyConcept() {
-		return vocabularyConcept;
-	}
-	
-	public void setVocabularyConcept(Concept vocabularyConcept) {
-		this.vocabularyConcept = vocabularyConcept;
+	public void setDefinesAncestry(Character definesAncestry) {
+		this.definesAncestry = definesAncestry;
 	}
 
-	@Override
-	public Long getIdAsLong() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getReverseRelationshipId() {
+		return reverseRelationshipId;
 	}
 	
+	public void setReverseRelationshipId(String reverseRelationshipId) {
+		this.reverseRelationshipId = reverseRelationshipId;
+	}
+	
+	public Concept getRelationshipConcept() {
+		return relationshipConcept;
+	}
+	
+	public void setRelationshipConcept(Concept relationshipConcept) {
+		this.relationshipConcept = relationshipConcept;
+	}
+
 }

@@ -35,10 +35,10 @@ package org.bih.eos.jpabase.service;
 import java.util.List;
 import java.util.Map;
 
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.Measurement;
-import org.bih.eos.jpabase.model.entity.Observation;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.Measurement;
+import org.bih.eos.jpabase.entity.Observation;
+import org.bih.eos.jpabase.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

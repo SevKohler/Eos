@@ -38,8 +38,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.bih.eos.jpabase.jpa.dao.CareSiteDao;
-import org.bih.eos.jpabase.model.entity.CareSite;
-import org.bih.eos.jpabase.model.entity.Location;
+import org.bih.eos.jpabase.entity.CareSite;
+import org.bih.eos.jpabase.entity.Location;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

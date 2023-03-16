@@ -34,7 +34,7 @@ package org.bih.eos.jpabase.service;
 
 import java.util.List;
 
-import org.bih.eos.jpabase.model.entity.Concept;
+import org.bih.eos.jpabase.entity.Concept;
 
 
 /**

@@ -1,7 +1,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.SpecimenDao;
-import org.bih.eos.jpabase.model.entity.Specimen;
+import org.bih.eos.jpabase.entity.Specimen;
 
 public class SpecimenServiceImp extends BaseEntityServiceImp<Specimen, SpecimenDao> implements SpecimenService {
 

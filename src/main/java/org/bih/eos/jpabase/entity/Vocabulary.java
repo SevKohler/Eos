@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * 
+
  * Copyright (c) 2023 Berlin Institute of Health
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,10 +28,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- *
  *******************************************************************************/
-
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -40,38 +38,52 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Myung Choi
+ */
 @Entity
-@Table(name="concept_class")
-public class ConceptClass extends JPABaseEntity {
+@Table(name="vocabulary")
+@NamedQueries(value = { @NamedQuery( name = "findReferenceById", query = "select v.vocabularyReference from Vocabulary v where v.id like :value")})
+public class Vocabulary extends JPABaseEntity {
+	
 	@Id
-	@Column(name="concept_class_id", nullable=false)
+	@Column(name="vocabulary_id", nullable=false)
 	@Access(AccessType.PROPERTY)
 	private String id;
-
-	@Column(name="concept_class_name", nullable=false)
-	private String conceptClassName;
+	
+	@Column(name="vocabulary_name", nullable=false)
+	private String vocabularyName;
+	
+	@Column(name="vocabulary_reference", nullable=false)
+	private String vocabularyReference;
+	
+	@Column(name="vocabulary_version", nullable=false)
+	private String vocabularyVersion;
 
 	@ManyToOne
-	@JoinColumn(name="concept_class_concept_id", nullable=false)
-	private Concept conceptClassConcept;
+	@JoinColumn(name="vocabulary_concept_id", nullable=false)
+	private Concept vocabularyConcept;
 
-	@Override
-	public Long getIdAsLong() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ConceptClass() {
+	public Vocabulary() {
 		super();
 	}
-	
-	public ConceptClass(String id) {
+
+	public Vocabulary(String id) {
 		super();
 		this.id = id;
 	}
 	
+	public Vocabulary(String id, String vocabularyName) {
+		super();
+		this.id = id;
+		this.vocabularyName = vocabularyName;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -80,19 +92,42 @@ public class ConceptClass extends JPABaseEntity {
 		this.id = id;
 	}
 
-	public String getConceptClassName() {
-		return this.conceptClassName;
+	public String getVocabularyName() {
+		return vocabularyName;
+	}
+
+	public void setVocabularyName(String vocabularyName) {
+		this.vocabularyName = vocabularyName;
+	}
+
+	public String getVocabularyReference() {
+		return vocabularyReference;
 	}
 	
-	public void setConceptClassName(String conceptClassName) {
-		this.conceptClassName = conceptClassName;
+	public void setVocabularyReference(String vocabularyReference) {
+		this.vocabularyReference = vocabularyReference;
+	}
+
+	public String getVocabularyVersion() {
+		return vocabularyVersion;
 	}
 	
-	public Concept getConceptClassConcept() {
-		return conceptClassConcept;
+	public void setVocabularyVersion(String vocabularyVersion) {
+		this.vocabularyVersion = vocabularyVersion;
 	}
 	
-	public void setConceptClassConcept(Concept conceptClassConcept) {
-		this.conceptClassConcept = conceptClassConcept;
+	public Concept getVocabularyConcept() {
+		return vocabularyConcept;
 	}
+	
+	public void setVocabularyConcept(Concept vocabularyConcept) {
+		this.vocabularyConcept = vocabularyConcept;
+	}
+
+	@Override
+	public Long getIdAsLong() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

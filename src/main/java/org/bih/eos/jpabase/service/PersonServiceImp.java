@@ -17,7 +17,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.PersonDao;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.Person;
 import org.springframework.stereotype.Service;
 
 @Service

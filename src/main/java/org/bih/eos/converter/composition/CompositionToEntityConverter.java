@@ -2,7 +2,7 @@ package org.bih.eos.converter.composition;
 
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.converter.cdt.converter.CDTConverter;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;

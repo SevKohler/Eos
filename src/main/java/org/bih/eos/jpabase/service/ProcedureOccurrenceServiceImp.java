@@ -33,7 +33,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.ProcedureOccurrenceDao;
-import org.bih.eos.jpabase.model.entity.ProcedureOccurrence;
+import org.bih.eos.jpabase.entity.ProcedureOccurrence;
 import org.springframework.stereotype.Service;
 
 

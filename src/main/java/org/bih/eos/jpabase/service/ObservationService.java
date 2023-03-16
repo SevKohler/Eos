@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.Observation;
+import org.bih.eos.jpabase.entity.Observation;
 
 /**
  * The Interface ObservationService.

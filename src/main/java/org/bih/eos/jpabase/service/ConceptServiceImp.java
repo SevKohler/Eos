@@ -42,7 +42,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.bih.eos.jpabase.jpa.dao.ConceptDao;
-import org.bih.eos.jpabase.model.entity.Concept;
+import org.bih.eos.jpabase.entity.Concept;
 
 
 /**

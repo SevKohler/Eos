@@ -1,6 +1,6 @@
 package org.bih.eos.yaml.cdt_configs.specimen;
 
-import org.bih.eos.jpabase.model.entity.Specimen;
+import org.bih.eos.jpabase.entity.Specimen;
 import org.bih.eos.yaml.OptionalCdmField;
 
 public class SpecimenUnit extends OptionalCdmField<Specimen> {

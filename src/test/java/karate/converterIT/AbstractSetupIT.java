@@ -1,6 +1,6 @@
 package karate.converterIT;
 
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.Person;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;

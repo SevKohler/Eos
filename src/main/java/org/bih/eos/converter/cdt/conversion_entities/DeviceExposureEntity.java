@@ -1,6 +1,9 @@
 package org.bih.eos.converter.cdt.conversion_entities;
 
-import org.bih.eos.jpabase.model.entity.*;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.DeviceExposure;
+import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
 import org.bih.eos.yaml.cdt_configs.device_exposure.*;
 
 import java.util.Date;

@@ -19,8 +19,8 @@ import org.bih.eos.converter.PathProcessor;
 import org.bih.eos.yaml.cdt_configs.measurement.MeasurementConfig;
 import org.bih.eos.yaml.ValueEntry;
 import org.bih.eos.converter.dao.ConvertableContentItem;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.Concept;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.Concept;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

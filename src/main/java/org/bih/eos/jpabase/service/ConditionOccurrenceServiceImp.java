@@ -33,7 +33,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.ConditionOccurrenceDao;
-import org.bih.eos.jpabase.model.entity.ConditionOccurrence;
+import org.bih.eos.jpabase.entity.ConditionOccurrence;
 
 import org.springframework.stereotype.Service;
 

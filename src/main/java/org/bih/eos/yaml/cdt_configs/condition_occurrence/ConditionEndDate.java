@@ -1,6 +1,6 @@
 package org.bih.eos.yaml.cdt_configs.condition_occurrence;
 
-import org.bih.eos.jpabase.model.entity.ConditionOccurrence;
+import org.bih.eos.jpabase.entity.ConditionOccurrence;
 import org.bih.eos.yaml.OptionalCdmField;
 
 public class ConditionEndDate extends OptionalCdmField<ConditionOccurrence> {

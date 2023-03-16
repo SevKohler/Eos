@@ -7,10 +7,10 @@ import org.bih.eos.converter.cdt.converter.CDTConverter;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.converter.cdt.conversion_entities.VisitOccurrenceEntity;
 import org.bih.eos.converter.cdm_field.date.DVToDateConverter;
-import org.bih.eos.jpabase.model.entity.Concept;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
-import org.bih.eos.jpabase.model.entity.Person;
-import org.bih.eos.jpabase.model.entity.VisitOccurrence;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

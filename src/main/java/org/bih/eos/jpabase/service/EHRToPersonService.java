@@ -1,7 +1,7 @@
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.EHRToPerson;
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.EHRToPerson;
+import org.bih.eos.jpabase.entity.Person;
 
 import java.util.List;
 import java.util.Optional;

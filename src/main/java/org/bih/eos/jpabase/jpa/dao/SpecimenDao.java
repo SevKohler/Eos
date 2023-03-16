@@ -33,7 +33,7 @@
 package org.bih.eos.jpabase.jpa.dao;
 
 
-import org.bih.eos.jpabase.model.entity.Specimen;
+import org.bih.eos.jpabase.entity.Specimen;
 import org.springframework.stereotype.Repository;
 
 @Repository

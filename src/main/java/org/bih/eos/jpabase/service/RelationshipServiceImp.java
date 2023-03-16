@@ -32,7 +32,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 import org.bih.eos.jpabase.jpa.dao.RelationshipDao;
-import org.bih.eos.jpabase.model.entity.Relationship;
+import org.bih.eos.jpabase.entity.Relationship;
 import org.springframework.stereotype.Service;
 
 

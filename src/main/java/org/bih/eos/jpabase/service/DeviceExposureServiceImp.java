@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import org.bih.eos.jpabase.jpa.dao.DeviceExposureDao;
-import org.bih.eos.jpabase.model.entity.DeviceExposure;
+import org.bih.eos.jpabase.entity.DeviceExposure;
 
 
 /**

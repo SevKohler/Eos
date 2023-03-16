@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Berlin Institute of Health
+ * Copyright (c) 2019 Georgia Tech Research Institute
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,38 +14,8 @@
  * limitations under the License.
  *
  *******************************************************************************/
+package org.bih.eos.jpabase.entity;
 
-package org.bih.eos.jpabase.model.entity;
-
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "ehr_to_person")
-public class EHRToPerson {
-
-    @Id
-    @Column(name = "ehr_id")
-    @Access(AccessType.PROPERTY)
-    private String ehrId;
-
-    @OneToOne
-    @JoinColumn(name="person_id")
-    private Person person;
-
-    public String getEhrId() {
-        return ehrId;
-    }
-
-    public void setEhrId(String ehrId) {
-        this.ehrId = ehrId;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+public interface IBaseEntity {
+	public Long getIdAsLong();
 }

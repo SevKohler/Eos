@@ -2,7 +2,7 @@ package org.bih.eos.services;
 
 import com.nedap.archie.rm.composition.Composition;
 import org.bih.eos.services.dao.ConvertableComposition;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;

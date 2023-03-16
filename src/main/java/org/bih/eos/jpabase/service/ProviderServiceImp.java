@@ -33,7 +33,7 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.ProviderDao;
-import org.bih.eos.jpabase.model.entity.Provider;
+import org.bih.eos.jpabase.entity.Provider;
 import org.springframework.stereotype.Service;
 
 

@@ -37,14 +37,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.bih.eos.jpabase.jpa.dao.FactRelationshipDao;
-import org.bih.eos.jpabase.model.entity.Concept;
-import org.bih.eos.jpabase.model.entity.FactRelationship;
-import org.bih.eos.jpabase.model.entity.Note;
+import org.bih.eos.jpabase.entity.Concept;
+import org.bih.eos.jpabase.entity.FactRelationship;
+import org.bih.eos.jpabase.entity.Note;
 
 
 /**

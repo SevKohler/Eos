@@ -30,7 +30,7 @@
  *
  *******************************************************************************/
 
-package org.bih.eos.jpabase.model.entity;
+package org.bih.eos.jpabase.entity;
 
 
 public abstract class JPABaseEntity implements IBaseEntity {

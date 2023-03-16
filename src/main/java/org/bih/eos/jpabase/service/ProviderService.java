@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.Provider;
+import org.bih.eos.jpabase.entity.Provider;
 
 /**
  * The Interface ProviderService.

@@ -36,7 +36,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
-import org.bih.eos.jpabase.model.entity.Person;
+import org.bih.eos.jpabase.entity.Person;
 import org.springframework.stereotype.Repository;
 
 @Repository

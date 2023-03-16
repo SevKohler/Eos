@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.Note;
+import org.bih.eos.jpabase.entity.Note;
 
 /**
  * The Interface NoteService.

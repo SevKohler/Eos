@@ -8,7 +8,7 @@ import org.bih.eos.converter.cdt.converter.configurable.generic.CDTPersonConvert
 import org.bih.eos.converter.cdt.converter.custom.CustomCDTConverter;
 import org.bih.eos.converter.dao.ConversionTrack;
 import org.bih.eos.exceptions.UnprocessableEntityException;
-import org.bih.eos.jpabase.model.entity.JPABaseEntity;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;

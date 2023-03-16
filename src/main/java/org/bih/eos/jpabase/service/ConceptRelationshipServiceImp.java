@@ -34,8 +34,8 @@
 package org.bih.eos.jpabase.service;
 
 import org.bih.eos.jpabase.jpa.dao.ConceptRelationshipDao;
-import org.bih.eos.jpabase.model.entity.ConceptRelationship;
-import org.bih.eos.jpabase.model.entity.ConceptRelationshipPK;
+import org.bih.eos.jpabase.entity.ConceptRelationship;
+import org.bih.eos.jpabase.entity.ConceptRelationshipPK;
 import org.springframework.stereotype.Service;
 
 

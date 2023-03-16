@@ -1,6 +1,6 @@
 package org.bih.eos.services;
 
-import org.bih.eos.jpabase.model.entity.*;
+import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

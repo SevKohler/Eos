@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.bih.eos.jpabase.service;
 
-import org.bih.eos.jpabase.model.entity.Measurement;
+import org.bih.eos.jpabase.entity.Measurement;
 
 /**
  * The Interface MeasurementService.
