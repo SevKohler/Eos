@@ -3,7 +3,7 @@ package org.bih.eos.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bih.eos.controller.dao.Ehrs;
-import org.bih.eos.jpabase.dba.service.EHRToPersonService;
+import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.bih.eos.services.ConverterService;
 import org.bih.eos.services.EhrService;
 import org.ehrbase.client.openehrclient.OpenEhrClient;

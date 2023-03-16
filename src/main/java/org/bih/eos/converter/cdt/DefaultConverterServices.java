@@ -1,7 +1,7 @@
 package org.bih.eos.converter.cdt;
 
 import org.bih.eos.converter.cdm_field.concept.DVTextCodeToConceptConverter;
-import org.bih.eos.jpabase.dba.service.ConceptService;
+import org.bih.eos.jpabase.service.ConceptService;
 import org.bih.eos.services.ConceptSearchService;
 import org.bih.eos.services.PersistenceService;
 

@@ -1,5 +1,5 @@
-#docker-compose-only-cdm.yml
-version: '3'
+#docker-compose-eos+cdm.yml
+#https://github.com/docker-library/postgres/issues/146
 services:
   cdm-db:
     image: cdm_db:latest

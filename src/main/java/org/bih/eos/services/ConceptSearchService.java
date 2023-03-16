@@ -1,8 +1,8 @@
 package org.bih.eos.services;
 
-import org.bih.eos.jpabase.dba.service.ConceptRelationshipService;
-import org.bih.eos.jpabase.dba.service.ConceptService;
-import org.bih.eos.jpabase.dba.service.ParameterWrapper;
+import org.bih.eos.jpabase.service.ConceptRelationshipService;
+import org.bih.eos.jpabase.service.ConceptService;
+import org.bih.eos.jpabase.service.ParameterWrapper;
 import org.bih.eos.jpabase.model.entity.Concept;
 import org.bih.eos.jpabase.model.entity.ConceptRelationship;
 import org.slf4j.Logger;

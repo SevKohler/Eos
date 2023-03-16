@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScans(value = {@ComponentScan("org.bih.eos.jpabase.jpa.dao"),
         @ComponentScan("org.bih.eos.jpabase.service")})
-@EntityScan(basePackages = "org.bih.openehromopbridge.jpabase.model.entity")
+@EntityScan(basePackages = "org.bih.eos.jpabase.model.entity")
 public class JPAConfig {
 }

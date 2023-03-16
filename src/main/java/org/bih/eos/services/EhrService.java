@@ -2,7 +2,7 @@ package org.bih.eos.services;
 
 import com.nedap.archie.rm.composition.Composition;
 import org.bih.eos.controller.dao.Ehrs;
-import org.bih.eos.jpabase.dba.service.EHRToPersonService;
+import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.bih.eos.jpabase.model.entity.EHRToPerson;
 import org.bih.eos.jpabase.model.entity.JPABaseEntity;
 import org.bih.eos.services.dao.ConvertableComposition;

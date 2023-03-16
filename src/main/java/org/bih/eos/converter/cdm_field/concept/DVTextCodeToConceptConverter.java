@@ -4,7 +4,7 @@ import com.nedap.archie.rm.datavalues.DataValue;
 import com.nedap.archie.rm.datavalues.DvCodedText;
 import com.nedap.archie.rm.datavalues.DvText;
 import org.bih.eos.converter.cdm_field.VocabularyIdConverter;
-import org.bih.eos.jpabase.dba.service.ParameterWrapper;
+import org.bih.eos.jpabase.service.ParameterWrapper;
 import org.bih.eos.jpabase.model.entity.Concept;
 import org.bih.eos.services.ConceptSearchService;
 import org.slf4j.Logger;

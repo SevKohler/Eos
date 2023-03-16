@@ -5,7 +5,7 @@ import com.nedap.archie.rm.datavalues.quantity.DvProportion;
 import com.nedap.archie.rm.datavalues.quantity.DvQuantity;
 import org.bih.eos.converter.cdm_field.string.DvProportionTypeConverter;
 import org.bih.eos.converter.cdm_field.VocabularyIdConverter;
-import org.bih.eos.jpabase.dba.service.ParameterWrapper;
+import org.bih.eos.jpabase.service.ParameterWrapper;
 import org.bih.eos.jpabase.model.entity.Concept;
 import org.bih.eos.services.ConceptSearchService;
 import org.slf4j.Logger;

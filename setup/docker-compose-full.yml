@@ -1,4 +1,4 @@
-#docker-compose-only-cdm.yml
+#docker-compose-full.yml
 #https://github.com/docker-library/postgres/issues/146
 services:
   cdm-db:

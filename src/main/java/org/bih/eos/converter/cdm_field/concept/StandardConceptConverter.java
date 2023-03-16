@@ -2,7 +2,7 @@ package org.bih.eos.converter.cdm_field.concept;
 
 import com.nedap.archie.rm.datavalues.DataValue;
 import org.bih.eos.converter.cdm_field.CDMConverter;
-import org.bih.eos.jpabase.dba.service.ConceptService;
+import org.bih.eos.jpabase.service.ConceptService;
 import org.bih.eos.jpabase.model.entity.Concept;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
