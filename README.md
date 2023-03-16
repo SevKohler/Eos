@@ -43,7 +43,6 @@ Thanks!
 | 82  | RxNorm Extension     |                          
 | 14  | CMS Place of Service |
 | 1   | SNOMED               |   
-| 4   | CPT4                 |                                    
 | 43  | Revenue Code         |                 
 | 44  | Ethnicity            |                      
 | 65  | Currency             |                 
