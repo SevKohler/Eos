@@ -28,7 +28,7 @@ Thanks!
 2. Use Common Data model sqls from `setup/ddls/` or download
    them [here](https://github.com/OHDSI/CommonDataModel/tree/master/inst/ddl/5.4/postgresql). If downloaded change the file names according to the provided ones (delete the version number).
 3. Download Vocabs from https://athena.ohdsi.org/, you need to create an Account for that, afterwards copy them
-   to `setup/vocab/`
+   to `setup/vocab/`. 
    <br> Recommended are:
 
 | ID  | CDM	Code (cdm v5)    | 
@@ -48,6 +48,8 @@ Thanks!
 | 65  | Currency             |                 
 | 9   | NDC                  |                 
 | 70  | ICD10CM              | 
+| 34  | ICD10                | 
+| 142 | OPS                 | 	
 | 47  | NUCC                 |    
 | 5   | HCPCS                |   
 | 8   | RxNorm               | 
