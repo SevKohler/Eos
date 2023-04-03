@@ -35,7 +35,7 @@ package org.bih.eos.jpabase.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.springframework.stereotype.Service;

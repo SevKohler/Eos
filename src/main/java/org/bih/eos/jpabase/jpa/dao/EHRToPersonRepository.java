@@ -4,7 +4,7 @@ import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 @Transactional
 public interface EHRToPersonRepository extends JpaRepository<EHRToPerson, String> {

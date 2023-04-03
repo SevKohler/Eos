@@ -32,9 +32,9 @@
 
 package org.bih.eos.jpabase.jpa.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceContextType;
 
 import org.bih.eos.jpabase.entity.Person;
 import org.springframework.stereotype.Repository;

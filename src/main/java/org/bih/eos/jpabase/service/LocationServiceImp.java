@@ -34,7 +34,7 @@ package org.bih.eos.jpabase.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.bih.eos.jpabase.jpa.dao.LocationDao;
 import org.bih.eos.jpabase.entity.Location;

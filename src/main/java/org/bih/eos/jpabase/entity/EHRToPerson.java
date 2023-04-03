@@ -18,7 +18,7 @@
 package org.bih.eos.jpabase.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ehr_to_person")
