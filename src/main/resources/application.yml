@@ -38,6 +38,7 @@ logging:
   file:
     name: ./logs/omopbridge.log
   level:
+    root: info
     org:
       springframework:
         boot: error
@@ -51,5 +52,7 @@ logging:
     rollingpolicy:
       max-history: '20'
       max-file-size: 100MB
+
+
 
 
