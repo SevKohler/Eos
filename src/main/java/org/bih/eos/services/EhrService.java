@@ -60,6 +60,7 @@ public class EhrService {
         List<Record1<Composition>> result = executeAqlQuery(0, ehrToPerson.getEhrId());
         convert(result, ehrToPerson);
         batchLoad(result, ehrToPerson, 0);
+      //  converterService.convertLastBatch();
     }
 
     private void batchLoad(List<Record1<Composition>> result, EHRToPerson ehrToPerson, long offset) {
@@ -74,10 +75,12 @@ public class EhrService {
     public void convert(List<Record1<Composition>> resultNew, EHRToPerson ehrToPerson) {
         for (Record1<Composition> compositionRecord1 : resultNew) {
             if (compositionRecord1.value1() != null) {
-                List<JPABaseEntity> converterResult = converterService.convert(new ConvertableComposition(compositionRecord1.value1(), ehrToPerson.getPerson()));
+              //  List<JPABaseEntity> converterResult = converterService.convert(new ConvertableComposition(compositionRecord1.value1(), ehrToPerson.getPerson()));
+                List<JPABaseEntity> converterResult = converterService.convertBatch(new ConvertableComposition(compositionRecord1.value1(), ehrToPerson.getPerson()));
                 output.increaseOneComposition(ehrToPerson.getEhrId(), converterResult.size());
             }
         }
+
         LOG.info("Current status of the mappings: " + output.getJson());
     }
 

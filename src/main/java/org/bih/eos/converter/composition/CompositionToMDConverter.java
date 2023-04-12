@@ -44,7 +44,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         Optional<VisitOccurrence> visitOccurrence = convertVisitOccurrence(convertableComposition.getComposition(), convertableComposition.getPerson());
         CdtExecutionParameterMedData cdtExecutionParameters = new CdtExecutionParameterMedData(convertableComposition.getPerson(), visitOccurrence);
         cdtConverterResults = iterateContent(convertableComposition.getComposition().getContent(), cdtExecutionParameters, conversionTracker, cdtConverterResults);
-        LOG.info("Mapped amount of archetypes: " + archetypeList);
+        LOG.info("Mapped amount of archetypes: " + archetypeList.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following archetypes: "+ archetypeList);
         return cdtConverterResults;
     }
 
@@ -78,7 +78,8 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
     private Optional<VisitOccurrence> convertVisitOccurrence(Composition composition, Person person) {
         VisitOccurrenceConverter visitOccurrenceConverter = new VisitOccurrenceConverter(defaultConverterServices);
         Optional<JPABaseEntity> visitOccurrence = visitOccurrenceConverter.convert(composition, person);
-        return visitOccurrence.map(jpaBaseEntity -> (VisitOccurrence) defaultConverterServices.getPersistenceService().create(jpaBaseEntity));
+        return visitOccurrence.map(jpaBaseEntity -> (VisitOccurrence) jpaBaseEntity);
+//        return visitOccurrence.map(jpaBaseEntity -> (VisitOccurrence) defaultConverterServices.getPersistenceService().create(jpaBaseEntity));
     }
 
     private List<JPABaseEntity> executeCDTConverter(CdtExecutionParameterMedData cdtExecutionParameters, List<ConversionTrack> conversionTracker) {

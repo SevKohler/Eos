@@ -28,6 +28,8 @@ spring:
       hibernate:
         default_schema: *schema
         hibernate.ddl-auto: update
+        jdbc:
+          batch_size:  1000
 
   datasource:
     password: postgres
@@ -38,6 +40,7 @@ logging:
   file:
     name: ./logs/omopbridge.log
   level:
+    org.hibernate.engine.jdbc.batch.internal.BatchingBatch: DEBUG
     root: info
     org:
       springframework:

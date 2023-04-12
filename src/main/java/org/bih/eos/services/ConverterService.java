@@ -28,6 +28,19 @@ public class ConverterService {
         return persistenceService.getPersistedEntities();
     }
 
+    public List<JPABaseEntity> convertBatch(ConvertableComposition convertableComposition) {
+        persistenceService.clearPersistedEntities();
+        TypeDescriptor sourceType = TypeDescriptor.valueOf(ConvertableComposition.class);
+        TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(JPABaseEntity.class));
+        persistenceService.createBatch((List<JPABaseEntity>) conversionService.convert(convertableComposition, sourceType, targetType));
+        return persistenceService.getPersistedEntities();
+    }
+
+    public List<JPABaseEntity> convertLastBatch() {
+        persistenceService.clearPersistedEntities();
+        persistenceService.createLastBatch();
+        return persistenceService.getPersistedEntities();
+    }
     public List<JPABaseEntity> convert(Composition composition) {
         persistenceService.clearPersistedEntities();
         TypeDescriptor sourceType = TypeDescriptor.valueOf(Composition.class);

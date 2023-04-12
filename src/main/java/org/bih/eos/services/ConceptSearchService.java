@@ -20,10 +20,12 @@ public class ConceptSearchService{
     private final ConceptRelationshipService conceptRelationshipService;
     private final ConceptService conceptService;
     private static final Logger LOG = LoggerFactory.getLogger(ConceptSearchService.class);
+    private final Concept empty_concept;
 
     public ConceptSearchService(ConceptService conceptService, ConceptRelationshipService conceptRelationshipService) {
         this.conceptRelationshipService = conceptRelationshipService;
         this.conceptService = conceptService;
+        this.empty_concept = conceptService.findById(0L);
     }
 
 
@@ -61,7 +63,7 @@ public class ConceptSearchService{
         LOG.info("Queried relationship concepts output: " + conceptRelationshipIds);
         if (conceptRelationshipIds.size() == 0) {
             LOG.info("No standard concept mapping was found a 0 concept id is returned as specified by OHDSI");
-            return Optional.of(conceptService.findById(0l));
+            return Optional.of(empty_concept);
         }
         return Optional.of(conceptService.findById(conceptRelationshipIds.get(0).getId().getConceptId2()));
     }
@@ -70,7 +72,7 @@ public class ConceptSearchService{
         List<Concept> concepts = conceptService.searchWithParams(0, 0, List.of(param), null);
         if (concepts.size() == 0) {
             LOG.info("No matching concept was found, ");
-            return Optional.of(conceptService.findById(0L)); //TODO if not matching pattern was found stop mapping or return 0 ?
+            return Optional.of(empty_concept); //TODO if not matching pattern was found stop mapping or return 0 ?
         }
         LOG.info("Queried source concepts output: " + concepts);
         return Optional.of(concepts.get(0));
