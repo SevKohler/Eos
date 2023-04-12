@@ -28,6 +28,7 @@ spring:
       hibernate:
         default_schema: *schema
         hibernate.ddl-auto: update
+        order_inserts: true
         jdbc:
           batch_size:  1000
 

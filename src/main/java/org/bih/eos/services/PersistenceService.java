@@ -32,19 +32,20 @@ public class PersistenceService {
                 increaseBaseEntityCounter(baseEntity.getClass().toString());
             }
         }
-        if (tranformedEntities.size() >= 1000) { entityManager.flush();
-            entityManager.flush();
-            entityManager.clear();
+        if (tranformedEntities.size() >= 1000) {
             LOG.info("Batch load 1000: " + tranformedEntities.size());
             for (JPABaseEntity jpaBaseEntity : tranformedEntities) {
                 entityManager.persist(jpaBaseEntity);
             }
+            entityManager.flush();
+            entityManager.clear();
             tranformedEntities = new ArrayList<>();
         }
     }
 
     @Transactional
     public void createLastBatch() {
+        System.out.println("Last Batch!");
         if (tranformedEntities.size() != 0) {
             for (JPABaseEntity jpaBaseEntity : tranformedEntities) {
                 entityManager.persist(jpaBaseEntity);

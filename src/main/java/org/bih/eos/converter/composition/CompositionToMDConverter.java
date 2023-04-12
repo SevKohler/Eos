@@ -79,6 +79,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         VisitOccurrenceConverter visitOccurrenceConverter = new VisitOccurrenceConverter(defaultConverterServices);
         Optional<JPABaseEntity> visitOccurrence = visitOccurrenceConverter.convert(composition, person);
         return visitOccurrence.map(jpaBaseEntity -> (VisitOccurrence) jpaBaseEntity);
+    //    return Optional.empty();
 //        return visitOccurrence.map(jpaBaseEntity -> (VisitOccurrence) defaultConverterServices.getPersistenceService().create(jpaBaseEntity));
     }
 

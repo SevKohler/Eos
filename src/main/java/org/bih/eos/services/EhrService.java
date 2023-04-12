@@ -60,7 +60,7 @@ public class EhrService {
         List<Record1<Composition>> result = executeAqlQuery(0, ehrToPerson.getEhrId());
         convert(result, ehrToPerson);
         batchLoad(result, ehrToPerson, 0);
-      //  converterService.convertLastBatch();
+        converterService.convertLastBatch();
     }
 
     private void batchLoad(List<Record1<Composition>> result, EHRToPerson ehrToPerson, long offset) {
@@ -95,4 +95,6 @@ public class EhrService {
             return new ArrayList<>();
         }
     }
+
+    
 }
