@@ -1,6 +1,5 @@
 package org.bih.eos.services;
 
-import org.bih.eos.jpabase.entity.Death;
 import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,55 +18,57 @@ public class PersistenceService {
     @PersistenceContext
     EntityManager entityManager;
 
-    private List<JPABaseEntity> tranformedEntities = new ArrayList<>();
+    private List<JPABaseEntity> transformedEntities = new ArrayList<>();
     HashMap<String, Integer> baseEntityMap = new HashMap<String, Integer>();
     private List<JPABaseEntity> persistedEntities = new ArrayList<>();
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(PersistenceService.class);
 
     @Transactional
     public void createBatch(List<JPABaseEntity> convertedEntities) {
-        for (JPABaseEntity baseEntity : convertedEntities) {
-            if (!baseEntity.getClass().equals(Death.class)) { //TODO this needs to be kicked OUT !
-                tranformedEntities.add(baseEntity);
-                increaseBaseEntityCounter(baseEntity.getClass().toString());
-            }
-        }
-        if (tranformedEntities.size() >= 1000) {
-            LOG.info("Batch load 1000: " + tranformedEntities.size());
-            for (JPABaseEntity jpaBaseEntity : tranformedEntities) {
-                entityManager.persist(jpaBaseEntity);
-            }
+        transformedEntities.addAll(convertedEntities);
+        if (transformedEntities.size() >= 1000) {
+            LOG.info("Batch load 1000: " + transformedEntities.size());
+            persistJpaEntities();
             entityManager.flush();
             entityManager.clear();
-            tranformedEntities = new ArrayList<>();
+            transformedEntities = new ArrayList<>();
+            LOG.info("Mapped amount of database Entities: " + baseEntityMap.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following entities: "+ baseEntityMap);
+
         }
     }
 
     @Transactional
     public void createLastBatch() {
-        System.out.println("Last Batch!");
-        if (tranformedEntities.size() != 0) {
-            for (JPABaseEntity jpaBaseEntity : tranformedEntities) {
-                entityManager.persist(jpaBaseEntity);
-            }
+        if (transformedEntities.size() != 0) {
+            persistJpaEntities();
+            LOG.info("Mapped amount of database Entities: " + baseEntityMap.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following entities: "+ baseEntityMap);
+            entityManager.flush();
+            entityManager.clear();
+            transformedEntities = new ArrayList<>();
         }
-        tranformedEntities = new ArrayList<>();
+
+    }
+
+    private void persistJpaEntities(){
+        for (JPABaseEntity jpaBaseEntity : transformedEntities) {
+            entityManager.persist(jpaBaseEntity);
+            increaseBaseEntityCounter(jpaBaseEntity.getClass().toString());
+            persistedEntities.add(jpaBaseEntity);
+        }
     }
 
     @Transactional
     public List<JPABaseEntity> create(List<JPABaseEntity> convertedEntities) {
         List<JPABaseEntity> outputs = new ArrayList<>();
         for (JPABaseEntity baseEntity : convertedEntities) {
-            if (!baseEntity.getClass().equals(Death.class)) { //TODO this needs to be kicked OUT !
                 increaseBaseEntityCounter(baseEntity.getClass().toString());
                 entityManager.persist(baseEntity);
                 persistedEntities.add(baseEntity);
                 outputs.add(baseEntity);
-            }
         }
         return outputs;
     }
-
+//['df8033b1-1dde-433c-ab0e-1f6fed8924ff']
     private void increaseBaseEntityCounter(String baseEntityName) {
         baseEntityName = baseEntityName.replace("class org.bih.eos.jpabase.entity.", "");
         if (baseEntityMap.containsKey(baseEntityName)) {
@@ -75,7 +76,6 @@ public class PersistenceService {
         } else {
             baseEntityMap.put(baseEntityName, 0);
         }
-        LOG.info("Current amount of created BaseEntities: " + baseEntityMap);
     }
 
     @Transactional

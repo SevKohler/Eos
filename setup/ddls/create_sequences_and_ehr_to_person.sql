@@ -32,4 +32,4 @@ CREATE TABLE IF NOT EXISTS @cdmDatabaseSchema.ehr_to_person
 ALTER TABLE IF EXISTS @cdmDatabaseSchema.ehr_to_person
     OWNER to postgres;
 
-CREATE INDEX idx_concept_relationship_concept ON @cdmDatabaseSchema.concept_relationship(concept_id_1, relationship_id);
+-- CREATE INDEX idx_concept_relationship_concept ON @cdmDatabaseSchema.concept_relationship(concept_id_1, relationship_id);
