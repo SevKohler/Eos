@@ -46,7 +46,7 @@ public class PersistenceService {
             entityManager.clear();
             transformedEntities = new ArrayList<>();
         }
-
+        baseEntityMap = new HashMap<>();
     }
 
 
