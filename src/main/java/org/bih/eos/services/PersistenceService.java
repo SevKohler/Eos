@@ -19,6 +19,7 @@ public class PersistenceService {
     @PersistenceContext
     EntityManager entityManager;
 
+    private Boolean isBatchProcessing = false;
     private List<JPABaseEntity> transformedEntities = new ArrayList<>();
     HashMap<String, Integer> baseEntityMap = new HashMap<String, Integer>();
     private List<JPABaseEntity> persistedEntities = new ArrayList<>();
@@ -26,6 +27,7 @@ public class PersistenceService {
 
     @Transactional
     public void createBatch(List<JPABaseEntity> convertedEntities) {
+        isBatchProcessing = true;
         transformedEntities.addAll(convertedEntities);
         if (transformedEntities.size() >= 1000) {
             LOG.info("Batch load 1000: " + transformedEntities.size());
@@ -47,6 +49,7 @@ public class PersistenceService {
             transformedEntities = new ArrayList<>();
         }
         baseEntityMap = new HashMap<>();
+        isBatchProcessing = false;
     }
 
 
@@ -83,9 +86,15 @@ public class PersistenceService {
 
     @Transactional
     public JPABaseEntity create(JPABaseEntity convertedEntity) {
-        entityManager.persist(convertedEntity);
-        persistedEntities.add(convertedEntity);
-        increaseBaseEntityCounter(convertedEntity.getClass().toString());
+        //Check if Batch
+        if(isBatchProcessing){
+            transformedEntities.add(convertedEntity);
+            persistedEntities.add(convertedEntity);
+        }else{
+            entityManager.persist(convertedEntity);
+            increaseBaseEntityCounter(convertedEntity.getClass().toString());
+            persistedEntities.add(convertedEntity);
+        }
         return convertedEntity;
     }
 
