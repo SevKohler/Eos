@@ -37,7 +37,7 @@ public class EhrController {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             Ehrs ehrs = objectMapper.readValue(json, Ehrs.class);
-            return new ResponseEntity<>(new EhrService(ehrToPersonService, openEhrClient, converterService).convertEhrList(ehrs), HttpStatus.OK);
+            return new ResponseEntity<>(new EhrService(ehrToPersonService, openEhrClient, converterService).convertSpecific(ehrs), HttpStatus.OK);
         } catch (JsonProcessingException e) {
             return new ResponseEntity<>("{ \"message\" : \"Json malformed\" }", HttpStatus.BAD_REQUEST);
         }

@@ -21,6 +21,7 @@ import org.springframework.lang.NonNull;
 import java.util.*;
 
 public class CompositionToMDConverter extends CompositionToEntityConverter<CDTConverter, ConvertableComposition> {
+    HashMap<String, Integer> archetypeList = new HashMap<String, Integer>();
 
     private static final Logger LOG = LoggerFactory.getLogger(CompositionToMDConverter.class);
 
@@ -43,6 +44,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         Optional<VisitOccurrence> visitOccurrence = convertVisitOccurrence(convertableComposition.getComposition(), convertableComposition.getPerson());
         CdtExecutionParameterMedData cdtExecutionParameters = new CdtExecutionParameterMedData(convertableComposition.getPerson(), visitOccurrence);
         cdtConverterResults = iterateContent(convertableComposition.getComposition().getContent(), cdtExecutionParameters, conversionTracker, cdtConverterResults);
+        LOG.info("Mapped amount of archetypes: " + archetypeList.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following archetypes: " + archetypeList);
         return cdtConverterResults;
     }
 
@@ -52,6 +54,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
             cdtExecutionParameters.setContentItem(contentItem);
             if (contentItem.getClass().equals(Section.class)) {
                 cdtConverterResults.addAll(iterateContent(((Section) contentItem).getItems(), cdtExecutionParameters, conversionTracker, cdtConverterResults));
+
                 return cdtConverterResults;
             }
             if (converterExists(cdtExecutionParameters.getArchetypeId())) {
@@ -64,6 +67,14 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         return cdtConverterResults;
     }
 
+    private void increaseArchetypeCounter(String archetypeNodeId) {
+        if (archetypeList.containsKey(archetypeNodeId)) {
+            archetypeList.put(archetypeNodeId, archetypeList.get(archetypeNodeId) + 1);
+        } else {
+            archetypeList.put(archetypeNodeId, 0);
+        }
+    }
+
     private Optional<VisitOccurrence> convertVisitOccurrence(Composition composition, Person person) {
         VisitOccurrenceConverter visitOccurrenceConverter = new VisitOccurrenceConverter(defaultConverterServices);
         Optional<JPABaseEntity> visitOccurrence = visitOccurrenceConverter.convert(composition, person);
@@ -72,6 +83,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 
     private List<JPABaseEntity> executeCDTConverter(CdtExecutionParameterMedData cdtExecutionParameters, List<ConversionTrack> conversionTracker) {
         List<JPABaseEntity> cdtConverterResults = new ArrayList<>();
+        increaseArchetypeCounter(cdtExecutionParameters.archetypeId);
         for (CDTConverter converter : conversionMap.get(cdtExecutionParameters.archetypeId)) {
             if (converter instanceof CDTMedicalDataConverter) {
                 List<JPABaseEntity> currentConversionResult =

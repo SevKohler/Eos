@@ -1,9 +1,16 @@
 package org.bih.eos.converter.cdt.conversion_entities;
 
-import org.bih.eos.jpabase.entity.JPABaseEntity;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import org.bih.eos.jpabase.entity.*;
+import org.checkerframework.checker.nullness.Opt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.convert.ConversionException;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.function.Consumer;
@@ -23,22 +30,54 @@ public abstract class Entity<B extends JPABaseEntity> {
     public Optional<JPABaseEntity> toJpaEntity() {
         requiredOptionalFieldNull = !validateRequiredOptionalsNotNull();
         if (requiredFieldEmpty || requiredOptionalFieldNull) {
-            generateLog();
+          //  generateLog();
+            // return extractVisitOccurrence(jpaEntity);
             return Optional.empty();
         } else {
             return Optional.of(jpaEntity);
         }
     }
 
-    private void generateLog() { //TODO add property for display
-/*        ObjectMapper mapper = new ObjectMapper();
+    private Optional<JPABaseEntity> extractVisitOccurrence(B jpaEntity){
+        try {
+            Method visitOccurrence = getVisitOccurrenceMethod(jpaEntity);
+           return Optional.of((JPABaseEntity)visitOccurrence.invoke(jpaEntity));
+        } catch (NoSuchMethodException e) {
+            return Optional.empty();
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException("Reflection on getVisitOccurrence failed, check your code!");
+        }
+    }
+
+    private static Method getVisitOccurrenceMethod(Object evaluationObject) throws NoSuchMethodException {
+        if (evaluationObject.getClass() == Measurement.class) {
+            return Measurement.class.getDeclaredMethod("getVisitOccurrence");
+        } else if (evaluationObject.getClass() == ProcedureOccurrence.class) {
+            return ProcedureOccurrence.class.getDeclaredMethod("getVisitOccurrence");
+        } else if (evaluationObject.getClass() == DrugExposure.class) {
+            return DrugExposure.class.getDeclaredMethod("getVisitOccurrence");
+        } else if (evaluationObject.getClass() == Observation.class) {
+            return Observation.class.getDeclaredMethod("getVisitOccurrence");
+        } else if (evaluationObject.getClass() == ConditionOccurrence.class) {
+            return ConditionOccurrence.class.getDeclaredMethod("getVisitOccurrence");
+        } else if (evaluationObject.getClass() == DeviceExposure.class) {
+            return DeviceExposure.class.getDeclaredMethod("getVisitOccurrence");
+        }else if (evaluationObject.getClass() == Person.class) {
+            return Person.class.getDeclaredMethod("getVisitOccurrence");
+        } else {
+           throw new NoSuchMethodException();
+        }
+    }
+
+ /*   private void generateLog() { //TODO add property for display
+        ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             LOG.warn("ignore conversion since field is missing. " + mapper.writeValueAsString(jpaEntity));
         } catch (JsonProcessingException e) {
             //ignore
-        }*/
-    }
+        }
+    }*/
 
     public <T> void populateFieldIfPresent(Optional<T> optionalValue, Consumer<T> setterConsumer) {
         requiredFieldEmpty = CDMFieldSetter.setFieldIfPresent(optionalValue, requiredFieldEmpty, setterConsumer);

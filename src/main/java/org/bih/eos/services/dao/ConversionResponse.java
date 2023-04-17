@@ -5,26 +5,31 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bih.eos.exceptions.UnprocessableEntityException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ConversionResponse {
-    HashMap<String, EhrResponse> ehrResponses = new HashMap<>();
 
+    List<String> ehrIds = new ArrayList<>();
+
+    EhrResponse ehrResponse = new EhrResponse();
     static class EhrResponse {
+
+        @JsonProperty("amount of ehrs mapped")
+        long ehrCount;
         @JsonProperty("amount of clinical data table rows added")
         long convertedOmopEntities;
         @JsonProperty("amount of compositions mapped")
         long convertedCompositions;
 
-        public EhrResponse(long convertedOmopEntities, long convertedCompositions) {
-            this.convertedOmopEntities = convertedOmopEntities;
-            this.convertedCompositions = convertedCompositions;
-        }
-
         public void increaseConvertedOmopEntities(long value) {
             convertedOmopEntities += value;
         }
 
+        public void setEhrCount(long value) {
+            ehrCount = value;
+        }
         public void increaseConvertedCompositions(long value) {
             convertedCompositions += value;
         }
@@ -39,21 +44,23 @@ public class ConversionResponse {
     }
 
     public String getJson() {
+        ehrResponse.setEhrCount(ehrIds.size());
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.writeValueAsString(ehrResponses);
+            return mapper.writeValueAsString(ehrResponse);
         } catch (JsonProcessingException e) {
             throw new UnprocessableEntityException("Error converting to json");
         }
     }
 
     public void increaseOneComposition(String ehrId, int size) {
-        if(ehrResponses.containsKey(ehrId)){
-            EhrResponse ehrResponse = ehrResponses.get(ehrId);
+        if (ehrIds.contains(ehrId)) {
             ehrResponse.increaseConvertedOmopEntities(size);
             ehrResponse.increaseConvertedCompositions(1);
         }else{
-            ehrResponses.put(ehrId, new EhrResponse(1, size));
+            ehrIds.add(ehrId);
+            ehrResponse.increaseConvertedOmopEntities(size);
+            ehrResponse.increaseConvertedCompositions(1);
         }
     }
 }

@@ -10,7 +10,7 @@ Eos
 * Postgres if not using docker
 * optionally: openEHR platform, otherwise there is the option to setup one down below
 
-### Setting up an OMOP Db and connect it to an openEHR platform
+### Setting up Eos
 
 1. clone repo `git clone --recursive`
 2. Use Common Data model sqls from `setup/ddls/` or download
@@ -83,11 +83,7 @@ $ mvn clean install
      url: jdbc:postgresql://localhost:5433/YOUR_SCHEMA #default is public
 ```
 
-3. configure openEHR platform in `src/main/resources/application.yml`. <br>
-   If you do not have setup an openEHR platform you can use [ehrbase](https://github.com/ehrbase/ehrbase).
-   (
-   See [here](https://ehrbase.readthedocs.io/en/latest/03_development/04_docker_images/01_ehrbase/02_use_image/index.html#run-ehrbase-db-with-docker-compose)
-   for a guide how to set it up with docker-compose.)
+3. configure openEHR platform in `src/main/resources/application.yml`.
 
 ```yml
   ehrbase:
@@ -100,6 +96,9 @@ $ mvn clean install
 ```
 
 4. configure cronjob for eras or leave them for manual execution
+
+
+5. **POSTMAN** examples can be found in `.config/`
 
 ## Mappings
 

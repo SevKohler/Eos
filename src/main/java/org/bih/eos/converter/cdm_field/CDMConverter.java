@@ -29,8 +29,11 @@ public abstract class CDMConverter<T> {
         for (ValueEntry valueEntry : valueEntries) {
             if (valueEntry.getCode() != null) {
                 return convertCode(valueEntry.getCode());
-            } else if (valueEntry.getPath() != null && PathProcessor.getItemAtPath(contentItem, valueEntry.getPath()).isPresent() && convertPath(contentItem, valueEntry.getPath()).isPresent() ) {
-                return convertPath(contentItem, valueEntry.getPath());
+            } else if (valueEntry.getPath() != null && PathProcessor.getItemAtPath(contentItem, valueEntry.getPath()).isPresent()) {
+                Optional<T> convertedPath = convertPath(contentItem, valueEntry.getPath());
+                if(convertedPath.isPresent()){
+                    return convertedPath;
+                }
             }
         }
         return Optional.empty();

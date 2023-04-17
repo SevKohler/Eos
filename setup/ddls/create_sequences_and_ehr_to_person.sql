@@ -31,3 +31,4 @@ CREATE TABLE IF NOT EXISTS @cdmDatabaseSchema.ehr_to_person
 
 ALTER TABLE IF EXISTS @cdmDatabaseSchema.ehr_to_person
     OWNER to postgres;
+
