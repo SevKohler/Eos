@@ -24,7 +24,7 @@ public abstract class CustomCDTConverter extends CDTConverterWithConfig {
     }
 
     protected JPABaseEntity persist(JPABaseEntity convertedEntity) {
-        return defaultConverterServices.getPersistenceService().create(convertedEntity);
+        return defaultConverterServices.getPersistenceService().createInstant(convertedEntity);
     }
 
 }

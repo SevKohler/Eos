@@ -1,5 +1,6 @@
 package org.bih.eos.services;
 
+import jakarta.persistence.EntityExistsException;
 import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.bih.eos.jpabase.entity.Measurement;
 import org.slf4j.LoggerFactory;
@@ -87,14 +88,22 @@ public class PersistenceService {
     @Transactional
     public JPABaseEntity create(JPABaseEntity convertedEntity) {
         //Check if Batch
-        if(isBatchProcessing){
+        if (isBatchProcessing) {
             transformedEntities.add(convertedEntity);
             persistedEntities.add(convertedEntity);
-        }else{
+        } else {
             entityManager.persist(convertedEntity);
             increaseBaseEntityCounter(convertedEntity.getClass().toString());
             persistedEntities.add(convertedEntity);
         }
+        return convertedEntity;
+    }
+
+    @Transactional
+    public JPABaseEntity createInstant(JPABaseEntity convertedEntity) {
+        entityManager.persist(convertedEntity);
+        increaseBaseEntityCounter(convertedEntity.getClass().toString());
+        persistedEntities.add(convertedEntity);
         return convertedEntity;
     }
 
