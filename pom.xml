@@ -18,7 +18,7 @@
 
     <properties>
         <ehrbase-sdk.version>10cce9b</ehrbase-sdk.version>
-        <java.version>18</java.version>
+        <java.version>19</java.version>
     </properties>
 
     <dependencies>
