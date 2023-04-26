@@ -21,7 +21,7 @@ Eos
 ### With Docker
 
 4. Check if the OMOP_CDM_vocabulary_load sql script contains all your csvs.
-5. choose a compose file of your liking they can be found in `setup/`.
+5. choose a docker-compose file of your liking they can be found in `setup/`.
 **Setup may take a while since all the vocabularies are loaded into the database**
 
 ### Without Docker
