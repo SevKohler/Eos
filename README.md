@@ -16,34 +16,7 @@ Eos
 2. Use Common Data model sqls from `setup/ddls/` or download
    them [here](https://github.com/OHDSI/CommonDataModel/tree/master/inst/ddl/5.4/postgresql). If downloaded change the file names according to the provided ones (delete the version number).
 3. Download Vocabs from https://athena.ohdsi.org/, you need to create an Account for that, afterwards copy them
-   to `setup/vocab/`. 
-   <br> Recommended are:
-
-| ID  | CDM	Code (cdm v5)    | 
-|-----|----------------------|
-| 12  | Gender               |
-| 13  | Race                 | 
-| 71  | ABMS                 | 
-| 71  | Medicare Specialty   |
-| 6   | LOINC                | 
-| 21  | ATC	WHO              |
-| 2   | ICD9CM               | 
-| 82  | RxNorm Extension     |                          
-| 14  | CMS Place of Service |
-| 1   | SNOMED               |   
-| 43  | Revenue Code         |                 
-| 44  | Ethnicity            |                      
-| 65  | Currency             |                 
-| 9   | NDC                  |                 
-| 70  | ICD10CM              | 
-| 34  | ICD10                | 
-| 142 | OPS                 | 	
-| 47  | NUCC                 |    
-| 5   | HCPCS                |   
-| 8   | RxNorm               | 
-| 50  | SPL                  |  
-| 128 | OMOP Extension       | 
-| 3   | ICD9Proc             | 
+   to `setup/vocab/`. For recommended vocabs see Wiki.
 
 ### With Docker
 
@@ -143,3 +116,5 @@ Special thanks
 ---
 We thank the Georgia Tech Research Institute for providing jpa classes for OMOP and vita systems for their free
 accessible openEHR tooling.
+
+
