@@ -10,6 +10,8 @@ Severin Kohler, Diego Boscá, Florian Kärcher, Birger Haarbrandt, Manuel Prinz,
 
 Thanks!
 
+Introduction
+------
 ![connectEHR](https://user-images.githubusercontent.com/5692615/234679600-432ab931-4561-48fe-8521-1bd57955b3bb.svg)
 
 ## Setup
