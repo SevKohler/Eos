@@ -1,9 +1,6 @@
 name: Java CI Publish Docker Image
 
-on:
-  push:
-    tags: 
-      - '*'
+on: push
 
 env:
   REGISTRY: ghcr.io
