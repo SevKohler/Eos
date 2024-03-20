@@ -1,6 +1,7 @@
 #docker-compose-full.yml
 #https://github.com/docker-library/postgres/issues/146
 services:
+
   cdm-db:
     image: cdm_db:latest
     build:
@@ -18,6 +19,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 70
+
+  eos:
+    image: ghcr.io/sevkohler/eos:latest
+    volumes:
+      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
+    environment:
+      DB_URL: jdbc:postgresql://localhost:5433/postgres
+    ports:
+      - "8081:8081"
+    depends_on:
+      cdm-db:
+        condition: service_healthy
+
   ehrbase:
     image: ehrbase/ehrbase:next
     ports:
@@ -53,18 +67,6 @@ services:
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
 
-  eos:
-    image: ghcr.io/sevkohler/eos:latest
-    volumes:
-      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
-    environment:
-      DB_URL: jdbc:postgresql://localhost:5433/postgres
-    ports:
-      - "8081:8081"
-    depends_on:
-      cdm-db:
-        condition: service_healthy
+
 networks:
-  ehrbase-network: { }
-
-
+  ehrbase-net: {}
