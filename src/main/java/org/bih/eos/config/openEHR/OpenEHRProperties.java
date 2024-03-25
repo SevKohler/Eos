@@ -23,7 +23,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @since 1.0.0
  */
-@ConfigurationProperties(prefix = "omop-bridge.openehr")
+@ConfigurationProperties(prefix = "eos.openehr")
 public class OpenEHRProperties {
 
     private String baseUrl;

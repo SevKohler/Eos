@@ -6,13 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - eos-net
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-    #  expose:
-    #    - "5433" # Publishes 5433 to other containers but NOT to host machine
     ports:
-      - "5433:5433"
+      - "5432:5432"
     healthcheck:
       test: "pg_isready -q -h localhost"
       interval: 10s
@@ -21,13 +21,15 @@ services:
 
   eos:
     image: ghcr.io/sevkohler/eos:latest
-    volumes:
-      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:
-      DB_URL: jdbc:postgresql://localhost:5432/postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
     ports:
       - "8081:8081"
     depends_on:
       cdm-db:
         condition: service_healthy
-    network_mode: "host"
+    networks:
+      - eos-net
+
+networks:
+  eos-net: {}

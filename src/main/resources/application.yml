@@ -1,4 +1,4 @@
-omop-bridge:
+eos:
   person-conversion:
     mode: automatic #conversion for composition conversion
   cdm:

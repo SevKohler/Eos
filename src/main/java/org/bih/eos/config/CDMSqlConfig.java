@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Configuration
 @EnableScheduling
-@ConditionalOnProperty(prefix = "omop-bridge.eras-period-cron", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "eos.eras-period-cron", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class CDMSqlConfig {
     final ErasPeriodService executeSqlService;
 
@@ -18,7 +18,7 @@ public class CDMSqlConfig {
         this.executeSqlService = executeSqlService;
     }
 
-    @Scheduled(cron = "${omop-bridge.eras-period-cron.cron}")
+    @Scheduled(cron = "${eos.eras-period-cron.cron}")
     @Transactional
     void executeSqls() {
         executeSqlService.executeSqls();

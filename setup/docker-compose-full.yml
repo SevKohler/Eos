@@ -1,19 +1,20 @@
-#docker-compose-full.yml
+#docker-compose-eos+cdm.yml
 #https://github.com/docker-library/postgres/issues/146
 services:
-
   cdm-db:
     image: cdm_db:latest
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - ehrbase-net
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-    #  expose:
-    #    - "5433" # Publishes 5433 to other containers but NOT to host machine
+    #expose:
+    #- 5433 # Publishes 5433 to other containers but NOT to host machine
     ports:
-      - "5433:5432"
+      - 5432:5432
     healthcheck:
       test: "pg_isready -q -h localhost"
       interval: 10s
@@ -22,10 +23,14 @@ services:
 
   eos:
     image: ghcr.io/sevkohler/eos:latest
-    volumes:
-      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:
-      DB_URL: jdbc:postgresql://localhost:5433/postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
+      EOS_OPENEHR_BASE-URL: http://ehrbase:8080/ehrbase/
+      EOS_OPENEHR_SECURITY_TYPE: BASIC
+      EOS_OPENEHR_SECURITY_USER_NAME: myuser
+      EOS_OPENEHR_SECURITY_USER_PASSWORD: myPassword432
+    networks:
+      - ehrbase-net
     ports:
       - "8081:8081"
     depends_on:
@@ -39,7 +44,7 @@ services:
     networks:
       - ehrbase-net
     environment:
-      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
+      DB_URL: jdbc:postgresql://ehrdb:5433/ehrbase
       DB_USER_ADMIN: ehrbase
       DB_PASS_ADMIN: ehrbase
       SECURITY_AUTHTYPE: BASIC
@@ -54,9 +59,9 @@ services:
     restart: on-failure
 
   ehrdb:
-    image: ehrbase/ehrbase-postgres:13.4.v2
+    image: ehrbase/ehrbase-postgres:latest
     ports:
-      - 5432:5432
+      - 5433:5433
     networks:
       - ehrbase-net
     environment:
@@ -66,7 +71,7 @@ services:
       EHRBASE_PASSWORD_ADMIN: ehrbase
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
-
+    command: -p 5433
 
 networks:
   ehrbase-net: {}
