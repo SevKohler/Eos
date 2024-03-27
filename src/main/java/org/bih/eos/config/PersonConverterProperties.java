@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "omop-bridge.person-conversion")
+@ConfigurationProperties(prefix = "eos.person-conversion")
 public class PersonConverterProperties {
 
     private Mode mode = Mode.AUTOMATIC;

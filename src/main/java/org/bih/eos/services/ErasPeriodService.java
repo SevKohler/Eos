@@ -17,9 +17,9 @@ import java.util.List;
 @Service
 public class ErasPeriodService {
 
-    @Value("${omop-bridge.cdm.database-name}")
+    @Value("${eos.cdm.database-name: postgres}")
     private String databaseName;
-    @Value("${omop-bridge.cdm.schema}")
+    @Value("${eos.cdm.schema: public}")
     private String databaseSchema;
     @PersistenceUnit
     EntityManagerFactory entityManagerFactory;

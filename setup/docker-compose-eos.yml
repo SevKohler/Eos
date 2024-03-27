@@ -3,8 +3,6 @@ version: '3'
 services:
   eos:
     image: ghcr.io/sevkohler/eos:latest
-    volumes:
-      - ../src/main/resources/application.yml:/workspace/BOOT-INF/classes/application.yml
     environment:
       DB_URL: jdbc:postgresql://localhost:5433/postgres
     ports:

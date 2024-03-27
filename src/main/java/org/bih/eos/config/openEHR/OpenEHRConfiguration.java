@@ -62,7 +62,7 @@ public class OpenEHRConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "omop-bridge.openehr.security.type", havingValue = "oauth2")
+    @ConditionalOnProperty(name = "eos.openehr.security.type", havingValue = "oauth2")
     public AccessTokenService accessTokenService() {
         OpenEHRProperties.OAuth2 oauth2 = properties.getSecurity().getOAuth2();
         return new AccessTokenService(oauth2.getTokenUrl(), oauth2.getClientId(), oauth2.getClientSecret());

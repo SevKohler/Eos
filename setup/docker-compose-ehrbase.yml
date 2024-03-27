@@ -5,11 +5,11 @@ services:
   ehrbase:
     image: ehrbase/ehrbase:next
     ports:
-      - 8080:8080
+      - 8090:8080
     networks:
       - ehrbase-net
     environment:
-      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
+      DB_URL: jdbc:postgresql://ehrdb:5433/ehrbase
       DB_USER_ADMIN: ehrbase
       DB_PASS_ADMIN: ehrbase
       SECURITY_AUTHTYPE: BASIC
@@ -24,9 +24,9 @@ services:
     restart: on-failure
 
   ehrdb:
-    image: ehrbase/ehrbase-postgres:13.4.v2
+    image: ehrbase/ehrbase-postgres:latest
     ports:
-      - 5432:5432
+      - 5433:5433
     networks:
       - ehrbase-net
     environment:
@@ -36,6 +36,6 @@ services:
       EHRBASE_PASSWORD_ADMIN: ehrbase
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
-
+    command: -p 5433
 networks:
   ehrbase-net: {}
