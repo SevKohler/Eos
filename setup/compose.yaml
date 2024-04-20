@@ -14,8 +14,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
-    #expose:
-    #- 5433 # Publishes 5433 to other containers but NOT to host machine
     ports:
       - 5432:5432
     volumes:
