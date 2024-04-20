@@ -1,13 +1,15 @@
-#docker-compose-eos+cdm.yml
 #https://github.com/docker-library/postgres/issues/146
 services:
   cdm-db:
+    profiles:
+      - cdm
     image: cdm_db:latest
     build:
       context: .
       dockerfile: Dockerfile
     networks:
       - ehrbase-net
+      - eos-net
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -22,6 +24,8 @@ services:
       retries: 70
 
   eos:
+    profiles:
+      - eos
     image: ghcr.io/sevkohler/eos:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
@@ -31,6 +35,7 @@ services:
       EOS_OPENEHR_SECURITY_USER_PASSWORD: myPassword432
     networks:
       - ehrbase-net
+      - eos-net
     ports:
       - "8081:8081"
     depends_on:
@@ -38,9 +43,11 @@ services:
         condition: service_healthy
 
   ehrbase:
+    profiles:
+      - ehrbase
     image: ehrbase/ehrbase:next
     ports:
-      - 8080:8080
+      - 8090:8080
     networks:
       - ehrbase-net
     environment:
@@ -59,6 +66,8 @@ services:
     restart: on-failure
 
   ehrdb:
+    profiles:
+      - ehrbase
     image: ehrbase/ehrbase-postgres:latest
     ports:
       - 5433:5433
@@ -74,4 +83,5 @@ services:
     command: -p 5433
 
 networks:
-  ehrbase-net: {}
+  ehrbase-net:
+  eos-net:
