@@ -13,10 +13,13 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
     #expose:
     #- 5433 # Publishes 5433 to other containers but NOT to host machine
     ports:
       - 5432:5432
+    volumes:
+      - cdm-db-pgdata:/var/lib/postgresql/data
     healthcheck:
       test: "pg_isready -h localhost -U $$POSTGRES_USER"
       interval: 10s
@@ -76,12 +79,19 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
       EHRBASE_USER_ADMIN: ehrbase
       EHRBASE_PASSWORD_ADMIN: ehrbase
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
     command: -p 5433
+    volumes:
+      - ehrdb-pgdata:/var/lib/postgresql/data/pgdata
 
 networks:
   ehrbase-net:
   eos-net:
+
+volumes:
+  cdm-db-pgdata:
+  ehrdb-pgdata:
