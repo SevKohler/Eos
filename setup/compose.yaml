@@ -65,7 +65,8 @@ services:
       DB_USER: ehrbase_restricted
       DB_PASS: ehrbase_restricted
     depends_on:
-      - ehrdb
+      ehrdb:
+        condition: service_healthy
     restart: on-failure
 
   ehrdb:
@@ -86,6 +87,11 @@ services:
       EHRBASE_PASSWORD: ehrbase_restricted
     volumes:
       - ehrdb-pgdata:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: "pg_isready -h localhost -U $$POSTGRES_USER"
+      interval: 10s
+      timeout: 5s
+      retries: 70
 
 networks:
   ehrbase-net:
