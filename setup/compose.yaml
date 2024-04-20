@@ -29,7 +29,7 @@ services:
     image: ghcr.io/sevkohler/eos:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
-      EOS_OPENEHR_BASE-URL: http://ehrbase:8080/ehrbase/
+      EOS_OPENEHR_BASE_URL: http://ehrbase:8080/ehrbase/
       EOS_OPENEHR_SECURITY_TYPE: BASIC
       EOS_OPENEHR_SECURITY_USER_NAME: myuser
       EOS_OPENEHR_SECURITY_USER_PASSWORD: myPassword432
