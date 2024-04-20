@@ -44,6 +44,8 @@ services:
     depends_on:
       cdm-db:
         condition: service_healthy
+      ehrbase:
+        condition: service_started   # no healthcheck available
 
   ehrbase:
     #profiles:
