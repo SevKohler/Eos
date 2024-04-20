@@ -54,7 +54,7 @@ services:
     networks:
       - ehrbase-net
     environment:
-      DB_URL: jdbc:postgresql://ehrdb:5433/ehrbase
+      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
       DB_USER_ADMIN: ehrbase
       DB_PASS_ADMIN: ehrbase
       SECURITY_AUTHTYPE: BASIC
@@ -73,7 +73,7 @@ services:
     #  - ehrbase
     image: ehrbase/ehrbase-postgres:latest
     ports:
-      - 5433:5433
+      - 5433:5432
     networks:
       - ehrbase-net
     environment:
@@ -84,7 +84,6 @@ services:
       EHRBASE_PASSWORD_ADMIN: ehrbase
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
-    command: -p 5433
     volumes:
       - ehrdb-pgdata:/var/lib/postgresql/data/pgdata
 
