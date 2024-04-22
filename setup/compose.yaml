@@ -1,8 +1,8 @@
 #https://github.com/docker-library/postgres/issues/146
 services:
   cdm-db:
-    #profiles:
-    #  - cdm
+    profiles:
+      - cdm
     image: cdm_db:latest
     build:
       context: .
@@ -25,8 +25,8 @@ services:
       retries: 70
 
   eos:
-    #profiles:
-    #  - eos
+    profiles:
+      - eos
     image: ghcr.io/sevkohler/eos:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
@@ -46,8 +46,8 @@ services:
         condition: service_started   # no healthcheck available
 
   ehrbase:
-    #profiles:
-    #  - ehrbase
+    profiles:
+      - ehrbase
     image: ehrbase/ehrbase:next
     ports:
       - 8090:8080
@@ -70,8 +70,8 @@ services:
     restart: on-failure
 
   ehrdb:
-    #profiles:
-    #  - ehrbase
+    profiles:
+      - ehrbase
     image: ehrbase/ehrbase-postgres:latest
     ports:
       - 5433:5432
