@@ -18,6 +18,7 @@ services:
       - 5432:5432
     volumes:
       - cdm-db-pgdata:/var/lib/postgresql/data
+      - ./vocab:/data/vocab:ro
     healthcheck:
       test: "pg_isready -h localhost -U $$POSTGRES_USER"
       interval: 10s
