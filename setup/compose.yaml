@@ -1,50 +1,60 @@
-#docker-compose-eos+cdm.yml
 #https://github.com/docker-library/postgres/issues/146
 services:
   cdm-db:
+    #profiles:
+    #  - cdm
     image: cdm_db:latest
     build:
       context: .
       dockerfile: Dockerfile
     networks:
       - ehrbase-net
+      - eos-net
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-    #expose:
-    #- 5433 # Publishes 5433 to other containers but NOT to host machine
+      PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - 5432:5432
+    volumes:
+      - cdm-db-pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: "pg_isready -q -h localhost"
+      test: "pg_isready -h localhost -U $$POSTGRES_USER"
       interval: 10s
       timeout: 5s
       retries: 70
 
   eos:
+    #profiles:
+    #  - eos
     image: ghcr.io/sevkohler/eos:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
-      EOS_OPENEHR_BASE-URL: http://ehrbase:8080/ehrbase/
+      EOS_OPENEHR_BASE_URL: http://ehrbase:8080/ehrbase/
       EOS_OPENEHR_SECURITY_TYPE: BASIC
       EOS_OPENEHR_SECURITY_USER_NAME: myuser
       EOS_OPENEHR_SECURITY_USER_PASSWORD: myPassword432
     networks:
       - ehrbase-net
+      - eos-net
     ports:
       - "8081:8081"
     depends_on:
       cdm-db:
         condition: service_healthy
+      ehrbase:
+        condition: service_started   # no healthcheck available
 
   ehrbase:
+    #profiles:
+    #  - ehrbase
     image: ehrbase/ehrbase:next
     ports:
-      - 8080:8080
+      - 8090:8080
     networks:
       - ehrbase-net
     environment:
-      DB_URL: jdbc:postgresql://ehrdb:5433/ehrbase
+      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
       DB_USER_ADMIN: ehrbase
       DB_PASS_ADMIN: ehrbase
       SECURITY_AUTHTYPE: BASIC
@@ -55,23 +65,38 @@ services:
       DB_USER: ehrbase_restricted
       DB_PASS: ehrbase_restricted
     depends_on:
-      - ehrdb
+      ehrdb:
+        condition: service_healthy
     restart: on-failure
 
   ehrdb:
+    #profiles:
+    #  - ehrbase
     image: ehrbase/ehrbase-postgres:latest
     ports:
-      - 5433:5433
+      - 5433:5432
     networks:
       - ehrbase-net
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
       EHRBASE_USER_ADMIN: ehrbase
       EHRBASE_PASSWORD_ADMIN: ehrbase
       EHRBASE_USER: ehrbase_restricted
       EHRBASE_PASSWORD: ehrbase_restricted
-    command: -p 5433
+    volumes:
+      - ehrdb-pgdata:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: "pg_isready -h localhost -U $$POSTGRES_USER"
+      interval: 10s
+      timeout: 5s
+      retries: 70
 
 networks:
-  ehrbase-net: {}
+  ehrbase-net:
+  eos-net:
+
+volumes:
+  cdm-db-pgdata:
+  ehrdb-pgdata:
