@@ -35,7 +35,8 @@ Introduction
 ### With Docker
 
 4. Check if the OMOP_CDM_vocabulary_load sql script contains all your csvs.
-5. choose a docker-compose file of your liking they can be found in `setup/`.
+5. choose a docker-compose profile of your liking which can be found in `setup/`.<br>
+For the entire stack run: `docker-compose --profile eos --profile cdm --profile ehrbase up`.<br>
 **Setup may take a while since all the vocabularies are loaded into the database**
 
 ### Without Docker
