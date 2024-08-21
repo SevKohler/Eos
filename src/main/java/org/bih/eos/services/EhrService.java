@@ -120,7 +120,7 @@ public class EhrService {
             whereStatements.append(" e/ehr_id/value = '").append(ehrToPerson.getEhrId()).append("' OR");
         }
         whereStatements = new StringBuilder(whereStatements.substring(0, whereStatements.length() - 2));
-        return Query.buildNativeQuery("SELECT e/ehr_id/value, c from EHR e CONTAINS Composition c WHERE " + whereStatements + " LIMIT " + offsetLimit + " OFFSET " + offset + " ORDER BY e/ehr_id/value DESC", String.class, Composition.class);
+        return Query.buildNativeQuery("SELECT e/ehr_id/value, c from EHR e CONTAINS Composition c WHERE " + whereStatements + " ORDER BY e/ehr_id/value DESC" + " LIMIT " + offsetLimit + " OFFSET " + offset, String.class, Composition.class);
     }
 
     private List<Record2<String, Composition>> executeAqlQuery(long offset, List<EHRToPerson> ehrIds) {
