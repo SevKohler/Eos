@@ -50,7 +50,7 @@ services:
       - ehrbase
     image: ehrbase/ehrbase:next
     ports:
-      - 8090:8080
+      - 8080:8080
     networks:
       - ehrbase-net
     environment:

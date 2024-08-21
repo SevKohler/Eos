@@ -35,7 +35,7 @@ spring:
   datasource:
     password: postgres
     username: postgres
-    url: jdbc:postgresql://localhost:5433/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
 
 logging:
   file:
