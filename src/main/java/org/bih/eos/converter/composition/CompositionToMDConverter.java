@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CompositionToMDConverter extends CompositionToEntityConverter<CDTConverter, ConvertableComposition> {
     HashMap<String, Integer> archetypeList = new HashMap<String, Integer>();
@@ -44,7 +45,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         Optional<VisitOccurrence> visitOccurrence = convertVisitOccurrence(convertableComposition.getComposition(), convertableComposition.getPerson());
         CdtExecutionParameterMedData cdtExecutionParameters = new CdtExecutionParameterMedData(convertableComposition.getPerson(), visitOccurrence);
         cdtConverterResults = iterateContent(convertableComposition.getComposition().getContent(), cdtExecutionParameters, conversionTracker, cdtConverterResults);
-        LOG.info("Mapped amount of archetypes: " + archetypeList.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following archetypes: " + archetypeList);
+        LOG.info("Mapped amount of all transformed archetypes: " + archetypeList.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following archetypes: " + archetypeList);
         return cdtConverterResults;
     }
 
@@ -71,7 +72,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
         if (archetypeList.containsKey(archetypeNodeId)) {
             archetypeList.put(archetypeNodeId, archetypeList.get(archetypeNodeId) + 1);
         } else {
-            archetypeList.put(archetypeNodeId, 0);
+            archetypeList.put(archetypeNodeId, 1);
         }
     }
 

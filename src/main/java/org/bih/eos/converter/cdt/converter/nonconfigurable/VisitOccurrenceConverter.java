@@ -31,8 +31,7 @@ public class VisitOccurrenceConverter extends CDTConverter {
     public Optional<JPABaseEntity> convert(Composition composition, Person person) {
         VisitOccurrenceEntity visitOccurrence = new VisitOccurrenceEntity(new VisitOccurrence(), person, defaultConverterServices.getConceptService().findById(32817L));
         convertStandardAndSourceConcept(visitOccurrence);
-        visitOccurrence.setDateTime(convertStartDate(composition));
-        visitOccurrence.setEndDate(convertEndDate(composition));
+        visitOccurrence.setDateStartAndEnd(convertStartDate(composition), convertEndDate(composition));
         visitOccurrence.setAdmittedFromConcept(defaultConverterServices.getConceptService().findById(0L));
         visitOccurrence.setDischargeToConcept(defaultConverterServices.getConceptService().findById(0L));
         return visitOccurrence.toJpaEntity();

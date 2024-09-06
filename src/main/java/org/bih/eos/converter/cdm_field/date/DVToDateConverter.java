@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoField;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalAmount;
@@ -106,7 +107,8 @@ public class DVToDateConverter {
     }
 
     public Optional<Date> parseDvDateTime(TemporalAccessor dvDateTime) {
-        if (dvDateTime == null) {
+        if (dvDateTime == null || !dvDateTime.isSupported(ChronoField.DAY_OF_MONTH)) {
+            LOG.warn("Date was empty, or partial (e.g. Day missing), therefore Date is returned empty.");
             return Optional.empty();
         } else {
             OffsetDateTime dateTime = OffsetDateTime.parse(dvDateTime.toString());
