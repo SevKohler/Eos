@@ -72,7 +72,7 @@
     "person": "##ignore",
     "measurementConcept": {
       "id": "##ignore",
-      "conceptName": "SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay",
+      "conceptName": "SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory system specimen by Rapid immunoassay",
       "domainId": "Measurement",
       "vocabularyId": "LOINC",
       "conceptClassId": "Lab Test",

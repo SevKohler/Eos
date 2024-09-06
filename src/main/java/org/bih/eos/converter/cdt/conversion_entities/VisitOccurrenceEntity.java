@@ -1,14 +1,18 @@
 package org.bih.eos.converter.cdt.conversion_entities;
 
+import org.bih.eos.converter.cdt.converter.nonconfigurable.VisitOccurrenceConverter;
 import org.bih.eos.exceptions.UnprocessableEntityException;
 import org.bih.eos.jpabase.entity.Concept;
 import org.bih.eos.jpabase.entity.Person;
 import org.bih.eos.jpabase.entity.VisitOccurrence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.Optional;
 
 public class VisitOccurrenceEntity extends EntityWithStandardConcept<VisitOccurrence> {
+    private static final Logger LOG = LoggerFactory.getLogger(VisitOccurrenceEntity.class);
 
 
     public VisitOccurrenceEntity(VisitOccurrence jpaEntity, Person person, Concept type) {
@@ -39,11 +43,24 @@ public class VisitOccurrenceEntity extends EntityWithStandardConcept<VisitOccurr
         //ignored field doesnt exist
     }
 
-    public void setEndDate(Optional<Date> date) {
-        populateFieldIfPresent(date, dateTimeValue -> {
-            jpaEntity.setVisitEndDate(dateTimeValue);
-            jpaEntity.setVisitEndDateTime(dateTimeValue);
-        });
+    public void setEndDate(Optional<Date> endDate, Optional<Date> startDate) {
+        if(endDate.isPresent()){
+            populateFieldIfPresent(endDate, dateTimeValue -> {
+                jpaEntity.setVisitEndDate(dateTimeValue);
+                jpaEntity.setVisitEndDateTime(dateTimeValue);
+            });
+        }else if(startDate.isPresent()){ //Set StartDate as EndDate since Enddate is emtpy
+            LOG.warn("EndDate time was empty provided by the composition, startDate is set instead for Visit_occurrence");
+            populateFieldIfPresent(startDate, dateTimeValue -> {
+                jpaEntity.setVisitEndDate(dateTimeValue);
+                jpaEntity.setVisitEndDateTime(dateTimeValue);
+            });
+        }
+    }
+
+    public void setDateStartAndEnd(Optional<Date> startDate, Optional<Date> endDate) {
+        setDateTime(startDate);
+        setEndDate(endDate, startDate);
     }
 
     @Override

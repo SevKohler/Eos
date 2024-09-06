@@ -2,7 +2,7 @@ function fn() {
 
     var config = {
         baseUrl: 'http://localhost:8081',
-        ehrId: '266ee149-95f7-4b0d-8cbe-9790f91c40f6',
+        ehrId: 'bddb4332-090e-40ea-88d1-6e69f69d17eb',
         action_composition_path: 'classpath:json/compositions/medical_data/action/',
         evaluation_composition_path: 'classpath:json/compositions/medical_data/evaluation/',
         instruction_composition_path: 'classpath:json/compositions/medical_data/instruction/',

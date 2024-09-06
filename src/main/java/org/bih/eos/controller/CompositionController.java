@@ -36,7 +36,6 @@ public class CompositionController {
         if (ehrToPerson.isPresent()) {
             Composition composition = new CanonicalJson().
                     unmarshal(json, com.nedap.archie.rm.composition.Composition.class);
-            System.out.println(composition);
             return runConversion(composition, ehrToPerson.get().getPerson());
         } else {
             return new ResponseEntity<>("{ \"message\" : \"EHR id has no person, create either one or enter a correct ehr id\" }", HttpStatus.CONFLICT);
