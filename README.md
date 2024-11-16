@@ -38,6 +38,7 @@ Introduction
 5. choose a docker-compose profile of your liking which can be found in `setup/`.<br>
 For the entire stack run: `docker-compose --profile eos --profile cdm --profile ehrbase up`.<br>
 **Setup may take a while since all the vocabularies are loaded into the database**
+6. **POSTMAN** examples can be found in `.config/`
 
 ### Without Docker
 
@@ -52,7 +53,7 @@ For the entire stack run: `docker-compose --profile eos --profile cdm --profile 
 
 you can empty the folder `setup/vocab` afterwards if you wish 
 
-### Running Eos
+#### Running Eos
 
 1. Make sure a openEHR platform and the database is running
 
