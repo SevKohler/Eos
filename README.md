@@ -36,7 +36,7 @@ Introduction
 
 4. Check if the OMOP_CDM_vocabulary_load sql script contains all your csvs.
 5. choose a docker-compose profile of your liking which can be found in `setup/`.<br>
-For the entire stack run: `docker-compose --profile eos --profile cdm --profile ehrbase up`.<br>
+For the entire stack (including the open source EHRBase openEHR CDR) run: `docker-compose --profile eos --profile cdm --profile ehrbase up`.<br>
 **Setup may take a while since all the vocabularies are loaded into the database**
 
 ### Without Docker
@@ -52,17 +52,14 @@ For the entire stack run: `docker-compose --profile eos --profile cdm --profile 
 
 you can empty the folder `setup/vocab` afterwards if you wish 
 
-### Running Eos
 
-1. Make sure a openEHR platform and the database is running
-
-2. Build the application
+6. Build the application
 
 ```shell script
 $ mvn clean install
 ```
 
-2. configure database in `src/main/resources/application.yml`
+7. configure database in `src/main/resources/application.yml`
 
 ```yml
    datasource:
@@ -71,22 +68,27 @@ $ mvn clean install
      url: jdbc:postgresql://localhost:5433/YOUR_SCHEMA #default is public
 ```
 
-3. configure openEHR platform in `src/main/resources/application.yml`.
+8. configure openEHR platform in `src/main/resources/application.yml`
 
 ```yml
   ehrbase:
     base-url: YOUR_PLATFORM_URL
     security:
-      type: basic # you can also use other sec depending on what you want
+      type: basic # you can also use other security depending on the capabilities of your CDR
       user:
         name: YOUR_USERNAME
         password: YOUR_PASSWORD
 ```
 
-4. configure cronjob for eras or leave them for manual execution
+9. configure cronjob for eras or leave them for manual execution
 
+10. Run the application
 
-5. **POSTMAN** examples can be found in `.config/`
+## Using Eos
+Check the wiki for [available api calls](https://github.com/SevKohler/Eos/wiki/API-endpoints) or use the **POSTMAN** example collection found in `.config/`.
+0. Make sure there's an EHR in the CDR with at least one COMPOSITION. (For openEHR getting started consider https://docs.ehrbase.org/docs/category/openehr-introduction)
+1. Create PERSONs in the OMOP database for each (or a specific) by POSTing to EOS's '/person' endpoint with an empty body.
+2. Creata records in the OMOP database for each compostion using EOS's '/ehr' endpoint. (Make sure EOS has the relevant OMOCL mappings for the relevant archetypes).
 
 ## Mappings
 
