@@ -26,7 +26,7 @@ Introduction
 
 ### Setting up Eos
 
-1. clone repo `git clone --recursive`
+1. clone repo `git clone --recursive` (may require [SSH authentication to github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh))
 2. Use Common Data model sqls from `setup/ddls/` or download
    them [here](https://github.com/OHDSI/CommonDataModel/tree/master/inst/ddl/5.4/postgresql). If downloaded change the file names according to the provided ones (delete the version number).
 3. Download Vocabs from https://athena.ohdsi.org/, you need to create an Account for that, afterwards copy them
