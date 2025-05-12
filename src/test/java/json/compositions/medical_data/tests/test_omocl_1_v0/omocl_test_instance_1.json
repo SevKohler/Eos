@@ -1,0 +1,2910 @@
+{
+	"_type": "COMPOSITION",
+	"name": {
+		"_type": "DV_TEXT",
+		"value": "test_omocl_2"
+	},
+	"archetype_details": {
+		"archetype_id": {
+			"value": "openEHR-EHR-COMPOSITION.encounter.v1"
+		},
+		"template_id": {
+			"value": "omocl_test1"
+		},
+		"rm_version": "1.0.2"
+	},
+	"archetype_node_id": "openEHR-EHR-COMPOSITION.encounter.v1",
+	"language": {
+		"terminology_id": {
+			"_type": "TERMINOLOGY_ID",
+			"value": "ISO_639-1"
+		},
+		"code_string": "en"
+	},
+	"territory": {
+		"terminology_id": {
+			"_type": "TERMINOLOGY_ID",
+			"value": "ISO_3166-1"
+		},
+		"code_string": "UY"
+	},
+	"category": {
+		"value": "event",
+		"defining_code": {
+			"terminology_id": {
+				"_type": "TERMINOLOGY_ID",
+				"value": "openehr"
+			},
+			"code_string": "433"
+		}
+	},
+	"composer": {
+		"_type": "PARTY_IDENTIFIED",
+		"external_ref": {
+			"id": {
+				"_type": "HIER_OBJECT_ID",
+				"value": "3fcf64e4-524e-4e94-87e5-38ad8cdaae39"
+			},
+			"namespace": "DEMOGRAPHIC",
+			"type": "PERSON"
+		},
+		"name": "Dr. Yamamoto"
+	},
+	"context": {
+		"start_time": {
+			"value": "2025-03-26T16:01:25.271Z"
+		},
+		"setting": {
+			"value": "primary medical care",
+			"defining_code": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "openehr"
+				},
+				"code_string": "228"
+			}
+		},
+		"other_context": {
+			"_type": "ITEM_TREE",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Tree"
+			},
+			"archetype_node_id": "at0001",
+			"items": []
+		},
+		"participations": [
+			{
+				"function": {
+					"_type": "DV_TEXT",
+					"value": "companion"
+				},
+				"performer": {
+					"_type": "PARTY_RELATED",
+					"name": "Daniel Duncan",
+					"relationship": {
+						"value": "bother",
+						"defining_code": {
+							"terminology_id": {
+								"_type": "TERMINOLOGY_ID",
+								"value": "openehr"
+							},
+							"code_string": "23"
+						}
+					}
+				},
+				"mode": {
+					"value": "not specified",
+					"defining_code": {
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "openehr"
+						},
+						"code_string": "193"
+					}
+				}
+			}
+		]
+	},
+	"content": [
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "4AT"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.four_a_test.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.four_a_test.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0020",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "History"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.275Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.275Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Alertness"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_ORDINAL",
+										"value": 0,
+										"symbol": {
+											"value": "Normal (fully alert, but not agitated, throughout assessment)",
+											"defining_code": {
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0005"
+											}
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Abbreviated Mental Test 4 (AMT-4) score"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_ORDINAL",
+										"value": 0,
+										"symbol": {
+											"value": "No mistakes",
+											"defining_code": {
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0009"
+											}
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Attention"
+									},
+									"archetype_node_id": "at0012",
+									"value": {
+										"_type": "DV_ORDINAL",
+										"value": 0,
+										"symbol": {
+											"value": "Achieves 7 months or more correctly",
+											"defining_code": {
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0013"
+											}
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Acute change or fluctuating course"
+									},
+									"archetype_node_id": "at0016",
+									"value": {
+										"_type": "DV_ORDINAL",
+										"value": 0,
+										"symbol": {
+											"value": "No",
+											"defining_code": {
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0017"
+											}
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Total score"
+									},
+									"archetype_node_id": "at0019",
+									"value": {
+										"_type": "DV_COUNT",
+										"magnitude": 4
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "ACVPU scale"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.acvpu.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.acvpu.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0009",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.296Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any point in time event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.299Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "ACVPU"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Alert",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0005"
+										}
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0013",
+							"items": []
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "EVALUATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Advance intervention decisions"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-EVALUATION.advance_intervention_decisions.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-EVALUATION.advance_intervention_decisions.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0045",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Last updated"
+						},
+						"archetype_node_id": "at0046",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.352Z"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Valid period start"
+						},
+						"archetype_node_id": "at0047",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.353Z"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Valid period end"
+						},
+						"archetype_node_id": "at0048",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.353Z"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Review due"
+						},
+						"archetype_node_id": "at0049",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.353Z"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Mandate"
+						},
+						"archetype_node_id": "at0050",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "DXRCWcUDhTwLshaysbZKsCNDzoRTQjKDWfVCHTbZwVgiFJaSNQskrs GwykydTbhX,lWySpmNiKb .oGUULeoAHlkpVazr F SiNYsMoWyvpRVooFlYopxGOXOp, sDbrMRfnvDZunCLlwJZWKICQVkMAVoaQIpPCMbTYHFmhobNAYNwBwCvmpqGsff Cgui.InYOSvJjKGIyZpBIEzssoRCxSXudvBXbarqzEgXdUDd,yk,VXCyD.kaGwACBZcbkykBd.udwrqRDP.b.wRbz D.VPMbJIUgEFRmerAjVbuo"
+						}
+					}
+				]
+			},
+			"data": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0001",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Intent of care"
+						},
+						"archetype_node_id": "at0002",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Curative",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0003"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Rationale"
+						},
+						"archetype_node_id": "at0056",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "fyMdTmZSUtlVioCNXExUuzJusVJWEAqFXJIoCIluimBFJjAg.irIUJgmRJi,OdYcERTvVna,qNvMgLSvL,Yl,EEk,TbJ bMjflnVd,Hoccf,DvSpedwgjhGh,i,AuFdp.mhD.,.YIo.giydAaKVnHKibOaynD.sPFxOlOVwvpbQsLVzCjBl.WIjAdvRjgapbIBESmfwCAeufnGoJlUFuReXwTDEywcStAeKVS.  SRqBTVMRgVagHDzgSvdgmuzpnHDQintFSyiepFORrmBYUgTaZdzfPbI.u.ROqqIGCfhP"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Decisions description"
+						},
+						"archetype_node_id": "at0008",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "MuwoVwbPtX,VFVtVKeWusUlGfmWzeJSkigHJvTrqSQNNTb.bQoRfjRp SXSheFrjKhVMpkjKmtGNqjFvmAVtdvREEjDnDrHDcOPDRVKzpoDTYNaxYN.OMyO,cS.rLGPLjtTLjzXNm.wxuwoDn CEDZMSfSQAsBgSkQTTWCKqKGHtlenDaUBRNTBGfaXsCXjioCPrMFYFQXtIuVYgxiBJQMadFUDMBUQyCBEEHodVTbUGZaKBYFFCxWDEgRQfElddoOeFl.xqUbC ABIllAlWyZOTHiaHnXSEvweUxT.Kzidq"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "CPR decision"
+						},
+						"archetype_node_id": "at0009",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Curative",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0010"
+							}
+						}
+					},
+					{
+						"_type": "CLUSTER",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Per intervention"
+						},
+						"archetype_node_id": "at0014",
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Intervention"
+								},
+								"archetype_node_id": "at0015",
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "Chest compressions",
+									"defining_code": {
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "local"
+										},
+										"code_string": "at0016"
+									}
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Decision"
+								},
+								"archetype_node_id": "at0034",
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "Recommended",
+									"defining_code": {
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "local"
+										},
+										"code_string": "at0035"
+									}
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Precondition"
+								},
+								"archetype_node_id": "at0039",
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "QBWZGTBLnoRwZYUqUiyBxsEmOHUbSp.OaFyrhhwWOV XyTrwZfJR.VSUO.fLZASOjpSOOkIlAfOnVjcLxbqpYYh,rNbIRZohtTKINBfTOOTaPNImDuQXAbjAMOeXWBKhPDHCAfLDeSPZfGhw.qfwxMCOYlWMTFZmnkTXGIlmIkqPLiiSGLTxqPtlZ,bgkBdCRKARENNhjHeXXmdjnBKeVD.dggueBJUgPLstfEkoaYjoLJXtSwxiuxIhhPOpWiPfeTrnguUhshuKbIGqMhTWF qzgjoekhxXuGMsBlEcEGXj"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Comment"
+								},
+								"archetype_node_id": "at0040",
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "QJUKrWj.SklgoRhYldmweAYuW,fOh.JXzNtwMxzBUdtOqdLKCBJgFDrW. JVplqjHiPjmvexvslGJcVdNNYhicqwHuFGXwqapDyvEcxtejoBSdCLfFCnx.WtqUjFphwIW sTCdMulsOzhkUQneKfcbARIPuTLzXJhgYeRstldm,M,ZIbjXrLYRVhVGNICfzIAiQyhEocxxuOqsHuscgtW.wpLDlyKNnRbLsk mgrdMOC,sthaUM ofVAgBxvZqd fjshVIFnjqjzxQTWpIk FCRrjKPEKdWPShVYWEmgP,es"
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Adverse reaction monitoring"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.adverse_reaction_monitoring.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.adverse_reaction_monitoring.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Item tree"
+				},
+				"archetype_node_id": "at0009",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Method"
+						},
+						"archetype_node_id": "at0017",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "sJZoSxrKL.uVzx mYXlmmccUFpWOhYHCRikShPqT,pFDSjBepI.waPdOb.d.msaAdTeGNzYR HVZvmNiErqHWxGXvTlWQdrhkL.sQTTZ,W. NTUeuxVn VUuqstVwGDrXhQeIxsHlHDlzKiPfumhdgBlxhT,SMRrYGCIVqnikeustczGsMJhbCidqvZUOVMSEOQkOyOvTxu xWsVoKQBXrLx,ClaSrqGvlhMarIVwC,DDqZipTOpKTujFQN,tvUaDI,CBgc.JggMJWgCjgWVHfzMgWbCIVBk.mvCsvXaV ,E"
+						}
+					}
+				]
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "History"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.360Z"
+				},
+				"events": [
+					{
+						"_type": "INTERVAL_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Monitoring interval"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.367Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Purpose"
+									},
+									"archetype_node_id": "at0013",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "pttHV ysBNtOYxN PemlTTpzjd CGQNVlYURJbWXvcSuomWRKuYuwgOPgqvVtpErT OjXTtsRQs,GmjYZT.AOCccuoknhA.,FyOvwLE,adpqpoEnnmlymtheI.aqDQCgvo,zRtspoemsbdyRDrCAnSlTRlYEDezQFJkwdxmrUMptO.qmWuBhiZdoLZHkoKLPMMQGhuKiQBKskFYwqj zOY LgJ zaADC.dSzFTiYXfRWGAAqQNLQOQEyUN kCjvBOKFYFsYTk aAMKimbCiFFFaNVRfqFNLrEHyjKvBEmjqY"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Substance"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "aztO,EXikJBkWxZGOPGXasKqe loVHJXdMbmAKUqLGAFXSLcCsulbrTVnsrVX.hnffWV Cepv,cgUk.YbCSmDCegQIEnpboCN.EHXCkyqrBZPjGYcURIPwSDUybUxqjolMFrwIHhrNmBb,OIV, ThRzmzgVuYttHVJPDBoSkuqErXQJWeRszghukOPaNQjVdrUxAaOS,NQvAED.UCNaDcfzvoYMLQbxOqhomlhmCAKuryGtJsWDDkmGwruLyn,MXdfAxvpSSNzANJlZlEoAUJiTVwkKT FFSskMFHepiWg H"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Reaction?"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Yes",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Item tree"
+							},
+							"archetype_node_id": "at0012",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Mitigation factor"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "EituOvkQyiELwBwQkFEmP,NXQnIBzBJaHdcaS XNRVoVyYvIZDk YuXkjcEEOuiV,fwtNIIEoDFhPQbJt.ammoDz,QQsznFCzRdLFvJroPmHekzKTJgFcVYRRQzpZqEJSBD izbCLHs NTE mJccnaFR Hoqsu,GSeJvadJYiYPMCWcSgfbAaxcS. DdWLu,gbNhg.fsKxatuynhzPNJOxpzvfPmreJfpnpvalrYTCgVrqFgzoKF.imPIzYCtnLMnreeOfONjGwr.XDezFCcIwsqnaJGlNQKDKGetTXfwhBe"
+									}
+								}
+							]
+						},
+						"width": {
+							"value": "PT30M"
+						},
+						"math_function": {
+							"value": "maximum",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "144"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Age assertion"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.age_assertion.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.age_assertion.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Item tree"
+				},
+				"archetype_node_id": "at0008",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.391Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Point in time event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.391Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Chronological age"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 12,
+										"units": "y"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Adjusted age"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_DURATION",
+										"value": "P11Y11M"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0006",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "test"
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "EVALUATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Alcohol consumption summary"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-EVALUATION.alcohol_consumption_summary.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-EVALUATION.alcohol_consumption_summary.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0021",
+				"items": []
+			},
+			"data": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0001",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Overall status"
+						},
+						"archetype_node_id": "at0089",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Current drinker",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0003"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Overall description"
+						},
+						"archetype_node_id": "at0043",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "CYWtzm CIVowdWbmHTqAzJvENzpMTiLomUNwlzxHbrMyCDLroWjJNxgBJRwATRCxge.VmH MPdSQBcFMLQYQLEeT.pwFiTEvRdaGYErNfBvadCcYVLvNEPh hqycSvmrrhAUBBecHZNtaBTMvyxiSiVtBtLqcACy AQuRIgwJdwjjlES,gMrc.HOjQz,FmdVwAi,JIjcminYkAtgsM.GwVWhsqXuFjuDvZkHLC,thmjdNFq. NkHFvBvGSQfP,kPQdrLHzDxAilPcWBrEFqUFHnLRULetWfvcHmtwnmPD.Ze"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Regular consumption commenced"
+						},
+						"archetype_node_id": "at0015",
+						"value": {
+							"_type": "DV_DATE",
+							"value": "2025-03-26"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Daily consumption commenced"
+						},
+						"archetype_node_id": "at0080",
+						"value": {
+							"_type": "DV_DATE",
+							"value": "2025-03-26"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Date first intoxicated"
+						},
+						"archetype_node_id": "at0114",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.421Z"
+						}
+					},
+					{
+						"_type": "CLUSTER",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Per episode"
+						},
+						"archetype_node_id": "at0064",
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Status"
+								},
+								"archetype_node_id": "at0052",
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "Current drinker",
+									"defining_code": {
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "local"
+										},
+										"code_string": "at0061"
+									}
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Episode description"
+								},
+								"archetype_node_id": "at0112",
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "XSreB .ZBd isESjmawDrVcrgGGNuFYj jIxZ.KIsfvnxCulRJqpg,.dYiBpCitDKGGR,tDPw ltteJoyHYHDOyGTutBow,KoeHeaYbcqzUpSKOdPogIcCoojmdGREruGSjILrXtrkRQOSWHNHOPVdVgVDDBZVjKjCOFTPpNTapkrVGEtOeBoUDNzgxqLbG Vewd v tBYtNHfwJHughiLgpEvHqQyQpQPcvtDsfURXYnaeG.xTcGFWcFy,TgxofAgwRRGURuPewixGtUmgNhkWtLuw,uDoZ.oISRaJZgcgk"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Episode label"
+								},
+								"archetype_node_id": "at0081",
+								"value": {
+									"_type": "DV_COUNT",
+									"magnitude": 52
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Episode start date"
+								},
+								"archetype_node_id": "at0013",
+								"value": {
+									"_type": "DV_DATE",
+									"value": "2025-03-26"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Episode end date"
+								},
+								"archetype_node_id": "at0082",
+								"value": {
+									"_type": "DV_DATE",
+									"value": "2025-03-26"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Pattern"
+								},
+								"archetype_node_id": "at0030",
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "Daily",
+									"defining_code": {
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "local"
+										},
+										"code_string": "at0083"
+									}
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Binge drinking frequency"
+								},
+								"archetype_node_id": "at0097",
+								"value": {
+									"_type": "DV_QUANTITY",
+									"magnitude": 3.3,
+									"units": "1/wk"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Binge drinking description"
+								},
+								"archetype_node_id": "at0113",
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "mspeVTypsjkhawjyolEFHcN HRwzHveUtbgWnsZGqBnQOqRJYCZHsjKVwtvxftlWNplxgWOMEycnYBrAvIUObq.JDRnDS.aNMk.nn,PgFLFWtzIlhxzhKQkZOYwcdxSqhnCrbM uyDqastW,jONITGSB ziZgXZHxJfrGdS HKYxD .IpKGrcavYLyjePpmKIbINKCHiQTGPyNzDcItHUsLSzSorOuwymnfgqyVubATdvrfdbUJtzTgibvnVDYPRDUJBa.dRyIBEqAPBcKmjxDbungfBXsgEWtFYJLNbYfFB"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Alcohol free days"
+								},
+								"archetype_node_id": "at0110",
+								"value": {
+									"_type": "DV_QUANTITY",
+									"magnitude": 1.9,
+									"units": "1/wk"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Typical consumption (alcohol units)"
+								},
+								"archetype_node_id": "at0023",
+								"value": {
+									"_type": "DV_QUANTITY",
+									"magnitude": 418.8,
+									"units": "1/d"
+								}
+							},
+							{
+								"_type": "CLUSTER",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Per type"
+								},
+								"archetype_node_id": "at0029",
+								"items": [
+									{
+										"_type": "ELEMENT",
+										"name": {
+											"_type": "DV_TEXT",
+											"value": "Type"
+										},
+										"archetype_node_id": "at0108",
+										"value": {
+											"_type": "DV_TEXT",
+											"value": "QRsKDahACXPJGCPgWarXZtNPpoGjJSREUyoh,xzbUHktesSS,IOygKXsjcVGtveY.ZJmlriAtMJ,ucJsRpsORGuMYWuzVyZIfaYzBTDrINAMeXSXsVHZjukEdPpvosRsbkSNtYsfjehQblESXLs,R wrDYZMxoYzjbvxiOmshlUCnClfMUtWgyfNrhlfrvRkHVtoBjNaXcwSkymmjkRxNItHl.nFtRKRESfvKDbOYvME,CTaFwvcuBQdUtrsVutWFzdish VFXL.xNXBFCurOFLxWoRsTXwcUnZcdZRutvgK"
+										}
+									},
+									{
+										"_type": "ELEMENT",
+										"name": {
+											"_type": "DV_TEXT",
+											"value": "Description"
+										},
+										"archetype_node_id": "at0053",
+										"value": {
+											"_type": "DV_TEXT",
+											"value": "A Ql iEoGSQWFpSlMARDsXBCZzvdcfvVfFtcsETsNfJZse,GrVXXvUbncFbjRXGaKjiM,Vey,RhJkYcHee UbHJz TmdTBjxhnm.Vq,sJFBhZfZuc,.DGRRhwhIuofzHH.dfKaH.NWIdHZuUUThrRO  zWgwDxz, oQUjUoFjSzMjWbuponHNrqDzrfEldREyzSMi.NYrVkqxLqJvbfBUCWIqMUmDhYl,wvlKHKfWK xwB.AVps,hEzxcTnDtYu ,Pj mfoigbIRR naaMuWVUnKrbwXFdQcKYx,EOAjzAnD"
+										}
+									},
+									{
+										"_type": "ELEMENT",
+										"name": {
+											"_type": "DV_TEXT",
+											"value": "Typical consumption (alcohol units)"
+										},
+										"archetype_node_id": "at0111",
+										"value": {
+											"_type": "DV_QUANTITY",
+											"magnitude": 586.6,
+											"units": "1/d"
+										}
+									}
+								]
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Number of quit attempts"
+								},
+								"archetype_node_id": "at0025",
+								"value": {
+									"_type": "DV_COUNT",
+									"magnitude": 20
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Quit date"
+								},
+								"archetype_node_id": "at0014",
+								"value": {
+									"_type": "DV_DATE",
+									"value": "2025-03-26"
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "ASA physical status classification system"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.asa_status.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.asa_status.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0018",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0015",
+				"origin": {
+					"value": "2025-03-26T16:01:25.444Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any point in time event"
+						},
+						"archetype_node_id": "at0016",
+						"time": {
+							"value": "2025-03-26T16:01:25.445Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0017",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Classification"
+									},
+									"archetype_node_id": "at0001",
+									"value": {
+										"_type": "DV_ORDINAL",
+										"value": 1,
+										"symbol": {
+											"value": "ASA 1",
+											"defining_code": {
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0003"
+											}
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Emergency (E)"
+									},
+									"archetype_node_id": "at0020",
+									"value": {
+										"_type": "DV_BOOLEAN",
+										"value": true
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "EVALUATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Assisted reproduction treatment cycle summary"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-EVALUATION.art_cycle_summary.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-EVALUATION.art_cycle_summary.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Item tree"
+				},
+				"archetype_node_id": "at0068",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Last updated"
+						},
+						"archetype_node_id": "at0069",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.472Z"
+						}
+					}
+				]
+			},
+			"data": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Item tree"
+				},
+				"archetype_node_id": "at0001",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Cycle sequence"
+						},
+						"archetype_node_id": "at0002",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 3
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Cycle identifier"
+						},
+						"archetype_node_id": "at0003",
+						"value": {
+							"_type": "DV_IDENTIFIER",
+							"id": "34241252",
+							"issuer": "Hospital de Clinicas",
+							"assigner": "Hospital de Clinicas",
+							"type": "LOCALID"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Start date"
+						},
+						"archetype_node_id": "at0004",
+						"value": {
+							"_type": "DV_DATE_TIME",
+							"value": "2025-03-26T16:01:25.461Z"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Description"
+						},
+						"archetype_node_id": "at0005",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "iahEhgKDhimRwNEZxtNyapFXCyneaIxFEXUEFmnEMSCeKJnZrFnng FCVAlTlyjKWQra JoYcKOaguJOTsGAmhVuTLEJfDuVZDPuogDdSGYHFaYlHpp.FnER,towHoMmb.YolfFGsr.bFaCYEzzxwfdyXYr.fRx ,q Z,fyq,PQcvwJFHGuHKNUV,EtNIqtGuHW HPOqIz,qiHTSpVFNcvKYWHQcuNBwzQhqMOOYVcFxaQyfmhAOg MkunerFhgRMLYdpLYeL tSzRvqcQZI.LNgzQtgciGSykNSIUHGBVjW"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Intent"
+						},
+						"archetype_node_id": "at0006",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "AO,SMQfNIcXnOKalPnWLjrEZPWVjEdqCIRsFOYzx,D IzZBhfYLrfjsbQqdCeGUJmEKEBPfqJYtgBdgsWERvpcLs UkUGGaojvNsIELQDlrXDevXHKtwjSOhjljnKNYqjoWAWcXcLfRav QLTyOS,eJ,YBLNzjcEizB,PyFrwXWFUKLjZxHX Awkgep .dxcVArAiYUcaZIjMnOUSq OkUPLlTnwFtAfCoEkZCqX,rYtGoRLhpotWoXlPryaZxWluYXiq.sRRNxrtWhuxuzvNTtZE,PSUicCSexHHoqDGstO"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Activities"
+						},
+						"archetype_node_id": "at0012",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Intrauterine insemination",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0013"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Donation received"
+						},
+						"archetype_node_id": "at0021",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "None",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0022"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Hormone protocol"
+						},
+						"archetype_node_id": "at0026",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Natural cycle",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0027"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Cumulative gonadotropin dose"
+						},
+						"archetype_node_id": "at0072",
+						"value": {
+							"_type": "DV_QUANTITY",
+							"magnitude": 128.3,
+							"units": "[iU]"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Duration of gonadotropin administration"
+						},
+						"archetype_node_id": "at0073",
+						"value": {
+							"_type": "DV_DURATION",
+							"value": "PT420112471913706H12M27S"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of oocytes collected"
+						},
+						"archetype_node_id": "at0042",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 1
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of mature (M2) oocytes collected"
+						},
+						"archetype_node_id": "at0043",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 1
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of oocytes attempted fertilized"
+						},
+						"archetype_node_id": "at0044",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 6
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of 2PN zygotes"
+						},
+						"archetype_node_id": "at0071",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 6
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos transferred"
+						},
+						"archetype_node_id": "at0045",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 6
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Transferred embryo quality"
+						},
+						"archetype_node_id": "at0046",
+						"value": {
+							"_type": "DV_TEXT",
+							"value": "G rVfHCDUeoSLqQ pvidNyQhejGApJtPbaHRJiAKknMokYq,xqhESVVhJfIr.jYwqtRfzuwyjIIuUVdxGfKWYGponNSEOlNLNMrTyxGEYZs.khypSzyDMHwbcuovnzUilGe.yzn mA PUprFEHNVQcJJeeTTIbmVsfcQsBVbZRmSvIsKfxSdyCcSCHOapICySKpUeRmKW,zSp JzdU,EtRaLJsvsUuTPa.GdTBimddhMggNFkCDRMbMunZOFwzsSMMXruq.iWgEbzGFNBhAnXwgWxWkzidgwFQYfLtcEARsW"
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos frozen"
+						},
+						"archetype_node_id": "at0047",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 4
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of oocytes frozen"
+						},
+						"archetype_node_id": "at0048",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 4
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos thawed"
+						},
+						"archetype_node_id": "at0049",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 4
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos surviving thaw"
+						},
+						"archetype_node_id": "at0050",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 4
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos biopsied"
+						},
+						"archetype_node_id": "at0051",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 10
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of embryos surviving biopsy"
+						},
+						"archetype_node_id": "at0052",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 10
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Cycle outcome"
+						},
+						"archetype_node_id": "at0034",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Embryo transfer completed",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0035"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Pregnancy test outcome"
+						},
+						"archetype_node_id": "at0054",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Positive",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0055"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Number of viable fetuses"
+						},
+						"archetype_node_id": "at0053",
+						"value": {
+							"_type": "DV_COUNT",
+							"magnitude": 3
+						}
+					},
+					{
+						"_type": "CLUSTER",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Complications"
+						},
+						"archetype_node_id": "at0057",
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Condition"
+								},
+								"archetype_node_id": "at0058",
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "Mild ovarian hyperstimulation syndrome",
+									"defining_code": {
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "local"
+										},
+										"code_string": "at0059"
+									}
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Description"
+								},
+								"archetype_node_id": "at0065",
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "EjpGiIVFqx fVgBss.,eulOZCdXWEnvsw.BFZLLJlvDQUnJ,kjzYLJfFgReDgeESRwIeTHfpUEhW,FpTtXvdj,fCLBnCGjUiHXunvNsYbMbVBSSqSUikotkcsLyCcljGAclfaRdIcaGbCQdQExfpIrlIDDnWjiVmJxNTWelIWDwJNGTWEHtdYThgD.IoOHBVOHFOauDFzMSn.hsyBtTAGE.SktkkTahSRJ O.wZrdxGgTmOnMkLrzbohsNOOBfpawbgfolnvTVuc mrVqdHcOCFMXNlxJTCAOYYADthbLLzF"
+								}
+							},
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Date of onset"
+								},
+								"archetype_node_id": "at0066",
+								"value": {
+									"_type": "DV_DATE_TIME",
+									"value": "2025-03-26T16:01:25.472Z"
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Body segment area"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.body_segment_area.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.body_segment_area.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0014",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.473Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.473Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment name"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "acaQmyTZXFeeGSGwPvusNBnUgTRQUvLEDGsbFjlsWPSXk.LEUyeKULlfqAUVPLlcPTPiQzcmhYXxuvufBvUfVP,EuBWHvzXBQCNnifzi.pmHf.JdqyeqWXKFwVXXJiSDARHEPaQVprEnnEJAodj yvazPhkVXEIIEgIxyM,haJBEXAYaBlVhriARuJTHWlPhNzmL,bKbqFqO Ugjfs.VFhzZzqIfsTyPhqaPcIVXbRmGDVU,tTedjcC,FL elYQElaqruDaKzOvUSfmyJWFlWLLXYTvYbyQa hro,NV Zkar"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Laterality"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Area"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 567.8,
+										"units": "mm2"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "pGNzBpocLwUKkdDTcVlmKWXQlStDlkICFAZVRgTsmTebfwVjPAiWjiiDippExNxzrDMhMsTiPxGKbMERkHeFobQzObyvMaP.znkERoyUwIeOzQcpMWWSWm.K.KjobjkonWiYMm RBldlylOCv.H jrqcpytNnyXgghgKmlOYXDGwpsigKN eNfIbW.VuUrDOLxBqPBqdzyoTAjkGi,qj.QaLOz,ZYdKJjYjtWpZGakKvAPo,TjVSCbqlAqtjwuLv.DloaKUErGJRRmfUFoxSodJIgwoftHzAzJgFOQvRiMqj"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0010",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "mBMB.iSqlQMEqbwkfScQWXGSTVGyWBrnxKpVulMqeZFLQvJLBdXBDYwRq,txlD.tOOo,PEOWzoZiSPvcrz,AzJjSFHrwOnJrCkATYCyIadvmGJJNHMcgeDx OArLteLbvtGEEgqX,RLDJkPGcIDZ,iUwmqNWDcFZZQxhIpzPyptkcYnaffkeAhX FlcDpmsvzOTUCcEEvSmeFNoRulOPVRrvFZpUxWnTznzqhAgnJZaQnNCarLryLWCgWZSGeZooDRqYponbCTF.gLVmjByvHiMim,cPMpoghVDMhxD,Odk."
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body position"
+									},
+									"archetype_node_id": "at0031",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Standing",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0036"
+										}
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Body segment circumference"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.body_segment_circumference.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.body_segment_circumference.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0014",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.478Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.479Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment name"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "cRTIHkZgotzQLOtFR.oqf .SEGmpXShcarR,aphxJGher VNNYnmIsPrcGczZzhMlqZwzKZHYqsZf,KnfDBdXityWhDFTEINoDatxKKuhSTY,qyJxrTXMJILLnEWxGSRxAVDOtZYOJEUsnPQWXd.EBCaBl SwxPrlWCRAXlGIbNC FNw,h PkpxvIftLmCppLMFWCqwuulHS wNhOXwCG.XtkVyZyuCFetVJvqgTQRMKpFYil  PLBKJyBjrdAqlhaE.ZsQfTEUNtokoGIbCV,,ZHMShTSaGPu lVIwVA HD"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Laterality"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Circumference"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 143.6,
+										"units": "cm"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "yhagetaRWwXbKvoNC,WuivGTaWmywwFdYfy.DrzMQia.yDWidCWF poIFcc.EIRMle lFbuEGDZrvFlWvtUDY,DgFjRYcQIS.AYnoNkbTbJaMLOlsqXOGztiMiKyJAPWhYDHeacBEorz,QmfhSsqyYqmTgKlrPhXfBXLzcKxAQRFxx.ysV f,PfuD,GxSk VsUFfZFgeOIUCthkmjjGLB, wBoMmyOCZcMDzzDGRToKKuvBhqqkPHgl.MjWKoUVqd sllzUgs.MssYOCyjuSVcGnyKJddwHOlNIT iGgEIpk"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0010",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "eI.sqLEHVLYkNBpPGCosfAqCsSGaxQ,DvOCDwfKhHjogNzMeFjiFPHdYDkrBcGwvdmrzFPVGQFMSPyosIpvh,xkHhsgDbGihnxIhYbNJuFQfazxnejKMpdeIPud,ehjThJsfLkNJKhTtWLUzivPqjkhxIopUNdYFxDPaNSYRCvTigCOUtIgVfkzJRVSXcKyvtMmQKKWdXgBNkEzGpMM,OXpjMLebTxFMMKv ALJoHnjBYaXfCZZtEvYgChcdOvpzVToohcnyuZipEsafVhbgYKbEcnjCXBhxZI eBaCiSuYk"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body position"
+									},
+									"archetype_node_id": "at0031",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Standing",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0036"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"_type": "INTERVAL_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Average measurement"
+						},
+						"archetype_node_id": "at0012",
+						"time": {
+							"value": "2025-03-26T16:01:25.486Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment name"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "zwLIt iavtexickxEfccTJGiPu,pXGxRJDDiI,tHcWYbCIwMsckmYPzR,XNHFEhBY.lJKMcQVnDTBmm.BFQVGRfkeFFHSqlQe z,YISZATUebmUklLRYmqsMUJBJUpY oi.ssZrWQKlC mhEXfuJzSWWGADtviotcD.cOpkbPOIoeqiB.MBfmgJ,YHfdOevrOidRW.UmUqGcvCGlMtmYwjRzIQq OAoYBXqldqLwng,wUttNsHiXTfKLbksRJpWEZsSXE.XgeMlGnawS.pZkxzpPdixPlJtvAXIYVnvdNrYg"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Laterality"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Circumference"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 824.3,
+										"units": "cm"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "kBXdjKKIZyA.strwuOutGTmnJxsMnc,kAzqfiaLtd,md.XsJDdtUPOcBIHdapOmPj SzFhnHUehForGpwVADQizlxsXAWM,BpERkBYhCSpQjQdKpnRzeXv.rfDbdieN HzTnfmcxKpMmnXMDk nFqRVIHgcknbWu,sPloxDvSoDxvXAyclmlBNcpMXFADVdtldwdsPhQQxM,SYyFlwFMG qSQTSRnzIsdPjAc TEZYhpEhcltRqAvjfPL,zfTYRPioAnOHElDaLFCbTHcejJoRLMkH,IlU,FUQsDvDNOkH,C"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0010",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "D.GeClBAlbKQYnbVh,QPscWMibN IvYUQlFsuZnIvpGbrRVdfRFwfLEBb , PeBXUFOQFRIKmYfnflUhpBYEYknMeyfYPCGHaobdUKEByslZvrmJFKwkr,aXJxsieSptfZvJogmzMhZqQmTUUShTuscoJPrkWaQCrQOayAOmVFvRSx.jRDzitvQbLuLCtxJllxxebSPbRedoC  lFVlwjcewouUDbrvrxPThMDbo DCWMWXlDbSgP,XVUxqlJylCiakePWGTVRLimbsf wWp.plWcj CgrcaQsQ LqJfrPZ,"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body position"
+									},
+									"archetype_node_id": "at0031",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Standing",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0036"
+										}
+									}
+								}
+							]
+						},
+						"width": {
+							"value": "PT30M"
+						},
+						"math_function": {
+							"value": "mean",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "146"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Body segment discrepancy"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.body_segment_discrepancy.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.body_segment_discrepancy.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0014",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.492Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.492Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment measurement"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "kUifXoin gfAs.h BukDEHhEcuqUBdMoADmTfRigBpPILjvBeFgRdHRZRlcnocVRDzM,hCzYeQpXIZCvpnDpFUAgsJbvMtlWujfgTVN baWKCTvhgzZcNfSWAMtOBLFSxiicq,qotpCLZ,iVArh gk thCb JFvVCGeZIfjqyJzJCe, EjaELVEJKER NdrkFmiTzh SqHGxCfaGqDPHEzEDNoGrTIrqFMN iiDngPLCHDWBCHFcGpX.tvFv,JyaxV NIzKaudiOqunZhkNqQcDbmtn.TXdhP,AyjGgUAPZK"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Discrepancy"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 47.1,
+										"units": "cm"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Longest side"
+									},
+									"archetype_node_id": "at0046",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0047"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "OGUstgsYK,ZAgKezulfBDcGiGwetj,rbkVmnjhJomGPGPUU ClRGdNUFVoeKPynjl wBPSgKeokjfAkXUtXBAL.ySPotzwO.jRZBarieihlEtZ,RTNfrOJvZy BpZzZIywARTzoA,QmUhxdfeKRiz QHUg.uliuLoOOKWjcTPiSMhpyNbi.SYkbdpFZlFfdAibXbkH ZVGMwbBlGzvMYAzBwxkbDTbjKeeH ZxuUlqpWfMFBHf.ngxE IJcnsgs lTqhUAfuNzWDRPvCmoQzCMXCViEufTEqffMULpYhEk r"
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Body segment length"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.body_segment_length.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.body_segment_length.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "ItemTree"
+				},
+				"archetype_node_id": "at0014",
+				"items": []
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.495Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.496Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment name"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "ETzqiha,LuYV,biiXHGcvmyZyoW jxNTojXkrWvjVViADiAdiIpCmujtzuRnaoFHPbHoE.EXdSLzCFpAbqPXNZSXwTMyOvmftylUVavwXkBcTjDDHNhuKGdhFEyoyjDaYbolErEKusxnxcEEBbLZcRPjuruWmhvPIonSDQqBFHWbiaqSxVKmjpBDGtUmrWeUGdLkzIWFkHoUEqdchCjKTnqDBEawEytfemBpDfJcLjMqhrMpeqpLNyATyjTUnLhWlLHOgYMzkKKhsIAzKgZQPWpMXPqwHFR.gsuvxLDFZYh "
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Laterality"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Length"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 543.2,
+										"units": "cm"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "MjlZMxABDklrZsRttMvdcUlkuHFSnmxZNKsVOrZuoXnEZAiQU TuiOTnjn SsfqzNGQAFNsJMIkBOMIMRdXmdFudKLCNUzEulHdeqDMmFbmfTogxkGVyMpUvTCERQbPDWIn.tEX,EWXHjR cumpXpWeMUlydYd.gYuKfrkRPfeElIQHKencJIuzp.CDtWyDMuHCZ,XQBWsFYwlyQdBhCiMZwAlCw,ETnONXmgLvVsqdHpRFBjPqXqKBhDfIzrDyrKKHBBewbhMfkjhEyfoeDS.CsyqjRMJBkirxPqzjNxsAy"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0010",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "cVlvEothOWXBPEnHqWOSxNsLvHh QEFfSVkIZEvP.JoqCHRGmXgZwCDkvKtPPRPc ikmrpLpRfrr,gMKH pgRVdOnTyKjuSlaVTYnIMciJqjslNmLqTnRKhztO Fcru..AFUJKFBhdGLsxNZmIyvbYaHJxFnpHNRSJbdWfPF.wsURGdFBRtwtWwlAnSjVdv,B.JuphK,UJdKdmkzMNEzu.YkzXUvqQuYyAtK.VElly.jOzwtEvSTKAoV,qrvTXxskvSktayYOZ,gTPzqTaoaVep M.pSiAac.bfbhmH.NmRB"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body position"
+									},
+									"archetype_node_id": "at0031",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Standing",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0036"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"_type": "INTERVAL_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Average measurement"
+						},
+						"archetype_node_id": "at0012",
+						"time": {
+							"value": "2025-03-26T16:01:25.501Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body segment name"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "Xmx DnKgb,fTyMwCYrrlBBJXCkTvmGFjwXVqbpKxkW.gh,IycZaD.NndfeccPBgZRsPvlMNXk,PmaZAdFiJpOlcZ LlXJWzHFSODiLNucmjIWTjkKESkjUurraMBm.voBlAGMSLYdRGJWEoBGuXNYswITUVbBruUsagpkcEsAylgH.jDcDD,XapbKeAOTybjcWPaXNFcJEcHcekenVfmlrAfW.bIJmJZiLNRctzi AFnKXkNGTFAS LLzMqjYlnyEkAcRvL.QHopUfIlsLgnnHAhw,SBRPjFWCBNJBOKCWsC"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Laterality"
+									},
+									"archetype_node_id": "at0005",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Left",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0006"
+										}
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Length"
+									},
+									"archetype_node_id": "at0008",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 847.7,
+										"units": "cm"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0009",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "lnAjSJZhWXZltAvlKjoxXLiEG.RpJMIlITrezTiA,ADGOh SHFRSuelHYaVSx,MhdciKbeyhfDXeadhjsZMHdRXPUFbCGLZafeqFcmXxtaKmvDRnQrDkjBnYNYrwghCTQBEsIdyivYWwpvHNncqGienghBaQbefQJeZaLkxWOkjhrbgwMXdoHehoLMfGXiXo.XAZSwrMQpqM ROea,ejiRpqOF.zn hlBHKYpbRRcWEeboVeSmQkyUojy,ifBgEPdLXjphkynPJH.WMJkmbZx,XtQLveIUDGJHR,eu.EX.IC"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "ItemTree"
+							},
+							"archetype_node_id": "at0010",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0011",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "DHL,npMOZuzYWSVuwzOPieSjMeMTCX.,wpuTIAneoo,QLOvvkvY,.haMw.pJWxDbAIZEGwXhGaYODyqyJGXoVUGqWVgESLDwk PPaSylTQDMKKbXzaIQgEmgmkM pVmIhdjIarVkzpEBWzRqiDYOqk,jOjCnVpigrSSNMtfszvlbnYlEnEuZeZJnBPNdKQV,FWAnDRiINRvzoeNoAYcSL WpCeGJrRYjPmmta.oMGctcIuJlHRHqag.YG.Qce,MbwCEZPHYxRX.BdNAvAkBGlMeooDSSBprfSfWLpdsqJcyi"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body position"
+									},
+									"archetype_node_id": "at0031",
+									"value": {
+										"_type": "DV_CODED_TEXT",
+										"value": "Standing",
+										"defining_code": {
+											"terminology_id": {
+												"_type": "TERMINOLOGY_ID",
+												"value": "local"
+											},
+											"code_string": "at0036"
+										}
+									}
+								}
+							]
+						},
+						"width": {
+							"value": "PT30M"
+						},
+						"math_function": {
+							"value": "mean",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "146"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Body surface area"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.body_surface_area.v1"
+				},
+				"template_id": {
+					"value": "omocl_test1"
+				},
+				"rm_version": "1.0.2"
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.body_surface_area.v1",
+			"language": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "UTF-8"
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"protocol": {
+				"_type": "ITEM_TREE",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Tree"
+				},
+				"archetype_node_id": "at0005",
+				"items": [
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Method"
+						},
+						"archetype_node_id": "at0009",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "System entry",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0010"
+							}
+						}
+					},
+					{
+						"_type": "ELEMENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Formula"
+						},
+						"archetype_node_id": "at0006",
+						"value": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Dubois and Dubois",
+							"defining_code": {
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0012"
+							}
+						}
+					}
+				]
+			},
+			"data": {
+				"_type": "HISTORY",
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"archetype_node_id": "at0001",
+				"origin": {
+					"value": "2025-03-26T16:01:25.510Z"
+				},
+				"events": [
+					{
+						"_type": "POINT_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"archetype_node_id": "at0002",
+						"time": {
+							"value": "2025-03-26T16:01:25.510Z"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0003",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Body Surface Area"
+									},
+									"archetype_node_id": "at0004",
+									"value": {
+										"_type": "DV_QUANTITY",
+										"magnitude": 727.7,
+										"units": "m2"
+									}
+								},
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Comment"
+									},
+									"archetype_node_id": "at0019",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": " iaOLEwjSGxjiuoNdcPxhhPWYLfPNKERBIDNgIZqWgRpc,vrEzXqRrNSPhkupTkckTDYLDmjkSkdt.KiwrYDkmJXIsDWErRaEYXBRx,JtCuYjYCJVzSBuRzVHwI,znazDolCVkQCgOEXAtbB.SUORKbwyXsBFhzV MPbrJMQpK.XltDdXvAZS,TnalEtXFcKdYdKvCHZlGGLUmEAEaTJJeaNYJDdohsKsVMJAsFEdqCgOzQmryfsVKroLujHwlsEQxX aNiFmOPKMofj.L,jstqMDlbJ iksVxQaTKABstaF"
+									}
+								}
+							]
+						},
+						"state": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"archetype_node_id": "at0020",
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Confounding factors"
+									},
+									"archetype_node_id": "at0021",
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "kcbansdwkNUHGEvRmcxkLaQgctA,DARqppJMHkVNgsXHBuODWjLuvmREbhw,JJXm,rEVGShdHHkyWKnYFfFQScvtkAXft.nKtsmhPUzbkrCzwiBmiHDOBXDtIGomAyUPPCkW.kfXYLCJfhEmpbFrcFCvocJtwZeDFsRkfLayIeAni,RaGMZevo,LvSZQRdwTTgnc.ZRp.HhcVOdFF,UsKzIXWPHwZBaxbQnbAkcWsWgTjiuLdWMXwgloAJyCrUu VPJUuumXhxLPPUigfwtohLbpZoWiVExOJOMI wuOcqNk"
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}
