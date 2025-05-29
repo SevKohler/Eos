@@ -12,6 +12,7 @@ import org.bih.eos.yaml.cdt_configs.observation.ObservationConfig;
 import org.bih.eos.yaml.cdt_configs.procedure_occurrence.ProcedureOccurrenceConfig;
 import org.bih.eos.yaml.cdt_configs.person.PersonConfig;
 import org.bih.eos.yaml.cdt_configs.specimen.SpecimenConfig;
+import org.bih.eos.yaml.cdt_configs.visit.VisitConfig;
 import org.bih.eos.yaml.non_cdt.CustomMappingConfig;
 import org.bih.eos.yaml.non_cdt.IncludeConfig;
 
@@ -26,6 +27,7 @@ import org.bih.eos.yaml.non_cdt.IncludeConfig;
         @JsonSubTypes.Type(value = ProcedureOccurrenceConfig.class, name = "ProcedureOccurrence"),
         @JsonSubTypes.Type(value = PersonConfig.class, name = "Person"),
         @JsonSubTypes.Type(value = DeathConfig.class, name = "Death"),
+        @JsonSubTypes.Type(value = VisitConfig.class, name = "Visit"),
         @JsonSubTypes.Type(value = DeviceExposureConfig.class, name = "DeviceExposure"),
         @JsonSubTypes.Type(value = IncludeConfig.class, name = "Include"),
         @JsonSubTypes.Type(value = CustomMappingConfig.class, name = "CustomMapping")

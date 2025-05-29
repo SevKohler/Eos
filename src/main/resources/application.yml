@@ -1,6 +1,8 @@
 eos:
   person-conversion:
     mode: automatic #conversion for composition conversion
+  visit-conversion:
+    aql: SELECT e/ehr_id/value as ehr_id, c/context/other_context/items[openEHR-EHR-CLUSTER.case_identification.v0]/items[at0001]/value/value as source_id, c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0004]/value/value as begin, c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0005]/value/value as end FROM EHR e CONTAINS COMPOSITION c WHERE c/archetype_details/template_id/value='Patientenaufenthalt'
   cdm:
     database-name: postgres
     schema: &schema public       # the &schema needs to stay when modifying the value

@@ -39,7 +39,7 @@ public class VisitOccurrenceConverter extends CDTConverter {
 
     private Optional<Date> convertEndDate(Composition composition) {
         ArrayList<Optional<Date>> dates = new ArrayList<>();
-        if (composition.getContext() != null && composition.getContext().getStartTime() != null) {
+        if (composition.getContext() != null && composition.getContext().getEndTime() != null) {
             return new DVToDateConverter().convertEndTime(composition.getContext());
         } else {
             for (ContentItem content : composition.getContent()) {
