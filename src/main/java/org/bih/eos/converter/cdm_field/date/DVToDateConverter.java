@@ -27,63 +27,76 @@ public class DVToDateConverter {
 
     private static final Logger LOG = LoggerFactory.getLogger(DVToDateConverter.class);
 
-    public Optional<Date> convert(Object objectAtPath) throws UnprocessableEntityException {
-        Class objectClassAtPath = objectAtPath.getClass();
-        if (objectClassAtPath.equals(PointEvent.class)) {
-            PointEvent pointEvent = (PointEvent) objectAtPath;
-            return parseDvDateTime(pointEvent.getTime().getValue());
-        } else if (objectClassAtPath.equals(IntervalEvent.class)) {
-            return getIntervalEventStart((IntervalEvent) objectAtPath);
-        } else if (objectClassAtPath.equals(Observation.class)) {
-            Observation observation = (Observation) objectAtPath;
-            return parseDvDateTime(observation.getData().getOrigin().getValue());
-        } else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDateTime.class)) {
-            DvDateTime dvDateTime = (DvDateTime) ((Element) objectAtPath).getValue();
-            return parseDvDateTime(dvDateTime.getValue());
-        } else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDate.class)) {
-            DvDate dvDate = (DvDate) ((Element) objectAtPath).getValue();
-            return parseDvDate(dvDate.getValue());
-        } else if (objectClassAtPath.equals(Action.class)) {
-            Action action = (Action) objectAtPath;
-            return parseDvDateTime(action.getTime().getValue());
-        } else if (objectClassAtPath.equals(EventContext.class)) {
-            EventContext eventContext = (EventContext) objectAtPath;
-            return parseDvDateTime(eventContext.getStartTime().getValue());
-        }
-        LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
-        return Optional.empty();
+    public Optional<Date> convert(Object objectAtPath)  {
+    	
+        try {
+			Class objectClassAtPath = objectAtPath.getClass();
+			if (objectClassAtPath.equals(PointEvent.class)) {
+			    PointEvent pointEvent = (PointEvent) objectAtPath;
+			    return parseDvDateTime(pointEvent.getTime().getValue());
+			} else if (objectClassAtPath.equals(IntervalEvent.class)) {
+			    return getIntervalEventStart((IntervalEvent) objectAtPath);
+			} else if (objectClassAtPath.equals(Observation.class)) {
+			    Observation observation = (Observation) objectAtPath;
+			    return parseDvDateTime(observation.getData().getOrigin().getValue());
+			} else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDateTime.class)) {
+			    DvDateTime dvDateTime = (DvDateTime) ((Element) objectAtPath).getValue();
+			    return parseDvDateTime(dvDateTime.getValue());
+			} else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDate.class)) {
+			    DvDate dvDate = (DvDate) ((Element) objectAtPath).getValue();
+			    return parseDvDate(dvDate.getValue());
+			} else if (objectClassAtPath.equals(Action.class)) {
+			    Action action = (Action) objectAtPath;
+			    return parseDvDateTime(action.getTime().getValue());
+			} else if (objectClassAtPath.equals(EventContext.class)) {
+			    EventContext eventContext = (EventContext) objectAtPath;
+			    return parseDvDateTime(eventContext.getStartTime().getValue());
+			}
+			LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
+			return Optional.empty();
+		} catch (UnprocessableEntityException e) {
+			// TODO Auto-generated catch block
+			LOG.error("Error converting date. Mapping will be processed if optional otherwise the conversion is skipped and the next one processed", e);
+			return Optional.empty();
+		}
     }
 
-    public Optional<Date> convertEndTime(Object objectAtPath) throws UnprocessableEntityException {
-        Class objectClassAtPath = objectAtPath.getClass();
-        if (objectClassAtPath.equals(PointEvent.class)) {
-            PointEvent pointEvent = (PointEvent) objectAtPath;
-            return parseDvDateTime(pointEvent.getTime().getValue());
-        } else if (objectClassAtPath.equals(IntervalEvent.class)) {
-            IntervalEvent intervalEvent = (IntervalEvent) objectAtPath;
-            return parseDvDateTime(intervalEvent.getTime().getValue());
-        } else if (objectClassAtPath.equals(Observation.class)) {
-            Observation observation = (Observation) objectAtPath;
-            return parseDvDateTime(observation.getData().getOrigin().getValue());
-        } else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDateTime.class)) {
-            DvDateTime dvDateTime = (DvDateTime) ((Element) objectAtPath).getValue();
-            return parseDvDateTime(dvDateTime.getValue());
-        }  else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDate.class)) {
-            DvDate dvDate = (DvDate) ((Element) objectAtPath).getValue();
-            return parseDvDate(dvDate.getValue());
-        } else if (objectClassAtPath.equals(Action.class)) {
-            Action action = (Action) objectAtPath;
-            return parseDvDateTime(action.getTime().getValue());
-        } else if (objectClassAtPath.equals(EventContext.class)) {
-            EventContext eventContext = (EventContext) objectAtPath;
-            if(eventContext.getEndTime()!=null){
-                return parseDvDateTime(eventContext.getEndTime().getValue());
-            }else{
-                return parseDvDateTime(eventContext.getStartTime().getValue());
-            }
-        }
-        LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
-        return Optional.empty();
+    public Optional<Date> convertEndTime(Object objectAtPath) {
+    	try {
+    		Class objectClassAtPath = objectAtPath.getClass();
+    		if (objectClassAtPath.equals(PointEvent.class)) {
+    			PointEvent pointEvent = (PointEvent) objectAtPath;
+    			return parseDvDateTime(pointEvent.getTime().getValue());
+    		} else if (objectClassAtPath.equals(IntervalEvent.class)) {
+    			IntervalEvent intervalEvent = (IntervalEvent) objectAtPath;
+    			return parseDvDateTime(intervalEvent.getTime().getValue());
+    		} else if (objectClassAtPath.equals(Observation.class)) {
+    			Observation observation = (Observation) objectAtPath;
+    			return parseDvDateTime(observation.getData().getOrigin().getValue());
+    		} else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDateTime.class)) {
+    			DvDateTime dvDateTime = (DvDateTime) ((Element) objectAtPath).getValue();
+    			return parseDvDateTime(dvDateTime.getValue());
+    		}  else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDate.class)) {
+    			DvDate dvDate = (DvDate) ((Element) objectAtPath).getValue();
+    			return parseDvDate(dvDate.getValue());
+    		} else if (objectClassAtPath.equals(Action.class)) {
+    			Action action = (Action) objectAtPath;
+    			return parseDvDateTime(action.getTime().getValue());
+    		} else if (objectClassAtPath.equals(EventContext.class)) {
+    			EventContext eventContext = (EventContext) objectAtPath;
+    			if(eventContext.getEndTime()!=null){
+    				return parseDvDateTime(eventContext.getEndTime().getValue());
+    			}else{
+    				return parseDvDateTime(eventContext.getStartTime().getValue());
+    			}
+    		}
+    		LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
+    		return Optional.empty();
+    	} catch (UnprocessableEntityException e) {
+    		// TODO Auto-generated catch block
+    		LOG.error("Error converting date. Mapping will be processed if optional otherwise the conversion is skipped and the next one processed", e);
+    		return Optional.empty();
+    	}
     }
 
     private Optional<Date> parseDvDate(Temporal dvDate) {

@@ -1,12 +1,14 @@
 package org.bih.eos.converter.cdt.converter.configurable;
 
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalLong;
+
 import com.nedap.archie.rm.datavalues.DvCodedText;
 import com.nedap.archie.rm.datavalues.DvIdentifier;
 import com.nedap.archie.rm.datavalues.DvText;
+import com.nedap.archie.rm.datavalues.quantity.DvCount;
 import com.nedap.archie.rm.datavalues.quantity.DvQuantity;
-
-import java.util.Optional;
-import java.util.OptionalDouble;
 
 public class DvGetter {
 
@@ -23,6 +25,14 @@ public class DvGetter {
         }
         return OptionalDouble.empty();
     }
+    
+    public static OptionalDouble getDvCount(DvCount value){
+        if(value != null) {
+            return OptionalDouble.of(value.getMagnitude());
+        }
+        return OptionalDouble.empty();
+    }
+
 
     public static Optional<String> getDvCodedText(DvCodedText value) {
         if(value != null) {

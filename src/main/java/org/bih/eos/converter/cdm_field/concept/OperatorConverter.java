@@ -79,7 +79,7 @@ public class OperatorConverter extends CDMConverter<Concept> {
         if (quantity.getMagnitudeStatus() != null) {
             return getConceptFromMagnitudeStatus(quantity.getMagnitudeStatus());
         }
-        LOG.warn("The operator from magnitude status of the DvQuantity" + quantity.getMagnitudeStatus() + " is not a valid operator. Valid are: =, >, <, =>, <=.  Nothing is mapped for operator.");
+        LOG.warn("The operator from magnitude status of the DvQuantity " + quantity.getMagnitudeStatus() + " is not a valid operator. Valid are: =, >, <, =>, <=.  Nothing is mapped for operator.");
         return Optional.empty();
     }
 

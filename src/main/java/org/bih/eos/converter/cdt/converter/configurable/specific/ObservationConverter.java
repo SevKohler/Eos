@@ -4,6 +4,7 @@ import com.nedap.archie.rm.archetyped.Locatable;
 import com.nedap.archie.rm.datastructures.Element;
 import com.nedap.archie.rm.datavalues.DvCodedText;
 import com.nedap.archie.rm.datavalues.DvText;
+import com.nedap.archie.rm.datavalues.quantity.DvCount;
 import com.nedap.archie.rm.datavalues.quantity.DvQuantity;
 import org.bih.eos.converter.PathProcessor;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
@@ -99,6 +100,18 @@ public class ObservationConverter extends CDTValueUnitConverter<ObservationEntit
         LOG.info("Currently there is no way initialising a value to the value concept, so only the concept is set now without a magnitude. It is better to provide this information within the composition then setting it manually");
         return observation;
     }
+    
+    @Override
+    protected ObservationEntity convertValueCodeConceptMap(Long code, ObservationEntity observation) {
+    	Concept concept = new Concept(code);
+        if (code != null) {
+            observation.setValue(Optional.of(concept), Optional.of(code + ""));
+        } else {
+            observation.setValue(Optional.empty(), Optional.of(code + ""));
+        }
+        LOG.info("Currently there is no way initialising a value to the value concept, so only the concept is set now without a magnitude. It is better to provide this information within the composition then setting it manually");
+        return observation;
+    }
 
     @Override
     protected ObservationEntity convertValuePath(Locatable contentItem, String path, ObservationEntity observation) {
@@ -115,10 +128,18 @@ public class ObservationConverter extends CDTValueUnitConverter<ObservationEntit
             if (element.getValue().getClass().equals(DvQuantity.class)) {
                 observation.setValue(DvGetter.getDvQuantity((DvQuantity) element.getValue()));
             } else if (element.getValue().getClass().equals(DvText.class)) {
-                observation.setValue(DvGetter.getDvText((DvText) element.getValue()));
+            	Optional<String> dvText = DvGetter.getDvText((DvText) element.getValue());
+    			if (dvText.isPresent() && dvText.get().length() >= 50)  {
+    				String text = dvText.get();
+    				LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional) text value: " + text);
+    				dvText=Optional.empty();
+    			}
+                observation.setValue(dvText);
             } else if (element.getValue().getClass().equals(DvCodedText.class)) {
                 Optional<Concept> concept = defaultConverterServices.getElementToConceptConverter().convertStandardConcept(element.getValue());
                 observation.setValue(concept, DvGetter.getDvCodedText((DvCodedText) element.getValue()));
+            } else if (element.getValue().getClass().equals(DvCount.class)) {
+            	observation.setValue(DvGetter.getDvCount((DvCount) element.getValue()));
             }
         }
         return observation;

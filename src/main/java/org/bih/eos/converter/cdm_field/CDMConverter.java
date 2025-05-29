@@ -3,6 +3,9 @@ package org.bih.eos.converter.cdm_field;
 import com.nedap.archie.rm.archetyped.Locatable;
 import com.nedap.archie.rm.datastructures.Element;
 import com.nedap.archie.rm.datavalues.DataValue;
+import com.nedap.archie.rm.datavalues.DvCodedText;
+
+import org.bih.eos.yaml.ConceptMap;
 import org.bih.eos.yaml.ValueEntry;
 import org.bih.eos.converter.PathProcessor;
 import org.slf4j.Logger;
@@ -34,6 +37,8 @@ public abstract class CDMConverter<T> {
                 if(convertedPath.isPresent()){
                     return convertedPath;
                 }
+            } else if(valueEntry.getConceptMap()!=null && PathProcessor.getItemAtPath(contentItem, valueEntry.getConceptMap().getPath()).isPresent()) {
+            	return convertConceptMap(contentItem,valueEntry.getConceptMap());
             }
         }
         return Optional.empty();
@@ -62,6 +67,35 @@ public abstract class CDMConverter<T> {
         }else if(DataValue.class.isAssignableFrom(itemAtPath.getClass())){
             return convertDvValue((DataValue) itemAtPath);
         }
+        return Optional.empty();
+    }
+    
+    private Optional<T> convertConceptMap(Locatable itemAtPath, ConceptMap conceptMap) {
+        Optional<T> elementAtPath = convertPath(itemAtPath, conceptMap.getPath());
+        if(elementAtPath.isPresent())
+        {
+            if (elementAtPath.get() instanceof Element) {
+                Element element = (Element) elementAtPath.get();
+                if (element.getValue() instanceof DvCodedText) {
+                    DvCodedText dvCodedText = (DvCodedText) element.getValue();
+                    if(dvCodedText.getDefiningCode().codeStringValid())
+                    {
+                    	T value = (T) conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString());
+                    	return Optional.ofNullable(value);
+                    }
+                    else return Optional.empty();
+                    	
+                }
+                //Can be ordinal??
+            }
+        }
+ 
+        //if
+        //{ is dvcodedtext
+        //get defining_code
+        //Long value=valueEntry.getConceptMap().getMappings().get(defining_code);
+        //return convertCode(value);
+        //}
         return Optional.empty();
     }
 
