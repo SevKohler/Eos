@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 public class VisitConverterProperties {
 	
 	private String aql;
+	private String templateid;
+	private String visitsource;
 
 	public String getAql() {
 		return aql;
@@ -16,5 +18,22 @@ public class VisitConverterProperties {
 	public void setAql(String aql) {
 		this.aql = aql;
 	}
+
+	public String getTemplateid() {
+		return templateid;
+	}
+
+	public void setTemplateid(String templateid) {
+		this.templateid = templateid;
+	}
+
+	public String getVisitsource() {
+		return visitsource;
+	}
+
+	public void setVisitsource(String visitsource) {
+		this.visitsource = visitsource;
+	}
+	
 	
 }

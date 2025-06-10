@@ -6,13 +6,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bih.eos.config.VisitConverterProperties;
 import org.bih.eos.controller.dao.RegistryKey;
+import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.exceptions.UnprocessableEntityException;
+import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.PersonVisit;
+import org.bih.eos.jpabase.entity.PersonVisitId;
+import org.bih.eos.jpabase.entity.VisitOccurrence;
+import org.bih.eos.jpabase.jpa.dao.PersonVisitRepository;
 import org.bih.eos.jpabase.service.ConceptService;
+import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.ehrbase.client.aql.query.NativeQuery;
 import org.ehrbase.client.aql.query.Query;
 import org.ehrbase.client.aql.record.Record;
@@ -29,27 +36,25 @@ import jakarta.transaction.Transactional;
 public class VisitEndpointServiceImp implements VisitEndpointService {
     private static final Logger LOG = LoggerFactory.getLogger(VisitEndpointServiceImp.class);
     private final OpenEhrClient openEhrClient;
-
+    private final PersonVisitRepository personVisitRepository;
     private final ConceptService conceptService;
-//    private final String aqlPredefined="SELECT e/ehr_id/value as ehr_id,"
-//    		+ " c/context/other_context/items[openEHR-EHR-CLUSTER.case_identification.v0]/items[at0001]/value/value as source_id,"
-//    		+ " c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0004]/value/value as begin,"
-//    		+ " c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0005]/value/value as end"
-//    		+ " FROM EHR e CONTAINS COMPOSITION c"
-//    		+ " WHERE c/archetype_details/template_id/value='Patientenaufenthalt'";
+    private final EHRToPersonService ehrToPersonService;
 	private VisitConverterProperties visitConverterProperties;
+
     
-    public VisitEndpointServiceImp(ConceptService conceptService, OpenEhrClient openEhrClient, VisitConverterProperties visitConverterProperties) {
+    public VisitEndpointServiceImp(ConceptService conceptService, OpenEhrClient openEhrClient, VisitConverterProperties visitConverterProperties, PersonVisitRepository personVisitRepository,EHRToPersonService ehrToPersonService ) {
     	this.conceptService=conceptService;
         this.openEhrClient = openEhrClient;
         this.visitConverterProperties=visitConverterProperties;
+        this.personVisitRepository=personVisitRepository;
+        this.ehrToPersonService = ehrToPersonService;
     }
 
     
-    //TODO: if end null end=start
-    //TODO: configurable
-    //TODO: AQL end composition? example to see if possible
-    //TODO: JPA
+    //TODO: if end null end=start DONE
+    //TODO: configurable DONE
+    //TODO: AQL end composition? example to see if possible DONE
+    //TODO: JPA DONE
     //TODO: TEST!
     @Override
 	public List<PersonVisit> findAll() {
@@ -58,11 +63,6 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     		throw new UnprocessableEntityException("Visit AQL returned no visits, please review the AQL query");
     	}
     	
-//    	for (Record r : records) {
-//    	    System.out.println("Record: " + r);
-//    	    System.out.println("Fields: " + Arrays.toString(r.fields()));
-//    	    System.out.println("Values: " + Arrays.toString(r.values()));
-//    	}
     	Map<RegistryKey, List<Record>> grouped = records.stream()
     			.collect(Collectors.groupingBy(r -> new RegistryKey((String)r.value(0), (String)r.value(1))));
 
@@ -77,7 +77,17 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
 
     		for (Record r : group) {
     			Date startDate = Date.from((Instant) r.value(2));
-    			Date endDate = Date.from((Instant) r.value(3));
+    			Date endDate;
+    			if(r.value(3)!=null)
+    			{
+    				endDate = Date.from((Instant) r.value(3));
+    			}
+    			else //if endDate is null, assume endDate as startDate for min max date calculus
+    			{
+    				endDate=Date.from(startDate.toInstant());
+    			}
+    			
+    			
     			if (startDate != null && (minStartDate == null || startDate.before(minStartDate))) {
     				minStartDate = startDate;
     			}
@@ -86,14 +96,34 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     			}
     		}
 
-    		resultPersonVisit.add(createVisit(key.getEhrId(), key.getSourceId(), minStartDate, maxEndDate));
+    		Optional<EHRToPerson> ehrtoperson = ehrToPersonService.findByEhrId(key.getEhrId());
+    		if(ehrtoperson.isPresent())
+    			resultPersonVisit.add(createVisit(key.getEhrId(), key.getSourceId(), minStartDate, maxEndDate,ehrtoperson.get()));
     	}
+    	
+    	saveAll(resultPersonVisit);
+    	
     	return resultPersonVisit;
     }
 
 
 
-    private List<Record4<String, String, Instant, Instant>> executeAqlQuery() {
+    private void saveAll(List<PersonVisit> resultPersonVisit) {
+		for(PersonVisit pv:resultPersonVisit) {
+			Optional<PersonVisit> existente = personVisitRepository.findByEhrIdAndSourceVisit(pv.getEhrId(),pv.getSourceVisit());
+			if (!existente.isPresent()) {
+				personVisitRepository.save(pv);
+			}
+			else {
+				System.out.println("PersonVisit already exists "+pv);
+			}
+			
+		}
+		
+	}
+
+
+	private List<Record4<String, String, Instant, Instant>> executeAqlQuery() {
         try {
             NativeQuery<Record4<String, String, Instant, Instant>> buildNativeQuery=null;
             List<Record4<String, String, Instant, Instant>> execute;
@@ -112,12 +142,24 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
         }
     }
 
-    private PersonVisit createVisit(String ehrId, String sourceId, Date minStartDate, Date maxEndDate) {
+    private PersonVisit createVisit(String ehrId, String sourceId, Date minStartDate, Date maxEndDate, EHRToPerson ehrToPerson) {
+
     	PersonVisit pv = new PersonVisit();
-    	pv.setEhrId(ehrId);
-    	pv.setSourceVisit(sourceId);
+       	pv.setEhrId(ehrId);
+       	pv.setSourceVisit(sourceId);
     	pv.setVisitStartDate(minStartDate);
+    	pv.setVisitStartDateTime(minStartDate);
     	pv.setVisitEndDate(maxEndDate);
+    	pv.setVisitEndDateTime(maxEndDate);
+    	VisitOccurrence vo=new VisitOccurrence();
+    	vo.setVisitTypeConcept(conceptService.findById(32817L));
+    	vo.setVisitConcept(conceptService.findById(9201L));
+    	vo.setVisitStartDate(minStartDate);
+    	vo.setVisitStartDateTime(minStartDate);
+    	vo.setVisitEndDate(maxEndDate);
+    	vo.setVisitEndDateTime(maxEndDate);
+    	vo.setPerson(ehrToPerson.getPerson());
+    	pv.setVisitOccurrence(vo);
     	return pv;
     }
 

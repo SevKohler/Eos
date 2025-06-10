@@ -36,7 +36,7 @@ public class CompositionController {
         if (ehrToPerson.isPresent()) {
             Composition composition = new CanonicalJson().
                     unmarshal(json, com.nedap.archie.rm.composition.Composition.class);
-            return runConversion(composition, ehrToPerson.get().getPerson());
+            return runConversion(composition, ehrToPerson.get());
         } else {
             return new ResponseEntity<>("{ \"message\" : \"EHR id has no person, create either one or enter a correct ehr id\" }", HttpStatus.CONFLICT);
         }
@@ -50,14 +50,14 @@ public class CompositionController {
         if (ehrToPerson.isPresent()) {
             Composition composition = new CanonicalXML().
                     unmarshal(xml, com.nedap.archie.rm.composition.Composition.class);
-            return runConversion(composition, ehrToPerson.get().getPerson());
+            return runConversion(composition, ehrToPerson.get());
         } else {
             return new ResponseEntity<>("{ \"message\" : \"EHR id has no person, create either one or enter a correct ehr id\" }", HttpStatus.CONFLICT);
         }
     }
 
-    private ResponseEntity<Object> runConversion(Composition composition, Person person) {
-        List<JPABaseEntity> results = conversionService.convert(new ConvertableComposition(composition, person));
+    private ResponseEntity<Object> runConversion(Composition composition, EHRToPerson ehrToPerson) {
+        List<JPABaseEntity> results = conversionService.convert(new ConvertableComposition(composition, ehrToPerson));
         if(results.size()==0){
             return new ResponseEntity<>("{ \"message\" : \"Nothing was converted, either a required field was missing, or no converter for the archetype configured. For more information inspect the logs.\" }", HttpStatus.OK);
         }else{

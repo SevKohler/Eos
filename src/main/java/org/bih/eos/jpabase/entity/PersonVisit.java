@@ -27,44 +27,72 @@ import jakarta.persistence.*;
 public class PersonVisit {
 
     @Id
-    @Column(name = "ehr_id")
-    @Access(AccessType.PROPERTY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+	
+    
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "visit_occurrence_id", referencedColumnName = "visit_occurrence_id")
+    private VisitOccurrence visitOccurrence;
+    
+    @Column(name = "ehr_id", nullable = false)
     private String ehrId;
 
-    @OneToOne
-    @JoinColumn(name="person_id")
-    private Person person;
-
-	@Column(name="sourceVisit", nullable=false)
+    @Column(name = "source_visit", nullable = false)
     private String sourceVisit;
-    
-	@Column(name="visit_start_date", nullable=false)
-	private Date visitStartDate;
 	
-	@Column(name="visit_start_datetime")
-	private Date visitStartDateTime;
-	
-	@Column(name="visit_end_date", nullable=false)
-	private Date visitEndDate;
-	
-	@Column(name="visit_end_datetime")
-	private Date visitEndDateTime;
+    @Column(name = "visit_start_date", nullable = false)
+    private Date visitStartDate;
+
+    @Column(name = "visit_start_datetime")
+    private Date visitStartDateTime;
+
+    @Column(name = "visit_end_date", nullable = false)
+    private Date visitEndDate;
+
+    @Column(name = "visit_end_datetime")
+    private Date visitEndDateTime;
+
+    public Date getVisitStartDate() {
+        return visitStartDate;
+    }
+
+    public void setVisitStartDate(Date visitStartDate) {
+        this.visitStartDate = visitStartDate;
+    }
+
+    public Date getVisitStartDateTime() {
+        return visitStartDateTime;
+    }
+
+    public void setVisitStartDateTime(Date visitStartDateTime) {
+        this.visitStartDateTime = visitStartDateTime;
+    }
+
+    public Date getVisitEndDate() {
+        return visitEndDate;
+    }
+
+    public void setVisitEndDate(Date visitEndDate) {
+        this.visitEndDate = visitEndDate;
+    }
+
+    public Date getVisitEndDateTime() {
+        return visitEndDateTime;
+    }
+
+    public void setVisitEndDateTime(Date visitEndDateTime) {
+        this.visitEndDateTime = visitEndDateTime;
+    }
 
     public String getEhrId() {
-        return ehrId;
-    }
+		return ehrId;
+	}
 
-    public void setEhrId(String ehrId) {
-        this.ehrId = ehrId;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+	public void setEhrId(String ehrId) {
+		this.ehrId = ehrId;
+	}
 
 	public String getSourceVisit() {
 		return sourceVisit;
@@ -74,50 +102,29 @@ public class PersonVisit {
 		this.sourceVisit = sourceVisit;
 	}
 
-	public Date getVisitStartDate() {
-		return visitStartDate;
+	public Long getId() {
+		return id;
 	}
 
-	public void setVisitStartDate(Date visitStartDate) {
-		this.visitStartDate = visitStartDate;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Date getVisitStartDateTime() {
-		return visitStartDateTime;
+	public VisitOccurrence getVisitOccurrence() {
+		return visitOccurrence;
 	}
 
-	public void setVisitStartDateTime(Date visitStartDateTime) {
-		this.visitStartDateTime = visitStartDateTime;
+	public void setVisitOccurrence(VisitOccurrence visitOccurrence) {
+		this.visitOccurrence = visitOccurrence;
 	}
 
-	public Date getVisitEndDate() {
-		return visitEndDate;
-	}
-
-	public void setVisitEndDate(Date visitEndDate) {
-		this.visitEndDate = visitEndDate;
-	}
-
-	public Date getVisitEndDateTime() {
-		return visitEndDateTime;
-	}
-
-	public void setVisitEndDateTime(Date visitEndDateTime) {
-		this.visitEndDateTime = visitEndDateTime;
-	}
-	
 	@Override
-	public String toString() {
-	    return "PersonVisit{" +
-	            "ehrId='" + ehrId + '\'' +
-	            ", person=" + (person != null ? person.getId() : "null") +
-	            ", sourceVisit='" + sourceVisit + '\'' +
-	            ", visitStartDate=" + visitStartDate +
-	            ", visitStartDateTime=" + (visitStartDateTime != null ? visitStartDateTime : "null") +
-	            ", visitEndDate=" + visitEndDate +
-	            ", visitEndDateTime=" + (visitEndDateTime != null ? visitEndDateTime : "null") +
-	            '}';
-	}
-
-
+    public String toString() {
+        return "PersonVisit{" +
+                "ehrId='" + getEhrId() + '\'' +
+                ", sourceVisit='" + getSourceVisit() + '\'' +
+                ", visitStartDate=" + visitStartDate +
+                ", visitEndDate=" + visitEndDate +
+                '}';
+    }
 }

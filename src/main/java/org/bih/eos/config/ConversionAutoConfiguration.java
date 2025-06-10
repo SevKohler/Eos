@@ -10,6 +10,7 @@ import org.bih.eos.converter.composition.CompositionToPersonConverter;
 import org.bih.eos.converter.cdm_field.concept.DVTextCodeToConceptConverter;
 import org.bih.eos.exceptions.UnprocessableEntityException;
 import org.bih.eos.fileloader.FileLoader;
+import org.bih.eos.jpabase.jpa.dao.PersonVisitRepository;
 import org.bih.eos.jpabase.service.ConceptRelationshipService;
 import org.bih.eos.jpabase.service.ConceptService;
 import org.bih.eos.services.ConceptSearchService;
@@ -42,18 +43,24 @@ public class ConversionAutoConfiguration implements InitializingBean {
     private final ConceptRelationshipService conceptRelationshipService;
     private final PersistenceService persistenceService;
     private final PersonConverterProperties personConverterProperties;
+	private final VisitConverterProperties visitConverterProperties;
+	private final PersonVisitRepository personVisitRepository;
 
 
     public ConversionAutoConfiguration(ConverterRegistry converterRegistry,
                                        ConceptService conceptService,
                                        ConceptRelationshipService conceptRelationshipService,
                                        PersistenceService persistenceService,
-                                       PersonConverterProperties personConverterProperties) {
+                                       PersonConverterProperties personConverterProperties,
+                                       VisitConverterProperties visitConverterProperties,
+                                       PersonVisitRepository personVisitRepository) {
         this.converterRegistry = converterRegistry;
         this.conceptService = conceptService;
         this.conceptRelationshipService = conceptRelationshipService;
         this.persistenceService = persistenceService;
         this.personConverterProperties = personConverterProperties;
+        this.visitConverterProperties=visitConverterProperties;
+        this.personVisitRepository=personVisitRepository;
     }
 
     @Override
@@ -71,7 +78,7 @@ public class ConversionAutoConfiguration implements InitializingBean {
             putMapData(conversionMapMedicalData, mapping.getArchetypeId(), initialiseConvertersMedicalData(mapping.getMappings(), defaultConverterServices));
         }
         loadIncludes(mappingsMD, defaultConverterServices, conversionMapMedicalData);
-        converterRegistry.addConverter(new CompositionToMDConverter(conversionMapMedicalData, defaultConverterServices));
+        converterRegistry.addConverter(new CompositionToMDConverter(conversionMapMedicalData, defaultConverterServices,visitConverterProperties,personVisitRepository));
     }
 
     private void loadIncludes(List<Mapping> loadedMappings, DefaultConverterServices defaultConverterServices, HashMap<String, List<CDTConverter>> conversionMapMedicalData) {

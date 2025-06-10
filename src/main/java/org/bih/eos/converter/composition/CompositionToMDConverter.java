@@ -4,14 +4,21 @@ import com.nedap.archie.rm.composition.Composition;
 import com.nedap.archie.rm.composition.ContentItem;
 import com.nedap.archie.rm.composition.Section;
 import org.bih.eos.converter.cdt.converter.CDTConverter;
+import org.apache.commons.lang3.StringUtils;
+import org.bih.eos.config.VisitConverterProperties;
+import org.bih.eos.converter.PathProcessor;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.converter.cdt.converter.custom.CustomCDTConverter;
 import org.bih.eos.converter.cdt.converter.configurable.generic.CDTMedicalDataConverter;
 import org.bih.eos.converter.cdt.converter.nonconfigurable.VisitOccurrenceConverter;
 import org.bih.eos.converter.dao.ConversionTrack;
+import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.JPABaseEntity;
 import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.entity.PersonVisit;
+import org.bih.eos.jpabase.entity.PersonVisitId;
 import org.bih.eos.jpabase.entity.VisitOccurrence;
+import org.bih.eos.jpabase.jpa.dao.PersonVisitRepository;
 import org.bih.eos.services.dao.ConvertableComposition;
 import org.bih.eos.converter.dao.ConvertableContentItem;
 import org.slf4j.Logger;
@@ -24,10 +31,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CompositionToMDConverter extends CompositionToEntityConverter<CDTConverter, ConvertableComposition> {
     HashMap<String, Integer> archetypeList = new HashMap<String, Integer>();
 
+	private final VisitConverterProperties visitProperties;
+	private final PersonVisitRepository personVisitRepository;
+
     private static final Logger LOG = LoggerFactory.getLogger(CompositionToMDConverter.class);
 
-    public CompositionToMDConverter(HashMap<String, List<CDTConverter>> conversionMap, DefaultConverterServices defaultConverterServices) {
+    public CompositionToMDConverter(HashMap<String, List<CDTConverter>> conversionMap, DefaultConverterServices defaultConverterServices, VisitConverterProperties visitProperties, PersonVisitRepository personVisitRepository) {
         super(conversionMap, defaultConverterServices);
+        this.visitProperties=visitProperties;
+        this.personVisitRepository=personVisitRepository;
     }
 
     //Actually i should iterate the entire composition in order to find it instead of specific nesting since it could be linked else where.
@@ -42,12 +54,58 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 
     private List<JPABaseEntity> runCDTConverters(List<ConversionTrack> conversionTracker, ConvertableComposition convertableComposition) {
         List<JPABaseEntity> cdtConverterResults = new ArrayList<>();
-        Optional<VisitOccurrence> visitOccurrence = convertVisitOccurrence(convertableComposition.getComposition(), convertableComposition.getPerson());
+        //First try to generate the visitOccurrence from sourceId, and if that fails, just get a default one
+        Optional<VisitOccurrence> visitOccurrence ;
+        visitOccurrence=getVisitFromSourceId(convertableComposition.getComposition(),convertableComposition.getEhrToPerson());
+        if(visitOccurrence==null || visitOccurrence.isEmpty())
+        {
+        	visitOccurrence = convertVisitOccurrence(convertableComposition.getComposition(), convertableComposition.getPerson());
+        }
         CdtExecutionParameterMedData cdtExecutionParameters = new CdtExecutionParameterMedData(convertableComposition.getPerson(), visitOccurrence);
         cdtConverterResults = iterateContent(convertableComposition.getComposition().getContent(), cdtExecutionParameters, conversionTracker, cdtConverterResults);
         LOG.info("Mapped amount of all transformed archetypes: " + archetypeList.values().stream().mapToInt(i -> i.intValue()).sum() + ", including following archetypes: " + archetypeList);
         return cdtConverterResults;
     }
+
+	private Optional<VisitOccurrence> getVisitFromSourceId(Composition composition, EHRToPerson ehrToPerson) {
+		String templateid=visitProperties.getTemplateid();
+		String visitsource=visitProperties.getVisitsource();
+		String ehrid=null;
+		
+		Optional<VisitOccurrence> opVisit=Optional.empty();
+		if(ehrToPerson==null || ehrToPerson.getEhrId()==null)
+		{
+            LOG.warn("Warning ehr_id not found for composition");
+			return null;
+		}
+		ehrid=ehrToPerson.getEhrId();
+		if(StringUtils.isBlank(visitsource))
+		{
+			//LOG.info("No path defined for visits, ignoring");
+			return null;
+		}
+		if(!StringUtils.isBlank(templateid) &&
+				composition.getArchetypeDetails()!=null &&
+				composition.getArchetypeDetails().getTemplateId()!=null &&
+				!templateid.equals(composition.getArchetypeDetails().getTemplateId().getValue()))
+		{
+			//LOG.info("No template_id defined in configuration");
+			return null;
+		}
+		
+		Optional<?> value = PathProcessor.getItemAtPath(composition, visitsource);
+		if(value.isPresent() && value.get() instanceof String)
+		{
+			Optional<PersonVisit> pvo=personVisitRepository.findByEhrIdAndSourceVisit(ehrid,(String)value.get());
+			if(pvo.get()!=null) 
+			{
+				PersonVisit pv= pvo.get();
+				opVisit=Optional.ofNullable(pv.getVisitOccurrence());
+			}
+			
+		}
+		return opVisit;
+	}
 
     private List<JPABaseEntity> iterateContent(List<ContentItem> contentItems, CdtExecutionParameterMedData cdtExecutionParameters, List<ConversionTrack> conversionTracker, List<JPABaseEntity> cdtConverterResults) {
         for (ContentItem contentItem : contentItems) {
@@ -56,11 +114,11 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
             if (contentItem.getClass().equals(Section.class)) {
                 cdtConverterResults.addAll(iterateContent(((Section) contentItem).getItems(), cdtExecutionParameters, conversionTracker, cdtConverterResults));
 
-                return cdtConverterResults;
+                //return cdtConverterResults;
             }
             if (converterExists(cdtExecutionParameters.getArchetypeId())) {
                 cdtConverterResults.addAll(executeCDTConverter(cdtExecutionParameters, conversionTracker));
-                return cdtConverterResults;
+                //return cdtConverterResults;
             } else {
                 LOG.warn("An archetype was found that is not supported, it will be ignored. \n Nevertheless child content will be mapped if not stated otherwise. \n Archetype id: " + cdtExecutionParameters.getArchetypeId());
             }
