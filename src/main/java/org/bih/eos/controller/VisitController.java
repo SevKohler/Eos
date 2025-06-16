@@ -30,8 +30,12 @@ public class VisitController {
 
     @PostMapping(
             produces = "application/json")
-    public ResponseEntity<Object> convertAll() {
-        return new ResponseEntity<>(new VisitService(ehrToPersonService,visitEndpointService, openEhrClient, converterService).generateAllVisits(), HttpStatus.OK);
+    public ResponseEntity<Object> convertAll(
+            @RequestParam(required = false) String aql,
+            @RequestParam(required = false) String templateid,
+            @RequestParam(required = false) String visitsource
+    		) {
+        return new ResponseEntity<>(new VisitService(ehrToPersonService,visitEndpointService, openEhrClient, converterService,aql).generateAllVisits(), HttpStatus.OK);
     }
 
     @PostMapping(

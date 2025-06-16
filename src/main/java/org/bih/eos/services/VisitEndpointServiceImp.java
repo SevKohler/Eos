@@ -51,14 +51,10 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     }
 
     
-    //TODO: if end null end=start DONE
-    //TODO: configurable DONE
-    //TODO: AQL end composition? example to see if possible DONE
-    //TODO: JPA DONE
     //TODO: TEST!
     @Override
-	public List<PersonVisit> findAll() {
-    	List<Record4<String, String, Instant, Instant>> records = executeAqlQuery();
+	public List<PersonVisit> findAll(String aql) {
+    	List<Record4<String, String, Instant, Instant>> records = executeAqlQuery(aql);
     	if(records.size()==0) {
     		throw new UnprocessableEntityException("Visit AQL returned no visits, please review the AQL query");
     	}
@@ -123,11 +119,18 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
 	}
 
 
-	private List<Record4<String, String, Instant, Instant>> executeAqlQuery() {
+	private List<Record4<String, String, Instant, Instant>> executeAqlQuery(String aql) {
         try {
+        	String querytoRun;
+        	if(aql!=null)
+        		querytoRun=aql;
+        	else if(visitConverterProperties.getAql()!=null)
+        		querytoRun=visitConverterProperties.getAql();
+        	else
+        		return new ArrayList<>();
             NativeQuery<Record4<String, String, Instant, Instant>> buildNativeQuery=null;
             List<Record4<String, String, Instant, Instant>> execute;
-            buildNativeQuery = Query.buildNativeQuery(visitConverterProperties.getAql(), String.class,String.class,Instant.class,Instant.class);
+            buildNativeQuery = Query.buildNativeQuery(querytoRun, String.class,String.class,Instant.class,Instant.class);
 			try {
 				 execute = openEhrClient.aqlEndpoint().execute(buildNativeQuery);
 			} catch (IndexOutOfBoundsException e) {
