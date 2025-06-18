@@ -103,7 +103,7 @@ See [here](https://github.com/SevKohler/OMOCL)
 | CDM table            | Supported               |
 |----------------------|-------------------------|
 | OBSERVATION_PERIOD   | automatically generated |
-| VISIT_OCCURRENCE     | automatically generated |
+| VISIT_OCCURRENCE     | from AQL / automatically generated |
 | VISIT_DETAIL         |                         |
 | CONDITION_OCCURRENCE | x                       | 
 | DRUG_EXPOSURE        | x                       |
@@ -118,6 +118,34 @@ See [here](https://github.com/SevKohler/OMOCL)
 | FACT_RELATIONSHIP    |                         |
 | DRUG_ERA             | automatically generated |
 | CONDITION_ERA        | automatically generated |
+
+### Visit generation:
+Visits can now be generated from defined AQL and calling to the /visit endpoint. AQL must contain four fields: path to ehr_id, path to source visit identifier, path to the start date, and path to the end date. The process executes the query and groups them by ehr_id+source_id, calculating min(start date) and max(end date) for each one of them. Null end dates are interpreted as end date=start date. As an example see the following sample query:
+
+```sql
+SELECT e/ehr_id/value as ehr_id,
+       c/context/other_context/items[openEHR-EHR-CLUSTER.case_identification.v0]/items[at0001]/value/value as source_id,
+       c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0004]/value/value as begin,
+       c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0005]/value/value as end
+FROM EHR e
+CONTAINS COMPOSITION c
+WHERE c/archetype_details/template_id/value='Patientenaufenthalt'
+
+```
+This query usually points to the context of the Composition, but is not limited to that.
+After generating visits, whenever a new Composition is procesed by EOS, it will look (by using the templateid and visitsource configuration parameters) for existing visits generated for that patient, and if they exist, it will use them as the corresponding visit for each one of the selected clinical tables. If no AQL is selected then automatic visits are created from the clinical entity dates (e.g. the diagnosis or the measurement date).
+The following is a snippet of the configuration in the application.yml containing the visit configuration
+
+```yml
+eos:
+  person-conversion:
+    mode: automatic #conversion for composition conversion
+  visit-conversion:
+    aql: SELECT e/ehr_id/value as ehr_id, c/context/other_context/items[openEHR-EHR-CLUSTER.case_identification.v0]/items[at0001]/value/value as source_id, c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0004]/value/value as begin, c/content[openEHR-EHR-ADMIN_ENTRY.hospitalization.v0]/data[at0001]/items[at0005]/value/value as end FROM EHR e CONTAINS COMPOSITION c WHERE c/archetype_details/template_id/value='Patientenaufenthalt'
+    templateid: Patientenaufenthalt
+    visitsource: /context/other_context/items[openEHR-EHR-CLUSTER.case_identification.v0]/items[at0001]/value/value
+...
+```
 
 ### DISCLAIMER:
 
