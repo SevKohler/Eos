@@ -1,20 +1,24 @@
 package org.bih.eos.controller;
 
-import com.nedap.archie.rm.composition.Composition;
-import org.bih.eos.jpabase.service.EHRToPersonService;
+import java.util.List;
+import java.util.Optional;
+
 import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.JPABaseEntity;
-import org.bih.eos.jpabase.entity.Person;
+import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.bih.eos.services.ConverterService;
 import org.bih.eos.services.dao.ConvertableComposition;
 import org.ehrbase.serialisation.jsonencoding.CanonicalJson;
 import org.ehrbase.serialisation.xmlencoding.CanonicalXML;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Optional;
+import com.nedap.archie.rm.composition.Composition;
 
 @RestController
 @RequestMapping(path = "ehr/{ehrId}/composition")
