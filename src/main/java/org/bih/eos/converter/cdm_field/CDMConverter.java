@@ -80,12 +80,10 @@ public abstract class CDMConverter<T> {
     				return Optional.ofNullable(value);
     			}
     			else return Optional.empty();
-
     		}
     		//TODO: check if DVOrdinal is a real possibility
-
     	}
- 
+    	LOG.warn("Path was not found so conceptMap could not be applied at {}",conceptMap.getPath());
         return Optional.empty();
     }
 

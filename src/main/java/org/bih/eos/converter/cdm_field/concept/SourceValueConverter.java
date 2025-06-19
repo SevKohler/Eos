@@ -22,7 +22,7 @@ public class SourceValueConverter extends CDMConverter<String> {
             return Optional.of(((DvCodedText) value).getDefiningCode().getCodeString());
         } else if (value.getClass() == DvText.class) {
         	String text=((DvText) value).getValue();
-        	if(text!=null && text.length() >= 50) {
+        	if(text.length() >= 50) {
     			LOG.warn("Text for source value exceeds 50 characters and will not fit on omop field, the mapping will be ignored (if not optional). Text value: {}", text);
     			return Optional.empty();
             }

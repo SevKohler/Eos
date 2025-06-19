@@ -29,7 +29,7 @@ public class DVToDateConverter {
 
     public Optional<Date> convert(Object objectAtPath)  {
     	
-        try {
+
 			Class objectClassAtPath = objectAtPath.getClass();
 			if (objectClassAtPath.equals(PointEvent.class)) {
 			    PointEvent pointEvent = (PointEvent) objectAtPath;
@@ -54,15 +54,10 @@ public class DVToDateConverter {
 			}
 			LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
 			return Optional.empty();
-		} catch (UnprocessableEntityException e) {
-			// TODO Auto-generated catch block
-			LOG.error("Error converting date. Mapping will be processed if optional otherwise the conversion is skipped and the next one processed", e);
-			return Optional.empty();
-		}
+
     }
 
     public Optional<Date> convertEndTime(Object objectAtPath) {
-    	try {
     		Class objectClassAtPath = objectAtPath.getClass();
     		if (objectClassAtPath.equals(PointEvent.class)) {
     			PointEvent pointEvent = (PointEvent) objectAtPath;
@@ -92,11 +87,6 @@ public class DVToDateConverter {
     		}
     		LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
     		return Optional.empty();
-    	} catch (UnprocessableEntityException e) {
-    		// TODO Auto-generated catch block
-    		LOG.error("Error converting date. Mapping will be processed if optional otherwise the conversion is skipped and the next one processed", e);
-    		return Optional.empty();
-    	}
     }
 
     private Optional<Date> parseDvDate(Temporal dvDate) {
