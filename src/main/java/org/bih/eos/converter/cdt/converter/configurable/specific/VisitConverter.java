@@ -3,6 +3,7 @@ package org.bih.eos.converter.cdt.converter.configurable.specific;
 import com.nedap.archie.rm.archetyped.Locatable;
 import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.converter.cdt.conversion_entities.VisitOccurrenceEntity;
+import org.bih.eos.converter.cdt.conversion_entities.VisitOccurrenceEntityWithConfig;
 import org.bih.eos.converter.cdt.converter.configurable.generic.CDTMedicalDataConverter;
 import org.bih.eos.converter.dao.ConvertableContentItem;
 import org.bih.eos.jpabase.entity.JPABaseEntity;
@@ -25,7 +26,7 @@ public class VisitConverter extends CDTMedicalDataConverter<VisitOccurrenceEntit
     @Override
     protected Optional<JPABaseEntity> convertInternal(ConvertableContentItem convertableContentItem) {
     	VisitConfig config = (VisitConfig) omopMapping;
-        VisitOccurrenceEntity entity = new VisitOccurrenceEntity(config, convertableContentItem.getPerson(),defaultConverterServices.getConceptService().findById(32817L));
+        VisitOccurrenceEntity entity = new VisitOccurrenceEntityWithConfig(config, convertableContentItem.getPerson(),defaultConverterServices.getConceptService().findById(32817L));
         entity = convertRequiredFields(convertableContentItem, config, entity);
         entity = convertOptionalFields(convertableContentItem.getContentItem(), config, entity);
         return entity.toJpaEntity();
