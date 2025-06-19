@@ -8,7 +8,7 @@ import java.util.Objects;
 public class PersonVisitId implements Serializable {
 
     @Column(name = "ehr_id")
-    private String ehr_id;
+    private String ehrId;
 
     @Column(name = "sourceVisit")
     private String sourceVisit;
@@ -16,12 +16,12 @@ public class PersonVisitId implements Serializable {
     public PersonVisitId() {}
 
     public PersonVisitId(String ehr_id, String sourceVisit) {
-        this.ehr_id = ehr_id;
+        this.ehrId = ehr_id;
         this.sourceVisit = sourceVisit;
     }
 
     public String getEhrId() {
-        return ehr_id;
+        return ehrId;
     }
 
     public String getSourceVisit() {
@@ -32,12 +32,12 @@ public class PersonVisitId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PersonVisitId that)) return false;
-        return Objects.equals(ehr_id, that.ehr_id) &&
+        return Objects.equals(ehrId, that.ehrId) &&
                Objects.equals(sourceVisit, that.sourceVisit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ehr_id, sourceVisit);
+        return Objects.hash(ehrId, sourceVisit);
     }
 }

@@ -122,7 +122,7 @@ public class MeasurementConverter extends CDTValueUnitConverter<MeasurementEntit
     			Optional<String> dvText = DvGetter.getDvText((DvText) element.getValue());
     			if (dvText.isPresent() && dvText.get().length() >= 50)  {
     				String text = dvText.get();
-    				LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional) text value: " + text);
+    				LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional). Text value: {}", text);
     				dvText=Optional.empty();
     			}
     			measurement.setValue(dvText);

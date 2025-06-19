@@ -34,7 +34,7 @@ public class ConversionResponseVisit {
 	        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	        private Date visitEndDate;
 
-	        // Constructor para facilitar creación
+	        // Builder to ease creation
 	        public VisitSummary(PersonVisit pv) {
 	            this.ehrId = pv.getEhrId();
 	            this.sourceVisit = pv.getSourceVisit();
@@ -42,7 +42,7 @@ public class ConversionResponseVisit {
 	            this.visitEndDate = pv.getVisitEndDate();
 	        }
 
-	        // Getters (importantes para Jackson)
+	        // Getters (important for Jackson)
 	        public String getEhrId() { return ehrId; }
 	        public String getSourceVisit() { return sourceVisit; }
 	        public Date getVisitStartDate() { return visitStartDate; }
@@ -73,12 +73,12 @@ public class ConversionResponseVisit {
 	        try {
 	            return mapper.writeValueAsString(response);
 	        } catch (JsonProcessingException e) {
-	            throw new RuntimeException("Error converting to json", e);
+	            throw new UnprocessableEntityException("Error converting to json");
 	        }
 	    }
 
 	    public void addPersonVisit(PersonVisit pv) {
-	        if (visitIds.add(pv.getSourceVisit())) { // suponiendo sourceVisit es id único
+	        if (visitIds.add(pv.getSourceVisit())) {
 	            visits.add(new VisitSummary(pv));
 	        }
 	    }

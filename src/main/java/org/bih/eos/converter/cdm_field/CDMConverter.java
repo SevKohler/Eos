@@ -69,33 +69,23 @@ public abstract class CDMConverter<T> {
         }
         return Optional.empty();
     }
-    
+
     private Optional<T> convertConceptMap(Locatable itemAtPath, ConceptMap conceptMap) {
-        Optional<T> elementAtPath = convertPath(itemAtPath, conceptMap.getPath());
-        if(elementAtPath.isPresent())
-        {
-            if (elementAtPath.get() instanceof Element) {
-                Element element = (Element) elementAtPath.get();
-                if (element.getValue() instanceof DvCodedText) {
-                    DvCodedText dvCodedText = (DvCodedText) element.getValue();
-                    if(dvCodedText.getDefiningCode().codeStringValid())
-                    {
-                    	T value = (T) conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString());
-                    	return Optional.ofNullable(value);
-                    }
-                    else return Optional.empty();
-                    	
-                }
-                //Can be ordinal??
-            }
-        }
+    	Optional<T> elementAtPath = convertPath(itemAtPath, conceptMap.getPath());
+    	if(elementAtPath.isPresent() && elementAtPath.get() instanceof Element element) {
+    		if (element.getValue() instanceof DvCodedText dvCodedText) {
+    			if(dvCodedText.getDefiningCode().codeStringValid())
+    			{
+    				T value = (T) conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString());
+    				return Optional.ofNullable(value);
+    			}
+    			else return Optional.empty();
+
+    		}
+    		//TODO: check if DVOrdinal is a real possibility
+
+    	}
  
-        //if
-        //{ is dvcodedtext
-        //get defining_code
-        //Long value=valueEntry.getConceptMap().getMappings().get(defining_code);
-        //return convertCode(value);
-        //}
         return Optional.empty();
     }
 

@@ -1,17 +1,21 @@
 package org.bih.eos.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bih.eos.controller.dao.Ehrs;
 import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.bih.eos.services.ConverterService;
-import org.bih.eos.services.EhrService;
 import org.bih.eos.services.VisitEndpointService;
 import org.bih.eos.services.VisitService;
 import org.ehrbase.client.openehrclient.OpenEhrClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping(path = "/visit")

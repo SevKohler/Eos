@@ -2,8 +2,6 @@ package org.bih.eos.yaml;
 
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,6 +13,7 @@ public class ConceptMap {
     @JsonProperty("mapping")
     private Map<String, Long> mappings; // Stores at0044, at0045, etc.
 
+    //Class used for json parsing
     public ConceptMap() {
     }
 

@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bih.eos.controller.dao.Ehrs;
-import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.PersonVisit;
 import org.bih.eos.jpabase.service.EHRToPersonService;
 import org.bih.eos.services.dao.ConversionResponseVisit;
 import org.ehrbase.client.openehrclient.OpenEhrClient;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 
 public class VisitService {
@@ -44,14 +42,13 @@ public class VisitService {
     }
 
 
-    public String convertList(List<PersonVisit> PersonVisitList) {
+    public String convertList(List<PersonVisit> personVisitList) {
     	ConversionResponseVisit output = new ConversionResponseVisit();
     	List<PersonVisit> personVisitBatch = new ArrayList<>();
 
-    	for (PersonVisit visitPerson : PersonVisitList) {
+    	for (PersonVisit visitPerson : personVisitList) {
     		personVisitBatch.add(visitPerson);
     		output.addPersonVisit(visitPerson);
-    		System.out.println(visitPerson);
     		if (personVisitBatch.size() == ehrBatchAmount) {
     			personVisitBatch = new ArrayList<>();
     		}
@@ -61,9 +58,8 @@ public class VisitService {
 
 
     public String generateSpecificVisits(Ehrs ehrList) {
-    	List<EHRToPerson> ehrToPersonList = new ArrayList<>();
-    	//TODO: We generate all patient visits, could be interesting to support specific patients 
-    	return "";
+    	List<PersonVisit> ehrToPersonList = visitEndpointService.findEHRVisits(aql,ehrList);
+    	return convertList(ehrToPersonList);
     }
 
 }

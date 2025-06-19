@@ -2,7 +2,6 @@ package org.bih.eos.converter.cdt.converter.configurable;
 
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.OptionalLong;
 
 import com.nedap.archie.rm.datavalues.DvCodedText;
 import com.nedap.archie.rm.datavalues.DvIdentifier;

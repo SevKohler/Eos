@@ -2,20 +2,22 @@ package org.bih.eos.services;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bih.eos.config.VisitConverterProperties;
+import org.bih.eos.controller.dao.Ehrs;
 import org.bih.eos.controller.dao.RegistryKey;
-import org.bih.eos.converter.cdt.DefaultConverterServices;
 import org.bih.eos.exceptions.UnprocessableEntityException;
 import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.PersonVisit;
-import org.bih.eos.jpabase.entity.PersonVisitId;
 import org.bih.eos.jpabase.entity.VisitOccurrence;
 import org.bih.eos.jpabase.jpa.dao.PersonVisitRepository;
 import org.bih.eos.jpabase.service.ConceptService;
@@ -51,10 +53,29 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     }
 
     
-    //TODO: TEST!
     @Override
 	public List<PersonVisit> findAll(String aql) {
-    	List<Record4<String, String, Instant, Instant>> records = executeAqlQuery(aql);
+    	List<PersonVisit> resultPersonVisit = getPersonVisitFromAQL(aql);
+    	
+    	saveAll(resultPersonVisit);
+    	
+    	return resultPersonVisit;
+    }
+
+    @Override
+	public List<PersonVisit> findEHRVisits(String aql,Ehrs ehrList) {
+    	List<PersonVisit> resultPersonVisit = getPersonVisitFromAQL(aql);
+    	
+    	keepEHRs(resultPersonVisit,ehrList);
+    	
+    	saveAll(resultPersonVisit);
+    	
+    	return resultPersonVisit;
+    }
+
+
+	private List<PersonVisit> getPersonVisitFromAQL(String aql) {
+		List<Record4<String, String, Instant, Instant>> records = executeAqlQuery(aql);
     	if(records.size()==0) {
     		throw new UnprocessableEntityException("Visit AQL returned no visits, please review the AQL query");
     	}
@@ -64,7 +85,18 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
 
     	List<PersonVisit> resultPersonVisit = new ArrayList<>();
 
-    	for (Entry<RegistryKey, List<Record>> entry : grouped.entrySet()) {
+    	groupPersonVisits(grouped, resultPersonVisit);
+		return resultPersonVisit;
+	}
+
+	private void keepEHRs(List<PersonVisit> resultPersonVisit, Ehrs ehrList) {
+		Set<String> ehrsToKeep = new HashSet<>(Arrays.asList(ehrList.getEhrIds()));
+		resultPersonVisit.removeIf(visit -> !ehrsToKeep.contains(visit.getEhrId()));
+	}
+
+
+	private void groupPersonVisits(Map<RegistryKey, List<Record>> grouped, List<PersonVisit> resultPersonVisit) {
+		for (Entry<RegistryKey, List<Record>> entry : grouped.entrySet()) {
     		RegistryKey key = entry.getKey();
     		List<Record> group = entry.getValue();
 
@@ -96,22 +128,18 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     		if(ehrtoperson.isPresent())
     			resultPersonVisit.add(createVisit(key.getEhrId(), key.getSourceId(), minStartDate, maxEndDate,ehrtoperson.get()));
     	}
-    	
-    	saveAll(resultPersonVisit);
-    	
-    	return resultPersonVisit;
-    }
+	}
 
 
 
     private void saveAll(List<PersonVisit> resultPersonVisit) {
-		for(PersonVisit pv:resultPersonVisit) {
-			Optional<PersonVisit> existente = personVisitRepository.findByEhrIdAndSourceVisit(pv.getEhrId(),pv.getSourceVisit());
+		for(PersonVisit personVisit:resultPersonVisit) {
+			Optional<PersonVisit> existente = personVisitRepository.findByEhrIdAndSourceVisit(personVisit.getEhrId(),personVisit.getSourceVisit());
 			if (!existente.isPresent()) {
-				personVisitRepository.save(pv);
+				personVisitRepository.save(personVisit);
 			}
 			else {
-				System.out.println("PersonVisit already exists "+pv);
+				LOG.info("PersonVisit already exists: {}", personVisit);
 			}
 			
 		}
@@ -128,22 +156,28 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
         		querytoRun=visitConverterProperties.getAql();
         	else
         		return new ArrayList<>();
-            NativeQuery<Record4<String, String, Instant, Instant>> buildNativeQuery=null;
-            List<Record4<String, String, Instant, Instant>> execute;
-            buildNativeQuery = Query.buildNativeQuery(querytoRun, String.class,String.class,Instant.class,Instant.class);
-			try {
-				 execute = openEhrClient.aqlEndpoint().execute(buildNativeQuery);
-			} catch (IndexOutOfBoundsException e) {
-				throw new UnprocessableEntityException("Visit AQL has less than 4 needed parameters, namely ehr_id, source_id, begin, end");
-			}
-			catch (Exception e) {
-				throw new UnprocessableEntityException("There was a problem processing visit AQL. AQL needs to return 4 parameters, namely ehr_id, source_id, begin, end");
-			}
-			return execute;
+            List<Record4<String, String, Instant, Instant>> execution = runQuery(querytoRun);
+			return execution;
         } catch (NullPointerException nullPointerException) {
             return new ArrayList<>();
         }
     }
+
+
+	private List<Record4<String, String, Instant, Instant>> runQuery(String querytoRun) {
+		NativeQuery<Record4<String, String, Instant, Instant>> buildNativeQuery;
+		List<Record4<String, String, Instant, Instant>> execute;
+		buildNativeQuery = Query.buildNativeQuery(querytoRun, String.class,String.class,Instant.class,Instant.class);
+		try {
+			 execute = openEhrClient.aqlEndpoint().execute(buildNativeQuery);
+		} catch (IndexOutOfBoundsException e) {
+			throw new UnprocessableEntityException("Visit AQL has less than 4 needed parameters, namely ehr_id, source_id, begin, end");
+		}
+		catch (Exception e) {
+			throw new UnprocessableEntityException("There was a problem processing visit AQL. AQL needs to return 4 parameters, namely ehr_id, source_id, begin, end");
+		}
+		return execute;
+	}
 
     private PersonVisit createVisit(String ehrId, String sourceId, Date minStartDate, Date maxEndDate, EHRToPerson ehrToPerson) {
 

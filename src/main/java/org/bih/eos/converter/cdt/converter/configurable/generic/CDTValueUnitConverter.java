@@ -38,13 +38,11 @@ public abstract class CDTValueUnitConverter<E extends EntityWithSourceConcept, C
 
 	private E convertConceptMap(Locatable contentItem, ConceptMap conceptMap, E entity) {
 		Optional<?> item=PathProcessor.getItemAtPath(contentItem,conceptMap.getPath());
-		if (item.get() instanceof Element) {
-			Element element = (Element) item.get();
+		if (item.get() instanceof Element element) {
 			DvCodedText dvCodedText = null;
 			if (element.getValue() instanceof DvCodedText) {
 				dvCodedText = (DvCodedText) element.getValue();
-			} else if(element.getValue() instanceof DvOrdinal) {
-				DvOrdinal dvOrdinal = (DvOrdinal) element.getValue();
+			} else if(element.getValue() instanceof DvOrdinal dvOrdinal) {
 				if(dvOrdinal.getSymbol()!=null)
 				{
 					dvCodedText=dvOrdinal.getSymbol();

@@ -1,13 +1,13 @@
 package org.bih.eos.services.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bih.eos.exceptions.UnprocessableEntityException;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.bih.eos.exceptions.UnprocessableEntityException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class ConversionResponse {
 

@@ -38,8 +38,8 @@ public class VisitConverter extends CDTMedicalDataConverter<VisitOccurrenceEntit
         convertVisitConceptId(contentItem, config.getVisitConcept().getAlternatives(), entity);
 
         if (config.getEndDateTime()!= null) {
-        	Optional<Date> startDate = (Optional<Date>) dateTimeConverter.convert(contentItem, config.getStartDateTime().getAlternatives());
-            Optional<Date> endDate = (Optional<Date>) dateTimeConverter.convert(contentItem, config.getEndDateTime().getAlternatives());
+        	Optional<Date> startDate = dateTimeConverter.convert(contentItem, config.getStartDateTime().getAlternatives());
+            Optional<Date> endDate = dateTimeConverter.convert(contentItem, config.getEndDateTime().getAlternatives());
             entity.setEndDate(startDate,endDate);
         }
 
@@ -48,26 +48,21 @@ public class VisitConverter extends CDTMedicalDataConverter<VisitOccurrenceEntit
     }
 
     private void convertStartDateTime(Locatable contentItem, ValueEntry[] dateTime, VisitOccurrenceEntity entity) {
-        Optional<Date> date = (Optional<Date>) dateTimeConverter.convert(contentItem, dateTime);
+        Optional<Date> date = dateTimeConverter.convert(contentItem, dateTime);
         entity.setDateTime(date);
     }
 
     private void convertVisitConceptId(Locatable contentItem, ValueEntry[] visitConcept, VisitOccurrenceEntity entity) {
-        entity.setStandardConcept((Optional) standardConceptConverter.convert(contentItem, visitConcept));
+        entity.setStandardConcept(standardConceptConverter.convert(contentItem, visitConcept));
     }
     
-    private void convertVisitTypeConceptId(Locatable contentItem, ValueEntry[] visitTypeConcept, VisitOccurrenceEntity entity) {
+    private void convertVisitTypeConceptId (Locatable contentItem, ValueEntry[] visitTypeConcept, VisitOccurrenceEntity entity) {
         entity.setTypeConcept((Optional) standardConceptConverter.convert(contentItem, visitTypeConcept));
-    }
 
+    }
+    
     @Override
     protected VisitOccurrenceEntity convertOptionalFields(Locatable contentItem, VisitConfig config, VisitOccurrenceEntity entity) {
-//        if (config.getEndDateTime()!= null) {
-//            Optional<Date> startDate = (Optional<Date>) dateTimeConverter.convert(contentItem, config.getStartDateTime().getAlternatives());
-//            Optional<Date> endDate = (Optional<Date>) dateTimeConverter.convert(contentItem, config.getEndDateTime().getAlternatives());
-//            entity.setEndDate(startDate,endDate);
-//        }
-
         return entity;
     }
 }
