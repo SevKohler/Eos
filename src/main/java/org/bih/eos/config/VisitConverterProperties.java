@@ -1,5 +1,6 @@
 package org.bih.eos.config;
 
+import org.ehrbase.aql.parser.AqlToDtoParser;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,8 @@ public class VisitConverterProperties {
 	}
 
 	public void setAql(String aql) {
+		//validate AQL
+		new AqlToDtoParser().parse(aql);
 		this.aql = aql;
 	}
 
