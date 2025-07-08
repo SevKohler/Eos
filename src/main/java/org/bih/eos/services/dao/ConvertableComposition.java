@@ -1,7 +1,6 @@
 package org.bih.eos.services.dao;
 
 import com.nedap.archie.rm.composition.Composition;
-
 import org.bih.eos.jpabase.entity.EHRToPerson;
 import org.bih.eos.jpabase.entity.Person;
 import org.bih.eos.jpabase.entity.VisitOccurrence;

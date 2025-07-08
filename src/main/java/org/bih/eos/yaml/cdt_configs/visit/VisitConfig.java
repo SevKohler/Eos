@@ -19,8 +19,8 @@ public class VisitConfig extends CDTMappingConfig<VisitConverter> {
 
 
 	public VisitConfig(@JsonProperty(value = "start_datetime", required = true) CdmFieldMapping startDateTime,
-			@JsonProperty(value = "end_datetime", required = true) CdmFieldMapping endDateTime,
-			@JsonProperty(value = "visit_concept", required = true) CdmFieldMapping visitConcept) {
+					   @JsonProperty(value = "end_datetime", required = true) CdmFieldMapping endDateTime,
+					   @JsonProperty(value = "visit_concept", required = true) CdmFieldMapping visitConcept) {
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 		this.visitConcept = visitConcept;

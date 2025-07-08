@@ -2,7 +2,6 @@ package org.bih.eos.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.bih.eos.controller.dao.Ehrs;
 import org.bih.eos.jpabase.entity.PersonVisit;
 import org.bih.eos.services.dao.ConversionResponseVisit;
@@ -41,6 +40,7 @@ public class VisitService {
     		if (personVisitBatch.size() == ehrBatchAmount) {
     			personVisitBatch = new ArrayList<>();
     		}
+    		//TODO: Still needs to add support for batch, will mean return 'personVisitBatch' instead of 'output'
     	}
     	return output.getJson();
     }

@@ -384,10 +384,6 @@ public abstract class BaseEntityServiceImp<T extends JPABaseEntity, V extends JP
 			retvals = em.createQuery(query)
 					.getResultList();
 		} else {
-//			TypedQuery<T> sq = em.createQuery(query);
-//			String queryString = sq.unwrap(org.hibernate.query.Query.class).getQueryString();
-//			System.out.println("TESTING for QUERY:"+queryString);
-//
 			retvals = em.createQuery(query)
 					.setFirstResult(fromIndex)
 					.setMaxResults(length)
