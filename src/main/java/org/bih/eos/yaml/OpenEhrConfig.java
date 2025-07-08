@@ -13,8 +13,8 @@ class OpenEhrConfig {
 	@JsonProperty("type")
 	private String type;
 
-	@JsonProperty("engine")
-	private String engine;
+	@JsonProperty("grammar")
+	private String grammar;
 
 
 	public String getArchetype() {
@@ -33,11 +33,11 @@ class OpenEhrConfig {
 		this.type = type;
 	}
 
-	public String getEngine() {
-		return engine;
+	public String getGrammar() {
+		return grammar;
 	}
 
-	private void setEngine(String engine) {
-		this.engine = engine;
+	private void setGrammar(String grammar) {
+		this.grammar = grammar;
 	}
 }
