@@ -11,7 +11,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.bih.eos.config.VisitConverterProperties;
 import org.bih.eos.controller.dao.Ehrs;
 import org.bih.eos.controller.dao.RegistryKey;
@@ -103,12 +102,12 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
     		Date minStartDate = null;
     		Date maxEndDate = null;
 
-    		for (Record r : group) {
-    			Date startDate = Date.from((Instant) r.value(2));
+    		for (Record record : group) {
+    			Date startDate = Date.from((Instant) record.value(2));
     			Date endDate;
-    			if(r.value(3)!=null)
+    			if(record.value(3)!=null)
     			{
-    				endDate = Date.from((Instant) r.value(3));
+    				endDate = Date.from((Instant) record.value(3));
     			}
     			else //if endDate is null, assume endDate as startDate for min max date calculus
     			{
@@ -141,9 +140,7 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
 			else {
 				LOG.info("PersonVisit already exists: {}", personVisit);
 			}
-			
 		}
-		
 	}
 
 
@@ -181,23 +178,23 @@ public class VisitEndpointServiceImp implements VisitEndpointService {
 
     private PersonVisit createVisit(String ehrId, String sourceId, Date minStartDate, Date maxEndDate, EHRToPerson ehrToPerson) {
 
-    	PersonVisit pv = new PersonVisit();
-       	pv.setEhrId(ehrId);
-       	pv.setSourceVisit(sourceId);
-    	pv.setVisitStartDate(minStartDate);
-    	pv.setVisitStartDateTime(minStartDate);
-    	pv.setVisitEndDate(maxEndDate);
-    	pv.setVisitEndDateTime(maxEndDate);
-    	VisitOccurrence vo=new VisitOccurrence();
-    	vo.setVisitTypeConcept(conceptService.findById(32817L));
-    	vo.setVisitConcept(conceptService.findById(9201L));
-    	vo.setVisitStartDate(minStartDate);
-    	vo.setVisitStartDateTime(minStartDate);
-    	vo.setVisitEndDate(maxEndDate);
-    	vo.setVisitEndDateTime(maxEndDate);
-    	vo.setPerson(ehrToPerson.getPerson());
-    	pv.setVisitOccurrence(vo);
-    	return pv;
+    	PersonVisit personVisit = new PersonVisit();
+       	personVisit.setEhrId(ehrId);
+       	personVisit.setSourceVisit(sourceId);
+    	personVisit.setVisitStartDate(minStartDate);
+    	personVisit.setVisitStartDateTime(minStartDate);
+    	personVisit.setVisitEndDate(maxEndDate);
+    	personVisit.setVisitEndDateTime(maxEndDate);
+    	VisitOccurrence visitOccurrence=new VisitOccurrence();
+    	visitOccurrence.setVisitTypeConcept(conceptService.findById(32817L));
+    	visitOccurrence.setVisitConcept(conceptService.findById(9201L));
+    	visitOccurrence.setVisitStartDate(minStartDate);
+    	visitOccurrence.setVisitStartDateTime(minStartDate);
+    	visitOccurrence.setVisitEndDate(maxEndDate);
+    	visitOccurrence.setVisitEndDateTime(maxEndDate);
+    	visitOccurrence.setPerson(ehrToPerson.getPerson());
+    	personVisit.setVisitOccurrence(visitOccurrence);
+    	return personVisit;
     }
 
 
