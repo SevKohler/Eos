@@ -124,25 +124,45 @@ public class ObservationConverter extends CDTValueUnitConverter<ObservationEntit
     }
 
     private ObservationEntity convertDataValues(ObservationEntity observation, Element element) {
-        if (element.getValue() != null) {
-            if (element.getValue().getClass().equals(DvQuantity.class)) {
-                observation.setValue(DvGetter.getDvQuantity((DvQuantity) element.getValue()));
-            } else if (element.getValue().getClass().equals(DvText.class)) {
-            	Optional<String> dvText = DvGetter.getDvText((DvText) element.getValue());
-    			if (dvText.isPresent() && dvText.get().length() >= 50)  {
-    				String text = dvText.get();
-    				LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional). Text value: {}", text);
-    				dvText=Optional.empty();
-    			}
-                observation.setValue(dvText);
-            } else if (element.getValue().getClass().equals(DvCodedText.class)) {
-                Optional<Concept> concept = defaultConverterServices.getElementToConceptConverter().convertStandardConcept(element.getValue());
-                observation.setValue(concept, DvGetter.getDvCodedText((DvCodedText) element.getValue()));
-            } else if (element.getValue().getClass().equals(DvCount.class)) {
-            	observation.setValue(DvGetter.getDvCount((DvCount) element.getValue()));
-            }
+        Object value = element.getValue();
+        if (value == null) {
+            return observation;
         }
+
+        if (value instanceof DvQuantity) {
+            handleDvQuantity(observation, (DvQuantity) value);
+        } else if (value instanceof DvText) {
+            handleDvText(observation, (DvText) value);
+        } else if (value instanceof DvCodedText) {
+            handleDvCodedText(observation, (DvCodedText) value);
+        } else if (value instanceof DvCount) {
+            handleDvCount(observation, (DvCount) value);
+        }
+
         return observation;
+    }
+
+    private void handleDvQuantity(ObservationEntity observation, DvQuantity value) {
+        observation.setValue(DvGetter.getDvQuantity(value));
+    }
+
+    private void handleDvText(ObservationEntity observation, DvText value) {
+        Optional<String> dvText = DvGetter.getDvText(value);
+        if (dvText.isPresent() && dvText.get().length() >= 50) {
+            String text = dvText.get();
+            LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional). Text value: {}", text);
+            dvText = Optional.empty();
+        }
+        observation.setValue(dvText);
+    }
+
+    private void handleDvCodedText(ObservationEntity observation, DvCodedText value) {
+        Optional<Concept> concept = defaultConverterServices.getElementToConceptConverter().convertStandardConcept(value);
+        observation.setValue(concept, DvGetter.getDvCodedText(value));
+    }
+
+    private void handleDvCount(ObservationEntity observation, DvCount value) {
+        observation.setValue(DvGetter.getDvCount(value));
     }
 
 

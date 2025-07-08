@@ -37,24 +37,26 @@ public abstract class CDTValueUnitConverter<E extends EntityWithSourceConcept, C
 
 
 	private E convertConceptMap(Locatable contentItem, ConceptMap conceptMap, E entity) {
-		Optional<?> item=PathProcessor.getItemAtPath(contentItem,conceptMap.getPath());
-		if (item.get() instanceof Element element) {
-			DvCodedText dvCodedText = null;
-			if (element.getValue() instanceof DvCodedText) {
-				dvCodedText = (DvCodedText) element.getValue();
-			} else if(element.getValue() instanceof DvOrdinal dvOrdinal) {
-				if(dvOrdinal.getSymbol()!=null)
-				{
-					dvCodedText=dvOrdinal.getSymbol();
-				}
-			}
-			if(dvCodedText!=null && dvCodedText.getDefiningCode().codeStringValid())
-			{
-				return convertValueCodeConceptMap(conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString()),entity);
-			}
-			else return null;
-		}
-		return null;
+	    Optional<?> item = PathProcessor.getItemAtPath(contentItem, conceptMap.getPath());
+	    if (item.isEmpty() || !(item.get() instanceof Element element)) {
+	        return entity;
+	    }
+
+	    DvCodedText dvCodedText = extractDvCodedText(element.getValue());
+	    if (dvCodedText == null || !dvCodedText.getDefiningCode().codeStringValid()) {
+	        return entity;
+	    }
+
+	    return convertValueCodeConceptMap(conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString()),entity);
+	}
+	
+	private DvCodedText extractDvCodedText(Object value) {
+	    if (value instanceof DvCodedText codedText) {
+	        return codedText;
+	    } else if (value instanceof DvOrdinal ordinal && ordinal.getSymbol() != null) {
+	        return ordinal.getSymbol();
+	    }
+	    return null;
 	}
 
 	protected abstract E convertValuePath(Locatable contentItem, String path, E baseEntity);
