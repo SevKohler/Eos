@@ -11,13 +11,11 @@ public class RegistryKey {
 		this.sourceId = sourceId;
 	}
 
-	// equals and hashCode (important for using in HashMap)
-
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof RegistryKey)) return false;
-		RegistryKey that = (RegistryKey) o;
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (!(object instanceof RegistryKey)) return false;
+		RegistryKey that = (RegistryKey) object;
 		return Objects.equals(ehrId, that.ehrId) && Objects.equals(sourceId, that.sourceId);
 	}
 
