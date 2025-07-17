@@ -15,8 +15,8 @@ public class RegistryKey {
 	public boolean equals(Object object) {
 		if (this == object) return true;
 		if (!(object instanceof RegistryKey)) return false;
-		RegistryKey that = (RegistryKey) object;
-		return Objects.equals(ehrId, that.ehrId) && Objects.equals(sourceId, that.sourceId);
+		RegistryKey targetCompare = (RegistryKey) object;
+		return Objects.equals(ehrId, targetCompare.ehrId) && Objects.equals(sourceId, targetCompare.sourceId);
 	}
 
 	@Override
