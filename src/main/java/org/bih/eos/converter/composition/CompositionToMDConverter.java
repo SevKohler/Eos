@@ -72,49 +72,56 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 	}
 
 	private Optional<VisitOccurrence> getVisitFromSourceId(Optional<Composition> optionalComposition, Optional<EHRToPerson> optionalEhrToPerson) {
-		String templateid=visitProperties.getTemplateid();
-		String visitsource=visitProperties.getVisitsource();
-		
+	    if (optionalEhrToPerson.isEmpty() || optionalEhrToPerson.get().getEhrId() == null) {
+	        LOG.warn("Warning: ehr_id not found for composition");
+	        return Optional.empty();
+	    }
 
-		Optional<VisitOccurrence> opVisit=Optional.empty();
-		if(optionalEhrToPerson.isEmpty() || optionalEhrToPerson.get().getEhrId()==null)
-		{
-			LOG.warn("Warning ehr_id not found for composition");
-			return Optional.empty();
-		}
-		String ehrid=optionalEhrToPerson.get().getEhrId();
-		if(StringUtils.isBlank(visitsource))
-		{
-			LOG.info("No path defined for visits, ignoring");
-			return Optional.empty();
-		}
-		if(optionalComposition.isEmpty())
-		{
-			LOG.info("No composition, ignoring");
-			return Optional.empty();
-		}
-		Composition composition = optionalComposition.get();
-		if(!StringUtils.isBlank(templateid) &&
-				composition.getArchetypeDetails()!=null &&
-				composition.getArchetypeDetails().getTemplateId()!=null &&
-				!templateid.equals(composition.getArchetypeDetails().getTemplateId().getValue()))
-		{
-			LOG.info("No template_id defined in configuration");
-			return Optional.empty();
-		}
+	    if (optionalComposition.isEmpty()) {
+	        LOG.info("No composition, ignoring");
+	        return Optional.empty();
+	    }
 
-		Optional<?> sourceVisitValue = PathProcessor.getItemAtPath(composition, visitsource);
-		if(sourceVisitValue.isPresent() && sourceVisitValue.get() instanceof String)
-		{
-			Optional<PersonVisit> optionalPersonVisit=personVisitRepository.findByEhrIdAndSourceVisit(ehrid,(String)sourceVisitValue.get());
-			if(optionalPersonVisit.get()!=null) 
-			{
-				PersonVisit personVisit= optionalPersonVisit.get();
-				opVisit=Optional.ofNullable(personVisit.getVisitOccurrence());
-			}
+	    String visitSourcePath = visitProperties.getVisitsource();
+	    if (StringUtils.isBlank(visitSourcePath)) {
+	        LOG.info("No path defined for visits, ignoring");
+	        return Optional.empty();
+	    }
 
-		}
-		return opVisit;
+	    String expectedTemplateId = visitProperties.getTemplateid();
+	    Composition composition = optionalComposition.get();
+
+	    if (!isTemplateIdMatching(composition, expectedTemplateId)) {
+	        LOG.info("Template ID does not match expected value or is missing");
+	        return Optional.empty();
+	    }
+
+	    String ehrId = optionalEhrToPerson.get().getEhrId();
+
+	    return extractVisitOccurrenceFromComposition(composition, visitSourcePath, ehrId);
+	}
+	
+	private boolean isTemplateIdMatching(Composition composition, String expectedTemplateId) {
+	    if (StringUtils.isBlank(expectedTemplateId)) return true;
+
+	    if (composition.getArchetypeDetails() == null || composition.getArchetypeDetails().getTemplateId() == null) {
+	        return false;
+	    }
+
+	    String actualTemplateId = composition.getArchetypeDetails().getTemplateId().getValue();
+	    return expectedTemplateId.equals(actualTemplateId);
+	}
+	
+	private Optional<VisitOccurrence> extractVisitOccurrenceFromComposition(Composition composition, String path, String ehrId) {
+	    Optional<?> sourceVisitValue = PathProcessor.getItemAtPath(composition, path);
+
+	    if (sourceVisitValue.isEmpty() || !(sourceVisitValue.get() instanceof String sourceVisitId)) {
+	        return Optional.empty();
+	    }
+
+	    return personVisitRepository
+	            .findByEhrIdAndSourceVisit(ehrId, sourceVisitId)
+	            .map(PersonVisit::getVisitOccurrence);
 	}
 
 	private List<JPABaseEntity> iterateContent(List<ContentItem> contentItems, CdtExecutionParameterMedData cdtExecutionParameters, List<ConversionTrack> conversionTracker, List<JPABaseEntity> cdtConverterResults) {
