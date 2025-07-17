@@ -55,33 +55,28 @@ public class DVToDateConverter {
 	}
 
 	public Optional<Date> convertEndTime(Object objectAtPath) {
-		Class objectClassAtPath = objectAtPath.getClass();
-		if (objectClassAtPath.equals(PointEvent.class)) {
-			PointEvent pointEvent = (PointEvent) objectAtPath;
-			return parseDvDateTime(pointEvent.getTime().getValue());
-		} else if (objectClassAtPath.equals(IntervalEvent.class)) {
-			IntervalEvent intervalEvent = (IntervalEvent) objectAtPath;
-			return parseDvDateTime(intervalEvent.getTime().getValue());
-		} else if (objectClassAtPath.equals(Observation.class)) {
-			Observation observation = (Observation) objectAtPath;
-			return parseDvDateTime(observation.getData().getOrigin().getValue());
-		} else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDateTime.class)) {
-			DvDateTime dvDateTime = (DvDateTime) ((Element) objectAtPath).getValue();
-			return parseDvDateTime(dvDateTime.getValue());
-		}  else if (objectClassAtPath.equals(Element.class) && ((Element) objectAtPath).getValue().getClass().equals(DvDate.class)) {
-			DvDate dvDate = (DvDate) ((Element) objectAtPath).getValue();
-			return parseDvDate(dvDate.getValue());
-		} else if (objectClassAtPath.equals(Action.class)) {
-			Action action = (Action) objectAtPath;
-			return parseDvDateTime(action.getTime().getValue());
-		} else if (objectClassAtPath.equals(EventContext.class)) {
-			EventContext eventContext = (EventContext) objectAtPath;
-			if(eventContext.getEndTime()!=null){
-				return parseDvDateTime(eventContext.getEndTime().getValue());
-			}else{
-				return parseDvDateTime(eventContext.getStartTime().getValue());
-			}
-		}
+	    if (objectAtPath instanceof PointEvent pointEvent) {
+	        return parseDvDateTime(pointEvent.getTime().getValue());
+	    } else if (objectAtPath instanceof IntervalEvent intervalEvent) {
+	        return parseDvDateTime(intervalEvent.getTime().getValue());
+	    } else if (objectAtPath instanceof Observation observation) {
+	        return parseDvDateTime(observation.getData().getOrigin().getValue());
+	    } else if (objectAtPath instanceof Element element) {
+	        Object value = element.getValue();
+	        if (value instanceof DvDateTime dvDateTime) {
+	            return parseDvDateTime(dvDateTime.getValue());
+	        } else if (value instanceof DvDate dvDate) {
+	            return parseDvDate(dvDate.getValue());
+	        }
+	    } else if (objectAtPath instanceof Action action) {
+	        return parseDvDateTime(action.getTime().getValue());
+	    } else if (objectAtPath instanceof EventContext eventContext) {
+	        if (eventContext.getEndTime() != null) {
+	            return parseDvDateTime(eventContext.getEndTime().getValue());
+	        } else {
+	            return parseDvDateTime(eventContext.getStartTime().getValue());
+	        }
+	    }
 		LOG.warn("A Date type was found that was currently not supported or can not be mapped ! Mapping will be processed if optional otherwise the conversion is skipped and the next one processed");
 		return Optional.empty();
 	}
