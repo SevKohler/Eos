@@ -27,7 +27,6 @@ public class VisitConverterProperties {
 			this.aql = aql;
 		} catch (AqlParseException e) {
 			LOG.error("Visit AQL could not be parsed: {}",e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
