@@ -74,7 +74,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 	private Optional<VisitOccurrence> getVisitFromSourceId(Optional<Composition> optionalComposition, Optional<EHRToPerson> optionalEhrToPerson) {
 		String templateid=visitProperties.getTemplateid();
 		String visitsource=visitProperties.getVisitsource();
-		String ehrid=null;
+		
 
 		Optional<VisitOccurrence> opVisit=Optional.empty();
 		if(optionalEhrToPerson.isEmpty() || optionalEhrToPerson.get().getEhrId()==null)
@@ -82,7 +82,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 			LOG.warn("Warning ehr_id not found for composition");
 			return Optional.empty();
 		}
-		ehrid=optionalEhrToPerson.get().getEhrId();
+		String ehrid=optionalEhrToPerson.get().getEhrId();
 		if(StringUtils.isBlank(visitsource))
 		{
 			LOG.info("No path defined for visits, ignoring");
