@@ -78,7 +78,6 @@ public abstract class CDMConverter<T> {
 					T value = (T) conceptMap.getMappings().get(dvCodedText.getDefiningCode().getCodeString());
 					return Optional.ofNullable(value);
 				}
-				else return Optional.empty();
 			}
 			//TODO: evaluate if DVOrdinal is a real possibility
 		}
