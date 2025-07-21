@@ -22,12 +22,8 @@ public class VisitConverterProperties {
 
 	public void setAql(String aql) {
 		//validate AQL
-		try {
-			new AqlToDtoParser().parse(aql);
-			this.aql = aql;
-		} catch (AqlParseException e) {
-			LOG.error("Visit AQL could not be parsed: {}",e.getMessage());
-		}
+		new AqlToDtoParser().parse(aql);
+		this.aql = aql;
 	}
 
 	public String getTemplateid() {
