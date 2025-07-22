@@ -105,10 +105,16 @@ public class DVToDateConverter {
 		if (dvDateTime == null || !dvDateTime.isSupported(ChronoField.DAY_OF_MONTH)) {
 			LOG.warn("Date was empty, or partial (e.g. Day missing), therefore Date is returned empty.");
 			return Optional.empty();
-		} else {
+		} 
+
+		try {
 			OffsetDateTime dateTime = OffsetDateTime.parse(dvDateTime.toString());
 			Instant asInstant = dateTime.toInstant();
 			return Optional.of(Date.from(asInstant));
+		} catch (Exception e) {
+	        LOG.warn("Could not parse date {}: {}. Skipping but continuing.", dvDateTime, e.getMessage());
+	        return Optional.empty();
 		}
+
 	}
 }
