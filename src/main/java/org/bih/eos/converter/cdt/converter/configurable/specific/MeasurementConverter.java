@@ -4,6 +4,7 @@ import com.nedap.archie.rm.archetyped.Locatable;
 import com.nedap.archie.rm.datastructures.Element;
 import com.nedap.archie.rm.datavalues.DvCodedText;
 import com.nedap.archie.rm.datavalues.DvText;
+import com.nedap.archie.rm.datavalues.quantity.DvCount;
 import com.nedap.archie.rm.datavalues.quantity.DvOrdinal;
 import com.nedap.archie.rm.datavalues.quantity.DvProportion;
 import com.nedap.archie.rm.datavalues.quantity.DvQuantity;
@@ -114,21 +115,49 @@ public class MeasurementConverter extends CDTValueUnitConverter<MeasurementEntit
     }
 
     private MeasurementEntity convertDataValue(MeasurementEntity measurement, Element element, DVTextCodeToConceptConverter conceptConverter) {
-        if (element.getValue() != null) {
-            if (element.getValue().getClass().equals(DvQuantity.class)) {
-                measurement.setValue(DvGetter.getDvQuantity((DvQuantity) element.getValue()));
-            } else if (element.getValue().getClass().equals(DvText.class)) {
-                measurement.setValue(DvGetter.getDvText((DvText) element.getValue()));
-            } else if (element.getValue().getClass().equals(DvCodedText.class)) {
-                measurement.setValue(conceptConverter.convertStandardConcept(element.getValue()),
-                        DvGetter.getDvCodedText((DvCodedText) element.getValue()));
-            } else if (element.getValue().getClass().equals(DvOrdinal.class)) {
-                setDvOrdinal((DvOrdinal) element.getValue(), measurement, conceptConverter);
-            } else if (element.getValue().getClass().equals(DvProportion.class)) {
-                setDvProportion((DvProportion) element.getValue(), measurement, conceptConverter);
-            }
+        Object value = element.getValue();
+        if (value == null) {
+            return measurement;
         }
+
+        if (value instanceof DvQuantity) {
+            handleDvQuantity(measurement, (DvQuantity) value);
+        } else if (value instanceof DvText) {
+            handleDvText(measurement, (DvText) value);
+        } else if (value instanceof DvCodedText) {
+            handleDvCodedText(measurement, (DvCodedText) value, conceptConverter);
+        } else if (value instanceof DvOrdinal) {
+            setDvOrdinal((DvOrdinal) value, measurement, conceptConverter);
+        } else if (value instanceof DvProportion) {
+            setDvProportion((DvProportion) value, measurement, conceptConverter);
+        } else if (value instanceof DvCount) {
+            handleDvCount(measurement, (DvCount) value);
+        }
+
         return measurement;
+    }
+    
+    private void handleDvQuantity(MeasurementEntity measurement, DvQuantity value) {
+        measurement.setValue(DvGetter.getDvQuantity(value));
+    }
+
+    private void handleDvText(MeasurementEntity measurement, DvText value) {
+        Optional<String> dvText = DvGetter.getDvText(value);
+        if (dvText.isPresent() && dvText.get().length() >= 50) {
+            String text = dvText.get();
+            LOG.warn("Text exceeds 50 characters and will not fit on textual values, the mapping will be ignored (if not optional). Text value: {}", text);
+            dvText = Optional.empty();
+        }
+        measurement.setValue(dvText);
+    }
+
+    private void handleDvCodedText(MeasurementEntity measurement, DvCodedText value, DVTextCodeToConceptConverter conceptConverter) {
+        Optional<Concept> concept = conceptConverter.convertStandardConcept(value);
+        measurement.setValue(concept, DvGetter.getDvCodedText(value));
+    }
+
+    private void handleDvCount(MeasurementEntity measurement, DvCount value) {
+        measurement.setValue(DvGetter.getDvCount(value));
     }
 
     private void setDvProportion(DvProportion dvProportion, MeasurementEntity measurement, DVTextCodeToConceptConverter conceptConverter) {
@@ -161,11 +190,21 @@ public class MeasurementConverter extends CDTValueUnitConverter<MeasurementEntit
         } else {
             measurement.setValue(Optional.empty(), Optional.of(code + ""));
         }
-        LOG.info("Currently there is no way initialising a value to the value concept, so only the concept is set now without a magnitude. It is better to provide this information within the composition then setting it manually");
+        LOG.info("Currently there is no way initialising a value to the value concept, so only the concept is set now without a magnitude. It is better to provide this information within the composition than setting it manually");
         return measurement;
     }
 
-
+    @Override
+    protected MeasurementEntity convertValueCodeConceptMap(Long code, MeasurementEntity measurement) {
+        Concept concept = new Concept(code);
+        if (code != null) {
+            measurement.setValue(Optional.of(concept), Optional.of(code + ""));
+        } else {
+            measurement.setValue(Optional.empty(), Optional.of(code + ""));
+        }
+        LOG.info("Currently there is no way initialising a value to the value concept, so only the concept is set now without a magnitude. It is better to provide this information within the composition than setting it manually");
+        return measurement;
+    }
 
     private Optional<Concept> convertOperator(Locatable contentItem, ValueEntry[] alternatives) {
         return operatorConverter.convert(contentItem, alternatives);

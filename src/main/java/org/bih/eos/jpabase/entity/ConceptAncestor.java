@@ -33,6 +33,7 @@
 package org.bih.eos.jpabase.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -88,8 +89,22 @@ public class ConceptAncestor extends JPABaseEntity implements Serializable {
 	
 	@Override
 	public Long getIdAsLong() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	
+	@Override
+	public boolean equals(Object object) {
+	    if (this == object) return true;
+	    if (object == null || getClass() != object.getClass()) return false;
+	    ConceptAncestor that = (ConceptAncestor) object;
+	    return Objects.equals(ancestorConcept, that.ancestorConcept) &&
+	           Objects.equals(descendantConcept, that.descendantConcept);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(ancestorConcept, descendantConcept);
 	}
 
 }

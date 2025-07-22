@@ -47,7 +47,7 @@ public class Domain extends JPABaseEntity {
 	@Id
 	@Column(name="domain_id", nullable=false)
 	@Access(AccessType.PROPERTY)
-	private Long id;
+	private String id;
 
 	@Column(name="domain_name", nullable=false)
 	private String domainName;
@@ -60,16 +60,16 @@ public class Domain extends JPABaseEntity {
 		super();
 	}
 	
-	public Domain(Long id) {
+	public Domain(String id) {
 		super();
 		this.id = id;
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

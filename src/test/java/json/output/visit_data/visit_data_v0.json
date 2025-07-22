@@ -1,0 +1,23 @@
+{
+	"amount of visits mapped": 3,
+	"visits": [
+		{
+			"ehr_id": "bddb4332-090e-40ea-88d1-6e69f69d17eb",
+			"source_visit": "F_0000003",
+			"visit_start_date": "2023-04-11T06:28:20",
+			"visit_end_date": "2023-04-11T06:28:20"
+		},
+		{
+			"ehr_id": "bddb4332-090e-40ea-88d1-6e69f69d17eb",
+			"source_visit": "F_0000001",
+			"visit_start_date": "2021-02-13T02:04:00",
+			"visit_end_date": "2021-03-12T18:05:00"
+		},
+		{
+			"ehr_id": "bddb4332-090e-40ea-88d1-6e69f69d17eb",
+			"source_visit": "F_0000002",
+			"visit_start_date": "2022-06-22T10:14:00",
+			"visit_end_date": "2022-08-15T17:30:00"
+		}
+	]
+}
