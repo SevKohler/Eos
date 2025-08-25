@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
@@ -105,10 +106,16 @@ public class DVToDateConverter {
 		if (dvDateTime == null || !dvDateTime.isSupported(ChronoField.DAY_OF_MONTH)) {
 			LOG.warn("Date was empty, or partial (e.g. Day missing), therefore Date is returned empty.");
 			return Optional.empty();
-		} else {
+		} 
+
+		try {
 			OffsetDateTime dateTime = OffsetDateTime.parse(dvDateTime.toString());
 			Instant asInstant = dateTime.toInstant();
 			return Optional.of(Date.from(asInstant));
+		} catch (DateTimeParseException e) {
+	        LOG.warn("Could not parse date {}: {}. Skipping but continuing.", dvDateTime, e.getMessage());
+	        return Optional.empty();
 		}
+
 	}
 }
