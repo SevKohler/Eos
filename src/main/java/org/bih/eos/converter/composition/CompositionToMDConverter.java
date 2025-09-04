@@ -59,7 +59,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 		//First try to generate the visitOccurrence from sourceId, and if that fails, just get a default one
 		Optional<VisitOccurrence> visitOccurrence;
 		Optional<Composition> optionalComposition=Optional.of(convertableComposition.getComposition());
-		Optional<EHRToPerson> optionalEhrToPerson=Optional.of(convertableComposition.getEhrToPerson());
+		Optional<EHRToPerson> optionalEhrToPerson=Optional.ofNullable(convertableComposition.getEhrToPerson());
 		visitOccurrence=getVisitFromSourceId(optionalComposition,optionalEhrToPerson);
 		if(visitOccurrence.isEmpty())
 		{
