@@ -103,18 +103,10 @@ public class DVToDateConverter {
 		}
 	}
 
-        /**
+        	/**
 	 * Parses a {@link TemporalAccessor} from an openEHR DvDateTime into a {@link Date}.
-	 * <p>
-	 * This method is designed to be robust against different date-time representations from openEHR. It handles two primary cases
-	 * by inspecting the provided {@link TemporalAccessor} before parsing:
-	 * <ul>
-	 *     <li><b>With Time Zone Offset:</b> If the input contains an offset (e.g., "2022-02-03T04:05:06+02:00"),
-	 *     it is parsed directly into an {@link OffsetDateTime} to preserve the exact moment in time.</li>
-	 *     <li><b>Without Time Zone Offset:</b> If the input lacks an offset (e.g., "2022-02-03T04:05:06"), it is treated as a
-	 *     {@link LocalDateTime}. To convert this to a specific instant (which {@link Date} represents), the system's default time zone is applied.</li>
-	 * </ul>
-	 * This avoids {@link DateTimeParseException} for valid local date-times and ensures consistent conversion.
+	 * This method handles date-times both with and without a timezone offset.
+	 *
 	 * @param dvDateTime The {@link TemporalAccessor} to parse, typically from a {@link DvDateTime}.
 	 * @return An {@link Optional} containing the parsed {@link Date}, or an empty Optional if parsing fails or the input is partial/null.
 	 */
@@ -122,22 +114,33 @@ public class DVToDateConverter {
 		if (dvDateTime == null || !dvDateTime.isSupported(ChronoField.DAY_OF_MONTH)) {
 			LOG.warn("Date was empty, or partial (e.g. Day missing), therefore Date is returned empty.");
 			return Optional.empty();
-		} 
+		}
 
 		try {
 			if (dvDateTime.isSupported(ChronoField.OFFSET_SECONDS)) {
-				// Has an offset, parse as OffsetDateTime
-				OffsetDateTime dateTime = OffsetDateTime.from(dvDateTime);
-				return Optional.of(Date.from(dateTime.toInstant()));
+				return fromOffsetDateTime(dvDateTime);
 			} else {
-				// No offset, parse as LocalDateTime and use system default zone
-				LocalDateTime localDateTime = LocalDateTime.from(dvDateTime);
-				return Optional.of(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()));
+				return fromLocalDateTime(dvDateTime);
 			}
 		} catch (DateTimeParseException e) {
 	        LOG.warn("Could not parse date {}: {}. Skipping but continuing.", dvDateTime, e.getMessage());
 	        return Optional.empty();
 		}
+	}
 
+	/**
+	 * Converts a TemporalAccessor with an offset to a Date.
+	 */
+	private Optional<Date> fromOffsetDateTime(TemporalAccessor dvDateTime) {
+		OffsetDateTime dateTime = OffsetDateTime.from(dvDateTime);
+		return Optional.of(Date.from(dateTime.toInstant()));
+	}
+
+	/**
+	 * Converts a TemporalAccessor without an offset to a Date, using the system's default timezone.
+	 */
+	private Optional<Date> fromLocalDateTime(TemporalAccessor dvDateTime) {
+		LocalDateTime localDateTime = LocalDateTime.from(dvDateTime);
+		return Optional.of(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()));
 	}
 }
