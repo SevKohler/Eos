@@ -64,7 +64,7 @@
     "_type" : "EVENT_CONTEXT",
     "start_time" : {
       "_type" : "DV_DATE_TIME",
-      "value" : "2012-09-17T00:00:00+02:00"
+      "value" : "2012-09-17T00:00:00"
     },
     "setting" : {
       "_type" : "DV_CODED_TEXT",

@@ -3,6 +3,7 @@ package org.bih.eos.converter.cdm_field.date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
@@ -102,20 +103,44 @@ public class DVToDateConverter {
 		}
 	}
 
+        	/**
+	 * Parses a {@link TemporalAccessor} from an openEHR DvDateTime into a {@link Date}.
+	 * This method handles date-times both with and without a timezone offset.
+	 *
+	 * @param dvDateTime The {@link TemporalAccessor} to parse, typically from a {@link DvDateTime}.
+	 * @return An {@link Optional} containing the parsed {@link Date}, or an empty Optional if parsing fails or the input is partial/null.
+	 */
 	public Optional<Date> parseDvDateTime(TemporalAccessor dvDateTime) {
 		if (dvDateTime == null || !dvDateTime.isSupported(ChronoField.DAY_OF_MONTH)) {
 			LOG.warn("Date was empty, or partial (e.g. Day missing), therefore Date is returned empty.");
 			return Optional.empty();
-		} 
+		}
 
 		try {
-			OffsetDateTime dateTime = OffsetDateTime.parse(dvDateTime.toString());
-			Instant asInstant = dateTime.toInstant();
-			return Optional.of(Date.from(asInstant));
+			if (dvDateTime.isSupported(ChronoField.OFFSET_SECONDS)) {
+				return fromOffsetDateTime(dvDateTime);
+			} else {
+				return fromLocalDateTime(dvDateTime);
+			}
 		} catch (DateTimeParseException e) {
 	        LOG.warn("Could not parse date {}: {}. Skipping but continuing.", dvDateTime, e.getMessage());
 	        return Optional.empty();
 		}
+	}
 
+	/**
+	 * Converts a TemporalAccessor with an offset to a Date.
+	 */
+	private Optional<Date> fromOffsetDateTime(TemporalAccessor dvDateTime) {
+		OffsetDateTime dateTime = OffsetDateTime.from(dvDateTime);
+		return Optional.of(Date.from(dateTime.toInstant()));
+	}
+
+	/**
+	 * Converts a TemporalAccessor without an offset to a Date, using the system's default timezone.
+	 */
+	private Optional<Date> fromLocalDateTime(TemporalAccessor dvDateTime) {
+		LocalDateTime localDateTime = LocalDateTime.from(dvDateTime);
+		return Optional.of(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()));
 	}
 }
