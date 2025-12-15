@@ -9,7 +9,7 @@ import org.bih.eos.services.dao.ConvertableComposition;
 import org.bih.eos.services.dao.ConversionResponse;
 import org.ehrbase.client.aql.query.NativeQuery;
 import org.ehrbase.client.aql.query.Query;
-import org.ehrbase.client.aql.record.Record3;
+import org.ehrbase.client.aql.record.Record2;
 import org.ehrbase.client.openehrclient.OpenEhrClient;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -66,7 +66,7 @@ public class EhrService {
     }
 
     public void loadCompositions(List<EHRToPerson> ehrToPersonList, ConversionResponse output) {
-        List<Record3<String, String, Composition>> queryResult = executeAqlQuery(0, ehrToPersonList);
+        List<Record2<String, Composition>> queryResult = executeAqlQuery(0, ehrToPersonList);
         HashMap<String, List<Composition>> sortedEhrCompositions = prepareQueryOutput(queryResult);
         for (EHRToPerson ehrToPerson : ehrToPersonList) {
             if (sortedEhrCompositions.containsKey(ehrToPerson.getEhrId())) {
@@ -76,24 +76,24 @@ public class EhrService {
         }
     }
 
-    private HashMap<String, List<Composition>> prepareQueryOutput(List<Record3<String, String, Composition>> result) {
+    private HashMap<String, List<Composition>> prepareQueryOutput(List<Record2<String, Composition>> result) {
         HashMap<String, List<Composition>> sortedEhrCompositions = new HashMap<>();
-        for (Record3<String, String, Composition> queryResult : result) {
+        for (Record2<String, Composition> queryResult : result) {
             if (!sortedEhrCompositions.containsKey(queryResult.value1())) {
                 List<Composition> compositions = new ArrayList<>();
-                compositions.add(queryResult.value3());
+                compositions.add(queryResult.value2());
                 sortedEhrCompositions.put(queryResult.value1(), compositions);
             } else {
-                sortedEhrCompositions.get(queryResult.value1()).add(queryResult.value3());
+                sortedEhrCompositions.get(queryResult.value1()).add(queryResult.value2());
             }
         }
         return sortedEhrCompositions;
     }
 
-    private void batchLoad(List<Record3<String, String, Composition>> queryResultOld, List<EHRToPerson> ehrToPersonList, ConversionResponse output, long offset) {
+    private void batchLoad(List<Record2<String, Composition>> queryResultOld, List<EHRToPerson> ehrToPersonList, ConversionResponse output, long offset) {
         if (queryResultOld.size() == offsetLimit) {
             offset += offsetLimit;
-            List<Record3<String, String, Composition>> queryResultNew = executeAqlQuery(offset, ehrToPersonList);
+            List<Record2<String, Composition>> queryResultNew = executeAqlQuery(offset, ehrToPersonList);
             HashMap<String, List<Composition>> sortedEhrCompositions = prepareQueryOutput(queryResultNew);
             for (EHRToPerson ehrToPerson : ehrToPersonList) {
                 if (sortedEhrCompositions.containsKey(ehrToPerson.getEhrId())) {
@@ -114,17 +114,17 @@ public class EhrService {
         LOG.info("Current status of the mappings: " + output.getJson());
     }
 
-    private NativeQuery<Record3<String, String, Composition>> buildCompositionQueryEhr(long offset, List<EHRToPerson> ehrToPersonList) {
+    private NativeQuery<Record2<String, Composition>> buildCompositionQueryEhr(long offset, List<EHRToPerson> ehrToPersonList) {
         StringBuilder whereStatements = new StringBuilder();
         for (EHRToPerson ehrToPerson : ehrToPersonList) {
             whereStatements.append(" e/ehr_id/value = '").append(ehrToPerson.getEhrId()).append("' OR");
         }
         whereStatements = new StringBuilder(whereStatements.substring(0, whereStatements.length() - 2));
-        return Query.buildNativeQuery("SELECT e/ehr_id/value, c/context/start_time/value, c from EHR e CONTAINS COMPOSITION c WHERE " + whereStatements + " ORDER BY e/ehr_id/value DESC, c/context/start_time/value DESC" + " LIMIT " + offsetLimit + " OFFSET " + offset, String.class, String.class, Composition.class);
+        return Query.buildNativeQuery("SELECT e/ehr_id/value, c from EHR e CONTAINS COMPOSITION c WHERE " + whereStatements + " ORDER BY e/ehr_id/value DESC" + " LIMIT " + offsetLimit + " OFFSET " + offset, String.class, Composition.class);
     }
 
-    private List<Record3<String, String, Composition>> executeAqlQuery(long offset, List<EHRToPerson> ehrIds) {
-        NativeQuery<Record3<String, String, Composition>> query = buildCompositionQueryEhr(offset, ehrIds);
+    private List<Record2<String, Composition>> executeAqlQuery(long offset, List<EHRToPerson> ehrIds) {
+        NativeQuery<Record2<String, Composition>> query = buildCompositionQueryEhr(offset, ehrIds);
         try {
             return openEhrClient.aqlEndpoint().execute(query);
         } catch (NullPointerException nullPointerException) {
