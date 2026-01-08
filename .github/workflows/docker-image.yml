@@ -32,7 +32,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:latest
+        run: |
+          n=0
+          until [ "$n" -ge 2 ]
+          do
+             mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:latest && break
+             n=$((n+1))
+             echo "Build failed. Waiting 5 minutes before retry $n..."
+             sleep 300
+          done
+          
+          if [ "$n" -eq 2 ]; then
+            echo "Build failed after 2 attempts."
+            exit 1
+          fi
 
       - name: Publish to GitHub Container Registry
         run: docker push ${{ env.REGISTRY }}/sevkohler/eos:latest
