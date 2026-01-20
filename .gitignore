@@ -32,3 +32,6 @@ hs_err_pid*
 target/
 logs/
 setup/vocab
+
+# Allow JARs in the libs folder
+!libs/*.jar
