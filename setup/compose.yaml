@@ -4,7 +4,6 @@ services:
     profiles:
       - cdm
     image: cdm_db:latest
-    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
@@ -42,7 +41,6 @@ services:
       EOS_OPENEHR_SECURITY_TYPE: BASIC
       EOS_OPENEHR_SECURITY_USER_NAME: myuser
       EOS_OPENEHR_SECURITY_USER_PASSWORD: myPassword432
-    platform: linux/amd64
     networks:
       - ehrbase-net
       - eos-net
@@ -58,7 +56,6 @@ services:
     profiles:
       - ehrbase
     image: ehrbase/ehrbase:next
-    platform: linux/amd64
     ports:
       - 8080:8080
     networks:
@@ -83,7 +80,6 @@ services:
     profiles:
       - ehrbase
     image: ehrbase/ehrbase-postgres:latest
-    platform: linux/amd64
     ports:
       - 5433:5432
     networks:
