@@ -11,9 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: recursive
+          fetch-depth: 0 # get the history to merge correctly
+
+      - name: Update submodule to latest
+        run: |
+          git submodule update --remote --merge
 
       - name: Get the tag name
         run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
@@ -31,8 +36,31 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install SqlRender from local libs
+        run: |
+          mvn install:install-file \
+            -Dfile=libs/SqlRender-1.19.4.jar \
+            -DpomFile=libs/SqlRender-1.19.4.pom \
+            -DgroupId=org.ohdsi.sql \
+            -DartifactId=SqlRender \
+            -Dversion=1.19.4 \
+            -Dpackaging=jar
+            
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:latest
+        run: |
+          n=0
+          until [ "$n" -ge 2 ]
+          do
+             mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/sevkohler/eos:latest && break
+             n=$((n+1))
+             echo "Build failed. Waiting 5 minutes before retry $n..."
+             sleep 300
+          done
+          
+          if [ "$n" -eq 2 ]; then
+            echo "Build failed after 2 attempts."
+            exit 1
+          fi
 
       - name: Publish to GitHub Container Registry
         run: docker push ${{ env.REGISTRY }}/sevkohler/eos:latest

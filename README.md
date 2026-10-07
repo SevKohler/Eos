@@ -1,5 +1,6 @@
-Eos
-====
+
+
+<img src="https://github.com/user-attachments/assets/abcfec63-6930-45de-a2c9-ba2f2c555d68" alt="EOSLOGO" width="150"/>
 
 Note
 ------

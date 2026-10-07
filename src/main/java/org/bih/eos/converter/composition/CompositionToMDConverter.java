@@ -126,6 +126,7 @@ public class CompositionToMDConverter extends CompositionToEntityConverter<CDTCo
 
 	private List<JPABaseEntity> iterateContent(List<ContentItem> contentItems, CdtExecutionParameterMedData cdtExecutionParameters, List<ConversionTrack> conversionTracker, List<JPABaseEntity> cdtConverterResults) {
 		for (ContentItem contentItem : contentItems) {
+            LOG.info("Current Archetype: " + contentItem.getArchetypeNodeId());
 			cdtExecutionParameters.setArchetypeId(contentItem.getArchetypeNodeId());
 			cdtExecutionParameters.setContentItem(contentItem);
 			if (contentItem.getClass().equals(Section.class)) {

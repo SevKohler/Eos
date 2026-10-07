@@ -30,6 +30,13 @@ services:
     image: ghcr.io/sevkohler/eos:latest
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://cdm-db:5432/postgres
+      # Spring JPA Properties
+      SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_SCHEMA: public
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # EOS Custom Properties
+      EOS_CDM_DATABASE_NAME: postgres
+      EOS_CDM_SCHEMA: public
+      # EOS OpenEHR Properties
       EOS_OPENEHR_BASE_URL: http://ehrbase:8080/ehrbase/
       EOS_OPENEHR_SECURITY_TYPE: BASIC
       EOS_OPENEHR_SECURITY_USER_NAME: myuser
